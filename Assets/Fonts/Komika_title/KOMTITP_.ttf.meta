@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 37b2907f1a460184aa168639a9d26f1c
+timeCreated: 1516915371
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Komika Title - Paint
+  fontNames:
+  - Komika Title - Paint
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

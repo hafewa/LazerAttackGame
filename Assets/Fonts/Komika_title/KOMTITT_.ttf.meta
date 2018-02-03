@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 871e537137f1d1d42bba3c8f59cebbec
+timeCreated: 1516915372
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Komika Title - Tall
+  fontNames:
+  - Komika Title - Tall
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
