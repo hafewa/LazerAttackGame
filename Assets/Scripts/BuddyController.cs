@@ -17,11 +17,11 @@ public class BuddyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		if (m_fBulletTimer > m_fBulletDelay) {
-//			Instantiate(m_goBullet, transform.position, m_goBullet.transform.localRotation);
-//			m_fBulletTimer = 0f;
-//		}
-//
-//		m_fBulletTimer += Time.deltaTime;
+		if (m_fBulletTimer > m_fBulletDelay) {
+			Instantiate(m_goBullet, transform.position, m_goBullet.transform.localRotation);
+			m_fBulletTimer = 0f;
+		}
+
+		m_fBulletTimer += Time.deltaTime;
 	}
 }

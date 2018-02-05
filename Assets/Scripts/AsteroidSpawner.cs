@@ -30,7 +30,6 @@ public class AsteroidSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log (spwnr.GetComponent<WaveSpawner> ().GetIsBossWave ());
 		if (spwnr.GetComponent<WaveSpawner> ().GetIsBossWave ()) {
 			m_enState = SPAWNERSTATE.WAITING;
 			return;
@@ -48,7 +47,9 @@ public class AsteroidSpawner : MonoBehaviour {
 		if (m_enState == SPAWNERSTATE.SPAWNING) {
 			if (timer > lastSpawnTime + spawnDelay) {
 				lastSpawnTime = timer;
-				Instantiate (asteroids [0], transform.position + new Vector3(Random.Range (-3f, 3f), 0, 0), transform.rotation);
+				var a = Instantiate (asteroids [Random.Range(0, asteroids.Count)], transform.position + new Vector3(Random.Range (-3f, 3f), 0, 0), transform.rotation);
+				var s = Random.Range (35, 50);
+				a.transform.localScale = new Vector3 (s, s, s);
 			}
 		}
 		timer += Time.deltaTime;
