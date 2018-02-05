@@ -66,9 +66,14 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (m_fBulletTimer > m_fBulletDelay) {
 			Instantiate(m_goBullet, m_goBulletSpawnPoint.transform.position, Quaternion.identity); 
-			Instantiate(m_goBullet, new Vector3(m_goBulletSpawnPoint.transform.position.x + 0.5f, m_goBulletSpawnPoint.transform.position.y, m_goBulletSpawnPoint.transform.position.z - 0.5f), Quaternion.identity); 
-			Instantiate(m_goBullet, new Vector3(m_goBulletSpawnPoint.transform.position.x - 0.5f, m_goBulletSpawnPoint.transform.position.y, m_goBulletSpawnPoint.transform.position.z - 0.5f), Quaternion.identity); 
+			//Instantiate(m_goBullet, new Vector3(m_goBulletSpawnPoint.transform.position.x + 0.5f, m_goBulletSpawnPoint.transform.position.y, m_goBulletSpawnPoint.transform.position.z - 0.5f), Quaternion.identity); 
+			//Instantiate(m_goBullet, new Vector3(m_goBulletSpawnPoint.transform.position.x - 0.5f, m_goBulletSpawnPoint.transform.position.y, m_goBulletSpawnPoint.transform.position.z - 0.5f), Quaternion.identity); 
 			m_fBulletTimer = 0f;
+		}
+
+		if(Input.GetKeyDown(KeyCode.L)){
+			PlayerPrefs.SetString("RightBuddy", "");
+			PlayerPrefs.SetString("LeftBuddy", "");
 		}
 	}
 
@@ -76,6 +81,7 @@ public class PlayerMovement : MonoBehaviour {
 		//only bosses can fire projectiles
 		if (other.tag == "Enemy" || other.tag == "EnemyProjectile") {
 			//kill
+			Debug.Log("hit player");
 			Destroy (this.gameObject);
 			GameObject.Find("GameManager").GetComponent<GameManager>().PlayerDead();
 		}else if (other.tag == "Treasure") {

@@ -7,6 +7,10 @@ public class BasicEnemy : MonoBehaviour {
 	public int minWaveSpawn;
 	public float targetZ;
 
+	public bool canBuff;
+	public float healthBuffAmount;
+	public GameObject buffParticles;
+
 	// Use this for initialization
 	void Start () {
 		targetZ = -11f;
@@ -38,5 +42,15 @@ public class BasicEnemy : MonoBehaviour {
 
 	public void UpdateHealthBarSprite(){
 		//health bar starts at 100 scale
+	}
+
+	public void DoBuff(float increase){
+		if (!canBuff)
+			return;
+		//increase health
+		m_fHealth *= increase;
+		//spawn particles on enemy to show buffed state
+		Instantiate(buffParticles, transform);
+		Debug.Log ("do buff:" + increase);
 	}
 }

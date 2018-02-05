@@ -96,7 +96,7 @@ public class WaveSpawner : MonoBehaviour {
 			nextWave = 0;
 			//Debug.Log("ALL WAVES COMPLETE! Looping...");
 			for(int i = 0; i < waves.Length; i++){
-
+				Debug.Log ("WAVE COMPLETE");
 				if (waves[i].canIncreaseCount) {
 					float multiplier = Random.Range (1.5f, 2f);
 
@@ -105,6 +105,8 @@ public class WaveSpawner : MonoBehaviour {
 
 				if (waves [i].name.Contains ("Boss")) {
 					//alter health at some point
+				} else {
+					
 				}
 			}
 		}
@@ -138,10 +140,15 @@ public class WaveSpawner : MonoBehaviour {
 		//Debug.Log("Spawning Wave: " + _wave.name);
 		state = SpawnState.SPAWNING;
 		Debug.Log (_wave.name);
-		if (_wave.name.Contains ("Boss"))
+		if (_wave.name.Contains ("Boss")) {
 			m_bBossWave = true;
-		else
+		} else {
 			m_bBossWave = false;
+			for (int i = 0; i < _wave.enemy.Length; i++) {
+				if (Random.Range (0, 10) > 6) 
+					_wave.enemy [i].GetComponent<BasicEnemy> ().DoBuff (Random.Range (1.1f, 1.3f));
+			}
+		}
 
 		for (int i = 0; i < _wave.count; i++)
 		{

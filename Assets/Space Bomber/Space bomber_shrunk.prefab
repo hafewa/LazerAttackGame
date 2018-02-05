@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572320393595872}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.4461737, y: 58.358963, z: -13.678434}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,7 +109,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.32, y: 0.1, z: 9.9}
+  m_Size: {x: 10.32, y: 2, z: 9.9}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114274829737671322
 MonoBehaviour:
@@ -133,9 +133,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d892e24fbc7d7024ba6cf68003125f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fHealth: 5
+  m_fHealth: 2
   minWaveSpawn: 0
   targetZ: 0
+  canBuff: 1
+  healthBuffAmount: 1.1
+  buffParticles: {fileID: 1741225688075850, guid: 825a34198647243488a91848d3cba920,
+    type: 2}
 --- !u!114 &114896661533460174
 MonoBehaviour:
   m_ObjectHideFlags: 1
