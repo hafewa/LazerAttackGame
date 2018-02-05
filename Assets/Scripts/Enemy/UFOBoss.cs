@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UFOBoss : BasicBoss {
 	public GameObject ufoBody;
+	private Transform m_tPlayer;
 
 	private enum CHILD_STATE
 	{
@@ -28,6 +29,7 @@ public class UFOBoss : BasicBoss {
 			spinForTime = 4.2f;
 
 		oldBulletDelay = bulletDelay;
+		m_tPlayer = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 	
 	// Update is called once per frame
@@ -43,7 +45,7 @@ public class UFOBoss : BasicBoss {
 					bulletDelay = Random.Range (0.2f, 0.5f);
 				}
 				if (bulletTimer > bulletDelay) {
-					ShootAtRandomAngle (140f, 200f);
+					ShootNearPlayer (-10f, 10f, m_tPlayer);
 					bulletTimer = 0f;
 				}
 
@@ -58,7 +60,7 @@ public class UFOBoss : BasicBoss {
 				}
 
 				if (bulletTimer > bulletDelay) {
-					ShootAtRandomAngle (150f, 190f);
+					ShootNearPlayer (-25f, 25f, m_tPlayer);
 					bulletTimer = 0f;
 				}
 

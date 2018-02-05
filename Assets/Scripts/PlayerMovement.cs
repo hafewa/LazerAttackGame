@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour {
 	public class Buddy{
 		public string name;
 		public GameObject buddy;
+		public string codename;
 	}
 	public List<Buddy> m_lBuddies;
 
@@ -35,12 +36,12 @@ public class PlayerMovement : MonoBehaviour {
 			if (buddiesSpawned >= 2)
 				break;
 			
-			if (b.name == lBuddy) {
+			if (b.codename == lBuddy) {
 				Instantiate (b.buddy, m_tLeftBuddySpawnPos);
 				buddiesSpawned++;
 			}
 
-			if (b.name == rBuddy) {
+			if (b.codename == rBuddy) {
 				Instantiate (b.buddy, m_tRightBuddySpawnPos);
 				buddiesSpawned++;
 			}
@@ -75,8 +76,6 @@ public class PlayerMovement : MonoBehaviour {
 		//only bosses can fire projectiles
 		if (other.tag == "Enemy" || other.tag == "EnemyProjectile") {
 			//kill
-			Debug.Log("hello");
-			Debug.Log (other.gameObject.name);
 			Destroy (this.gameObject);
 			GameObject.Find("GameManager").GetComponent<GameManager>().PlayerDead();
 		}else if (other.tag == "Treasure") {

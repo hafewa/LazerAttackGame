@@ -392,6 +392,16 @@ Prefab:
       value: 
       objectReference: {fileID: 1835195139557880, guid: e6b09b5c2a0d35c47a1fec2a13ae7b0f,
         type: 2}
+    - target: {fileID: 114720405533712396, guid: c9816fa979b06ba4e9c222b529370cc2,
+        type: 2}
+      propertyPath: m_lBuddies.Array.data[0].codename
+      value: wasphunter
+      objectReference: {fileID: 0}
+    - target: {fileID: 114720405533712396, guid: c9816fa979b06ba4e9c222b529370cc2,
+        type: 2}
+      propertyPath: m_lBuddies.Array.data[1].codename
+      value: spotthecow
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65941083868652744, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}

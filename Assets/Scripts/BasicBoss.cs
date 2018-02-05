@@ -105,4 +105,11 @@ public class BasicBoss : MonoBehaviour {
 		var m = Instantiate (m_goMissile, transform.position, new Quaternion(0,0,0,1));
 		m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
 	}
+
+	public void ShootNearPlayer(float min, float max, Transform player){
+		float ang = Random.Range (min, max);
+		var m = Instantiate (m_goMissile, transform.position, new Quaternion(0,0,0,1));
+		m.transform.LookAt (player);
+		m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
+	}
 }
