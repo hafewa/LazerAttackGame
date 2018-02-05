@@ -123,12 +123,18 @@ MonoBehaviour:
   value: 150
   m_lRewards:
   - name: Scrap Metal
+    codename: scrapmetal
     description: Oh
     obj: {fileID: 1084981035108130, guid: 7999d854323631e409595b96120b6d85, type: 2}
     rarity: 0
+    tradeablePointsValue: 50
+    type: 0
   - name: Wasphunter
+    codename: wasphunter
     description: Buzz buzz
     obj: {fileID: 1631244131090514, guid: da282b8606a266d4c99a797dd98dad37, type: 2}
     rarity: 1
+    tradeablePointsValue: 525
+    type: 1
   rareRate: 80
   legendaryRate: 101

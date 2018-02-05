@@ -123,16 +123,25 @@ MonoBehaviour:
   value: 400
   m_lRewards:
   - name: Wasphunter
+    codename: wasphunter
     description: This little drone will fight alongside you.
     obj: {fileID: 1631244131090514, guid: da282b8606a266d4c99a797dd98dad37, type: 2}
     rarity: 1
+    tradeablePointsValue: 525
+    type: 1
   - name: Scrap Metal
+    codename: scrapmetal
     description: Oh, scrap....
     obj: {fileID: 1084981035108130, guid: 7999d854323631e409595b96120b6d85, type: 2}
     rarity: 0
+    tradeablePointsValue: 50
+    type: 0
   - name: Spot the Cow
+    codename: spotthecow
     description: This cow is stronger than it may seem.
     obj: {fileID: 1961141458143260, guid: 113de8550ef552f4bb1443aed44eb327, type: 2}
     rarity: 2
+    tradeablePointsValue: 1500
+    type: 1
   rareRate: 75
   legendaryRate: 95

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114652118799597284}
   - component: {fileID: 65975604174213448}
   m_Layer: 0
-  m_Name: 
+  m_Name: Asteroid 01
   m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

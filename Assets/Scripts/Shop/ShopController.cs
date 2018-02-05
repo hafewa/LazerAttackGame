@@ -43,6 +43,8 @@ public class ShopController : MonoBehaviour {
 	public Text m_cRewardName;
 	public Text m_cRewardDescription;
 
+	private ShopCrate.Reward openedReward;
+
 	// Use this for initialization
 	void Start () {
 		shopIndex = 0;
@@ -53,6 +55,7 @@ public class ShopController : MonoBehaviour {
 		crateTimer = 0f;
 		buyEffectEndTime = 4f;
 		m_cOpenCrateCanvas.enabled = false;
+
 	}
 	
 	// Update is called once per frame
@@ -68,14 +71,20 @@ public class ShopController : MonoBehaviour {
 			if (buyEffectTimer > buyEffectEndTime) {
 				shopState = SHOPSTATE.CRATEOPEN;
 				ShopCrate.Reward reward = currShopItem.GetComponent<ShopCrate> ().GetRandomReward ();
+				string effect = currShopItem.GetComponent<ShopCrate> ().ExecuteRewardFunc (reward);
 
 				Destroy (buyEffectInstance);
 				Destroy (currShopItem);
 				ChangeShopView (false, true);
+				openedReward = reward;
 				currShopItem = Instantiate (reward.obj, transform.position, reward.obj.transform.localRotation, transform);
 				m_cRewardName.text = reward.name;
 				m_cRewardDescription.text = reward.description;
 				buyEffectTimer = 0f;
+
+				//simple, add on some score
+				overallScoreText.text = PlayerPrefs.GetInt ("points", 0) + "";
+				m_cRewardDescription.text += "\n " + effect;
 			}
 			break;
 		case SHOPSTATE.CRATEOPEN:
@@ -148,6 +157,7 @@ public class ShopController : MonoBehaviour {
 		m_cOpenCrateCanvas.enabled = false;
 		m_cShopCanvas.enabled = true;
 		m_cRewardName.text = m_cRewardDescription.text = "";
+		openedReward = null;
 		ChangeShopItem (shopIndex);
 	}
 }
