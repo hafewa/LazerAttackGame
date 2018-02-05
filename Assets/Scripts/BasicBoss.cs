@@ -28,8 +28,8 @@ public class BasicBoss : MonoBehaviour {
 	protected virtual void Start () {
 		m_eState = BOSS_STATE.SETUP;
 
-		if (inGameChangedHealth > 0)
-			m_fHealth = inGameChangedHealth;
+		//if (inGameChangedHealth > 0)
+		//	m_fHealth = inGameChangedHealth;
 
 		if(bulletDelay <= 0)
 			bulletDelay = 1.5f;

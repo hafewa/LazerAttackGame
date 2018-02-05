@@ -22,7 +22,7 @@ public class SideToSideBoss : BasicBoss {
 			else if (transform.position.x < -3f)
 				targetX = 3.1f;
 
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), (0.07f));
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), 2f * Time.deltaTime);
 			if (bulletTimer > bulletDelay) {
 				Shoot ();
 				bulletTimer = 0f;

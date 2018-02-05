@@ -13,10 +13,10 @@ public class BasicEnemy : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (transform.position.z < -10f)
 			Destroy (this.gameObject);
-		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, targetZ), 0.1f);
+		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, targetZ), 10f * Time.deltaTime);
 	}
 
 	public float GetHealth(){
