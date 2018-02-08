@@ -5,8 +5,11 @@ using UnityEngine;
 public class EnemyDeath : MonoBehaviour {
 	public GameObject scrapMetal;
 	public GameObject[] ores;
+	public GameObject[] powerUps;
 	public int rareDropRate;
 	public int rareDropCount;
+	public int powerUpDropRate;
+	public int powerUpDropCount;
 	public bool isBoss;
 
 	// Use this for initialization
@@ -35,8 +38,29 @@ public class EnemyDeath : MonoBehaviour {
 				else
 					jmp = i * -2000f;
 				float upForce = Random.Range (8000, 12000);
-				float bossUpForce = Random.Range (12000, 20000);
+				float bossUpForce = Random.Range (8000, 16000);
 				var rare = Instantiate (ores [x], transform.position, new Quaternion(0, 0, 0, 1));
+
+				if(!isBoss)
+					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (jmp, 0, upForce));
+				else
+					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (jmp, 0, bossUpForce));
+			}
+		}
+
+		int p = Random.Range (0, 10);
+		if (p < powerUpDropRate || isBoss) {
+			for (int i = 0; i < powerUpDropCount; i++) {
+				int pup = Random.Range (0, powerUps.Length);
+
+				float jmp = 0;
+				if (i < rareDropCount / 2)
+					jmp = i * 2000f;
+				else
+					jmp = i * -2000f;
+				float upForce = Random.Range (8000, 12000);
+				float bossUpForce = Random.Range (8000, 16000);
+				var rare = Instantiate (powerUps [pup], transform.position, new Quaternion(0, 0, 0, 1));
 
 				if(!isBoss)
 					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (jmp, 0, upForce));

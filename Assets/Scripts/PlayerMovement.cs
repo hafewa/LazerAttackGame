@@ -26,26 +26,26 @@ public class PlayerMovement : MonoBehaviour {
 		m_fBulletTimer = 0f;
 		m_fBulletDelay = 0.4f;
 		Physics.gravity = new Vector3 (0, 0, -9.8f);
-		string lBuddy = PlayerPrefs.GetString ("LeftBuddy", "");
-		string rBuddy = PlayerPrefs.GetString ("RightBuddy", "");
-
-		if (lBuddy == "" && rBuddy == "")
-			return;
-		float buddiesSpawned = 0;
-		foreach (Buddy b in m_lBuddies) {
-			if (buddiesSpawned >= 2)
-				break;
-			
-			if (b.codename == lBuddy) {
-				Instantiate (b.buddy, m_tLeftBuddySpawnPos);
-				buddiesSpawned++;
-			}
-
-			if (b.codename == rBuddy) {
-				Instantiate (b.buddy, m_tRightBuddySpawnPos);
-				buddiesSpawned++;
-			}
-		}
+//		string lBuddy = PlayerPrefs.GetString ("LeftBuddy", "");
+//		string rBuddy = PlayerPrefs.GetString ("RightBuddy", "");
+//
+//		if (lBuddy == "" && rBuddy == "")
+//			return;
+//		float buddiesSpawned = 0;
+//		foreach (Buddy b in m_lBuddies) {
+//			if (buddiesSpawned >= 2)
+//				break;
+//			
+//			if (b.codename == lBuddy) {
+//				Instantiate (b.buddy, m_tLeftBuddySpawnPos);
+//				buddiesSpawned++;
+//			}
+//
+//			if (b.codename == rBuddy) {
+//				Instantiate (b.buddy, m_tRightBuddySpawnPos);
+//				buddiesSpawned++;
+//			}
+//		}
 	}
 	
 	// Update is called once per frame
@@ -66,8 +66,8 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (m_fBulletTimer > m_fBulletDelay) {
 			Instantiate(m_goBullet, m_goBulletSpawnPoint.transform.position, Quaternion.identity); 
-			//Instantiate(m_goBullet, new Vector3(m_goBulletSpawnPoint.transform.position.x + 0.5f, m_goBulletSpawnPoint.transform.position.y, m_goBulletSpawnPoint.transform.position.z - 0.5f), Quaternion.identity); 
-			//Instantiate(m_goBullet, new Vector3(m_goBulletSpawnPoint.transform.position.x - 0.5f, m_goBulletSpawnPoint.transform.position.y, m_goBulletSpawnPoint.transform.position.z - 0.5f), Quaternion.identity); 
+			Instantiate(m_goBullet, new Vector3(m_goBulletSpawnPoint.transform.position.x + 0.5f, m_goBulletSpawnPoint.transform.position.y, m_goBulletSpawnPoint.transform.position.z - 0.5f), Quaternion.identity); 
+			Instantiate(m_goBullet, new Vector3(m_goBulletSpawnPoint.transform.position.x - 0.5f, m_goBulletSpawnPoint.transform.position.y, m_goBulletSpawnPoint.transform.position.z - 0.5f), Quaternion.identity); 
 			m_fBulletTimer = 0f;
 		}
 

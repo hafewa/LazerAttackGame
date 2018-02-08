@@ -20,6 +20,7 @@ public class BasicEnemy : MonoBehaviour {
 	void Update () {
 		if (transform.position.z < -10f)
 			Destroy (this.gameObject);
+		
 		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, targetZ), 7f * Time.deltaTime);
 	}
 
@@ -47,10 +48,11 @@ public class BasicEnemy : MonoBehaviour {
 	public void DoBuff(float increase){
 		if (!canBuff)
 			return;
+
 		//increase health
 		m_fHealth *= increase;
+
 		//spawn particles on enemy to show buffed state
 		Instantiate(buffParticles, transform);
-		Debug.Log ("do buff:" + increase);
 	}
 }
