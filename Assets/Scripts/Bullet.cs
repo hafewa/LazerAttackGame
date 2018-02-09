@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = Vector3.MoveTowards (transform.position, transform.position + new Vector3(0f, 0f, 1f), m_fSpeed);
+		transform.position = Vector3.MoveTowards (transform.position, transform.position + new Vector3(0f, 0f, 1f), m_fSpeed * Time.deltaTime);
 		if (canRotate)
 			transform.RotateAround (transform.position, new Vector3 (0, 0, 1), rotSpeed * Time.deltaTime);
 		

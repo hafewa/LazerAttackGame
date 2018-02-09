@@ -1740,8 +1740,12 @@ MonoBehaviour:
   - {fileID: 1290958714291960, guid: 4c19c4e3aea59a242913417219197dd1, type: 2}
   - {fileID: 1987437229821528, guid: 9053f8a60cd1e41418164d9d4a2bfac2, type: 2}
   - {fileID: 1092562024604810, guid: a591fb7a0e041ca4184f4cdbc2fae141, type: 2}
+  - {fileID: 1019263206544978, guid: 4935b403526db8140b0995a86d82f548, type: 2}
+  powerUps: []
   rareDropRate: 50
   rareDropCount: 5
+  powerUpDropRate: 0
+  powerUpDropCount: 0
   isBoss: 1
 --- !u!198 &198554714320587226
 ParticleSystem:

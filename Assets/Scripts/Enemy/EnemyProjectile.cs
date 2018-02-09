@@ -18,7 +18,7 @@ public class EnemyProjectile : MonoBehaviour {
 		if (transform.position.z < -10f)
 			Destroy (this.gameObject);
 		
-		transform.position += (transform.forward * speedMultiplier) * Time.deltaTime;
+		transform.position += ((transform.forward * speedMultiplier) * Time.deltaTime);
 
 		if (canRotate)
 			transform.RotateAround (transform.position, new Vector3 (0, 0, 1), rotSpeed * Time.deltaTime);

@@ -18,6 +18,7 @@ public class WaveSpawner : MonoBehaviour {
 	public bool m_bBossWave;
 	public Wave[] waves;
 	private int nextWave = 0;
+	private int wavesDefeated = 0;
 	public int NextWave
 	{
 		get { return nextWave + 1; }
@@ -39,6 +40,8 @@ public class WaveSpawner : MonoBehaviour {
 	{
 		get { return state; }
 	}
+
+	public GameObject m_goPlayer;
 
 	void Start()
 	{
@@ -87,7 +90,7 @@ public class WaveSpawner : MonoBehaviour {
 	{
 		//Debug.Log("Wave Completed!");
 		//UIControllerScript.Instance.SetWaveTextVisibility (true);
-
+		wavesDefeated++;
 		state = SpawnState.COUNTING;
 		waveCountdown = timeBetweenWaves;
 
@@ -144,10 +147,6 @@ public class WaveSpawner : MonoBehaviour {
 			m_bBossWave = true;
 		} else {
 			m_bBossWave = false;
-			for (int i = 0; i < _wave.enemy.Length; i++) {
-				if (Random.Range (0, 10) > 6) 
-					_wave.enemy [i].GetComponent<BasicEnemy> ().DoBuff (Random.Range (1.1f, 1.3f));
-			}
 		}
 
 		for (int i = 0; i < _wave.count; i++)
@@ -184,7 +183,21 @@ public class WaveSpawner : MonoBehaviour {
 	void SpawnEnemy(Transform _enemy, float spacing)
 	{
 		Transform _sp = spawnPoints[ Random.Range (0, spawnPoints.Length) ];
-		Instantiate(_enemy, new Vector3(_sp.position.x + spacing, 0f, _sp.position.z), _enemy.rotation);
+		var enemy = Instantiate(_enemy, new Vector3(_sp.position.x + spacing, 0f, _sp.position.z), _enemy.rotation);
+		int lvl = m_goPlayer.GetComponent<PlayerWeaponry> ().GetPlayerLevel ();
+		if (!GetIsBossWave () && (lvl > 3)) {
+			//calculate chances of enemy getting being buffed
+			if (wavesDefeated < 10) {
+				if (Random.Range (0, 100) > wavesDefeated * 10)
+					return;
+			} else {
+				//if they're past wave 10 then it's always 90%
+				if (Random.Range (0, 100) < 10)
+					return;
+			}
+			enemy.GetComponent<BasicEnemy> ().canBuff = true;
+			enemy.GetComponent<BasicEnemy> ().DoBuff ((3*0.1f) + (lvl * 0.5f));
+		}
 	}
 
 }

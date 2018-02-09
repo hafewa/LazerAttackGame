@@ -86,7 +86,6 @@ public class BasicBoss : MonoBehaviour {
 
 	public void Shoot()
 	{
-		Debug.Log ("shoot");
 		var ang = 120f;
 		while (ang <= 210f) {
 			var m = Instantiate (m_goMissile, transform.position, new Quaternion(0,0,0,1));

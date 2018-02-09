@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23762106260175366}
   - component: {fileID: 64437496910652486}
   - component: {fileID: 54436114986007564}
-  - component: {fileID: 114131643757795554}
+  - component: {fileID: 114206179630171700}
   m_Layer: 0
   m_Name: CutGemsGreen
   m_TagString: Treasure
@@ -112,7 +112,7 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: c171d95d7b46de544ab384a78cb358da, type: 3}
---- !u!114 &114131643757795554
+--- !u!114 &114206179630171700
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -120,8 +120,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1987437229821528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966162bab01f71e488700d58181726b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f903c5d47df92042a6e2160d36d95d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_iValue: 10
   speed: {x: 0, y: 0, z: 0}
+  m_ptType: 0
+  m_iValue: 12

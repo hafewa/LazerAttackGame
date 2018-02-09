@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65865539930596204}
   - component: {fileID: 23723811027141730}
   - component: {fileID: 54310768202720128}
-  - component: {fileID: 114212358629683450}
+  - component: {fileID: 114703227607345592}
   m_Layer: 0
   m_Name: ScrapMetal
   m_TagString: Treasure
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114212358629683450
+--- !u!114 &114703227607345592
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -117,8 +117,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1811575377209660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966162bab01f71e488700d58181726b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f903c5d47df92042a6e2160d36d95d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_iValue: 1
   speed: {x: 0, y: 0, z: 0}
+  m_ptType: 0
+  m_iValue: 1

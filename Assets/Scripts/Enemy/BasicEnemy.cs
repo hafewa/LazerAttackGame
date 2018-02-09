@@ -8,7 +8,8 @@ public class BasicEnemy : MonoBehaviour {
 	public float targetZ;
 
 	public bool canBuff;
-	public float healthBuffAmount;
+	public bool isBuffed = false;
+	public float healthBuffAmount = 0f;
 	public GameObject buffParticles;
 
 	// Use this for initialization
@@ -18,9 +19,9 @@ public class BasicEnemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.z < -10f)
+		if (transform.position.z < -10f) {
 			Destroy (this.gameObject);
-		
+		}
 		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, targetZ), 7f * Time.deltaTime);
 	}
 
@@ -29,7 +30,16 @@ public class BasicEnemy : MonoBehaviour {
 	}
 
 	public void Hurt(float dmg){
-		m_fHealth -= dmg;
+		if (isBuffed && canBuff) {
+			if (healthBuffAmount > 0) {
+				healthBuffAmount -= dmg;
+			} else {
+				isBuffed = false;
+			}
+		} else {
+			m_fHealth -= dmg;
+		}
+
 
 		CheckDead ();
 	}
@@ -49,10 +59,8 @@ public class BasicEnemy : MonoBehaviour {
 		if (!canBuff)
 			return;
 
-		//increase health
-		m_fHealth *= increase;
-
+		isBuffed = true;
 		//spawn particles on enemy to show buffed state
-		Instantiate(buffParticles, transform);
+		buffParticles.SetActive(true);
 	}
 }

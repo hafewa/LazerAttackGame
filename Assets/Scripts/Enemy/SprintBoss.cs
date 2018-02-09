@@ -41,7 +41,7 @@ public class SprintBoss : BasicBoss
 				else if (transform.position.x < -3f)
 					targetX = 3.1f;
 
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), 0.07f);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), 7f * Time.deltaTime);
 
 				if (bulletTimer > bulletDelay) {
 					Shoot ();
@@ -60,20 +60,20 @@ public class SprintBoss : BasicBoss
 				if (transform.position.z <= playerZ)//reverse now if sprint finished
 					m_chldState = CHILD_STATE.REVERSING;
 				
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, playerZ), 0.15f);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, playerZ), 10f * Time.deltaTime);
 			} else if (m_chldState == CHILD_STATE.REVERSING) {
 				if (transform.position.z >= reverseToZ) {//side2side once reverse is finished
 					transform.position = new Vector3(transform.position.x, transform.position.y, reverseToZ);
 					m_chldState = CHILD_STATE.SIDE2SIDE;
 				}
 
-				transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, reverseToZ), 0.07f);
+				transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, reverseToZ), 6.5f * Time.deltaTime);
 			}
 			break;
 		case BOSS_STATE.SETUP:
 			if (transform.position.z < setupFinishedZ)
 				SetState(BOSS_STATE.ACTIVE);
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, 2.99f), 0.1f);
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, 2.99f), 10f * Time.deltaTime);
 			break;
 		case BOSS_STATE.DEAD:
 			break;

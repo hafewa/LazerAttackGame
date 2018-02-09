@@ -184,6 +184,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!4 &417969941 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4894355921478332, guid: c9816fa979b06ba4e9c222b529370cc2,
+    type: 2}
+  m_PrefabInternal: {fileID: 989498726}
 --- !u!1 &512621682
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +419,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 114720405533712396, guid: c9816fa979b06ba4e9c222b529370cc2,
+        type: 2}
+      propertyPath: m_goBullet
+      value: 
+      objectReference: {fileID: 1000010623881886, guid: 3eea0aa0159c15749b4a11da52fd13e2,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 65941083868652744, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
@@ -542,7 +553,7 @@ Prefab:
     - target: {fileID: 114099908357366328, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
         type: 2}
       propertyPath: timeBetweenWaves
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114099908357366328, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
         type: 2}
@@ -705,6 +716,16 @@ Prefab:
       propertyPath: waves.Array.data[4].canIncreaseCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114099908357366328, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
+        type: 2}
+      propertyPath: canSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114099908357366328, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
+        type: 2}
+      propertyPath: m_goPlayer
+      value: 
+      objectReference: {fileID: 1867955262}
     m_RemovedComponents:
     - {fileID: 114595523999720114, guid: 63439dadcdcca3a4db2a16c0bb8fe350, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 63439dadcdcca3a4db2a16c0bb8fe350, type: 2}
@@ -867,6 +888,40 @@ CapsuleCollider:
   m_Height: 8.99
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1867955267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1867955262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2153bdd9a3a6f834eab8555c805a627e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLevel: 0
+  powerUp: 0
+  weaponFirePos: {fileID: 417969941}
+  weaponry:
+  - obj: {fileID: 1000010623881886, guid: 3eea0aa0159c15749b4a11da52fd13e2, type: 2}
+    levelReq: 0
+  - obj: {fileID: 1000012810499148, guid: e7a7f690c1bdb1e4a86f0b38b64001c6, type: 2}
+    levelReq: 3
+  - obj: {fileID: 1000013727924312, guid: c9a29962722b7d94b9e30586f6d80692, type: 2}
+    levelReq: 6
+  - obj: {fileID: 1000012779719912, guid: 9556a12952dcee347990c7ff509b0fc6, type: 2}
+    levelReq: 9
+  - obj: {fileID: 1000013376698594, guid: 941ccc9ddd2b84749a1d81d226051ed2, type: 2}
+    levelReq: 12
+  - obj: {fileID: 1000011757347544, guid: b97f2c37a21158c42a35d8b9d3a94e24, type: 2}
+    levelReq: 15
+  - obj: {fileID: 1000011064763136, guid: 337336648e3c8cd439068695f1e2e5e1, type: 2}
+    levelReq: 18
+  - obj: {fileID: 1000013132367662, guid: 60a5f2ab8917c4548be1e7d424e45ed1, type: 2}
+    levelReq: 21
+  - obj: {fileID: 1000011125535218, guid: bec5b8e3f6753404f9c7069609388d1f, type: 2}
+    levelReq: 24
+  fireAmount: 0
 --- !u!1 &2118645887
 GameObject:
   m_ObjectHideFlags: 0

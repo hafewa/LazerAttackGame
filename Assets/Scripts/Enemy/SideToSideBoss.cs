@@ -14,7 +14,7 @@ public class SideToSideBoss : BasicBoss {
 		case BOSS_STATE.SETUP:
 			if (transform.position.z < setupFinishedZ)
 				SetState(BOSS_STATE.ACTIVE);
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, 2.99f), 0.1f);
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, 2.99f), 1f * Time.deltaTime);
 			break;
 		case BOSS_STATE.ACTIVE:
 			if (transform.position.x > 3)

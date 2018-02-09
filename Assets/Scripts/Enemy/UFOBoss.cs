@@ -50,7 +50,7 @@ public class UFOBoss : BasicBoss {
 				}
 
 				spinTimer += Time.deltaTime;
-				ufoBody.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), 90f * Time.deltaTime);
+				ufoBody.transform.RotateAround (ufoBody.transform.position, new Vector3 (0, 1, 0), 90f * Time.deltaTime);
 				break;
 			case CHILD_STATE.SPIN:
 				if (spinTimer > spinForTime) {
@@ -65,7 +65,7 @@ public class UFOBoss : BasicBoss {
 				}
 
 				spinTimer += Time.deltaTime;
-				ufoBody.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), 360f * Time.deltaTime);
+				ufoBody.transform.RotateAround (ufoBody.transform.position, new Vector3 (0, 1, 0), 360f * Time.deltaTime);
 				break;
 			}
 
@@ -74,7 +74,7 @@ public class UFOBoss : BasicBoss {
 		case BOSS_STATE.SETUP:
 			if (transform.position.z < setupFinishedZ)
 				SetState (BOSS_STATE.ACTIVE);
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, 2.99f), 0.1f);
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, 2.99f), 10f * Time.deltaTime);
 			break;
 		case BOSS_STATE.DEAD:
 			break;
