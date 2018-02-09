@@ -184,8 +184,8 @@ public class WaveSpawner : MonoBehaviour {
 	{
 		Transform _sp = spawnPoints[ Random.Range (0, spawnPoints.Length) ];
 		var enemy = Instantiate(_enemy, new Vector3(_sp.position.x + spacing, 0f, _sp.position.z), _enemy.rotation);
-		int lvl = m_goPlayer.GetComponent<PlayerWeaponry> ().GetPlayerLevel ();
-		if (!GetIsBossWave () && (lvl > 3)) {
+
+		if (!GetIsBossWave () && (wavesDefeated > 3)) {
 			//calculate chances of enemy getting being buffed
 			if (wavesDefeated < 10) {
 				if (Random.Range (0, 100) > wavesDefeated * 10)
@@ -195,8 +195,9 @@ public class WaveSpawner : MonoBehaviour {
 				if (Random.Range (0, 100) < 10)
 					return;
 			}
+			Debug.Log ("player level: " + m_goPlayer.GetComponent<PlayerWeaponry> ().GetPlayerLevel ());
 			enemy.GetComponent<BasicEnemy> ().canBuff = true;
-			enemy.GetComponent<BasicEnemy> ().DoBuff ((3*0.1f) + (lvl * 0.5f));
+			enemy.GetComponent<BasicEnemy> ().DoBuff ((3*0.1f) + (m_goPlayer.GetComponent<PlayerWeaponry>().GetPlayerLevel() * 0.5f));
 		}
 	}
 

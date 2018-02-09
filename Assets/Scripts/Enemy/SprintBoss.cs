@@ -41,7 +41,7 @@ public class SprintBoss : BasicBoss
 				else if (transform.position.x < -3f)
 					targetX = 3.1f;
 
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), 7f * Time.deltaTime);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), 4f * Time.deltaTime);
 
 				if (bulletTimer > bulletDelay) {
 					Shoot ();
@@ -67,7 +67,7 @@ public class SprintBoss : BasicBoss
 					m_chldState = CHILD_STATE.SIDE2SIDE;
 				}
 
-				transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, reverseToZ), 6.5f * Time.deltaTime);
+				transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, reverseToZ), 3.5f * Time.deltaTime);
 			}
 			break;
 		case BOSS_STATE.SETUP:

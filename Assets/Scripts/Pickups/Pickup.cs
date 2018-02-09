@@ -11,7 +11,7 @@ public class Pickup : MonoBehaviour {
 	}
 	public PICKUPTYPE m_ptType;
 	public int m_iValue;
-
+	public bool used = false;
 	// Use this for initialization
 	protected virtual void Start () {
 		speed = new Vector3 (0, 0, 0);

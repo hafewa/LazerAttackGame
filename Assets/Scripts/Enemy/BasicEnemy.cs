@@ -40,14 +40,15 @@ public class BasicEnemy : MonoBehaviour {
 			m_fHealth -= dmg;
 		}
 
-
 		CheckDead ();
 	}
 
 	public void CheckDead(){
-		if (m_fHealth <= 0) {
-			this.gameObject.GetComponent<EnemyDeath> ().Kill ();
-			Destroy (this.gameObject);
+		if (m_fHealth <= 0 ) {
+			if (!this.gameObject.GetComponent<EnemyDeath> ().killed) {
+				this.gameObject.GetComponent<EnemyDeath> ().Kill ();
+				Destroy (this.gameObject);
+			}
 		}
 	}
 

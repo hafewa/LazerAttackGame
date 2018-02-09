@@ -63,18 +63,20 @@ public class PlayerMovement : MonoBehaviour {
 		//only bosses can fire projectiles
 		if (other.tag == "Enemy" || other.tag == "EnemyProjectile") {
 			//kill
-			Debug.Log("hit player");
 			Destroy (this.gameObject);
 			GameObject.Find("GameManager").GetComponent<GameManager>().PlayerDead();
 		}else if (other.tag == "Treasure") {
 			//add to current game score
-			switch (other.GetComponent<Pickup> ().GetPickupType ()) {
-			case Pickup.PICKUPTYPE.POWERUP:
-				this.gameObject.GetComponent<PlayerWeaponry> ().WeaponBoostCollected ();
-				break;
-			case Pickup.PICKUPTYPE.TREASURE:
-				GameObject.Find("GameManager").GetComponent<GameManager>().AddGameScore(other.GetComponent<Treasure>().GetValue());
-				break;
+			if (!other.GetComponent<Pickup> ().used) {
+				other.GetComponent<Pickup> ().used = true;
+				switch (other.GetComponent<Pickup> ().GetPickupType ()) {
+				case Pickup.PICKUPTYPE.POWERUP:
+					this.gameObject.GetComponent<PlayerWeaponry> ().WeaponBoostCollected ();
+					break;
+				case Pickup.PICKUPTYPE.TREASURE:
+					GameObject.Find ("GameManager").GetComponent<GameManager> ().AddGameScore (other.GetComponent<Treasure> ().GetValue ());
+					break;
+				}
 			}
 
 			Destroy (other.gameObject);

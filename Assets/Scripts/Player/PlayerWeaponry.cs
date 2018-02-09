@@ -44,9 +44,6 @@ public class PlayerWeaponry : MonoBehaviour {
 		}
 
 		m_fBulletTimer += Time.deltaTime;
-		if(Input.GetKeyDown(KeyCode.L)){
-			WeaponBoostCollected ();
-		}
 	}
 
 	public void WeaponBoostCollected(){
@@ -54,16 +51,20 @@ public class PlayerWeaponry : MonoBehaviour {
 		//powerup basically tracks how many rockets to fire each time, if the player collects three powerups, the level increase
 		//i.e. they get the next rocket, but it only spawns one
 		//each rockets damage should basically be 3x that of the previous rocket
+		Debug.Log("powerup collected at:" + Time.deltaTime);
 		GetCurrentWeapon();
 	}
 
 	private void GetCurrentWeapon(){
+		//if the player has maxed out, and the game doesn't offer any more rockets, just return and don't fiddle
 		if (playerLevel >= weaponry.Length)
 			return;
-
+		
 		for (int i = 0; i < weaponry.Length; i++) {
+			//player collects powerups ingame that boost player level, 1 powerup = 1 level
 			if (weaponry [i].levelReq == playerLevel + powerUp) {
 				weapon = weaponry[i].obj;
+				//when the
 				fireAmount = 1;
 				return;
 			}
