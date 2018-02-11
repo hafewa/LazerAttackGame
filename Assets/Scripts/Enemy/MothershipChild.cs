@@ -37,7 +37,8 @@ public class MothershipChild : MonoBehaviour {
 		case MOTHERSHIPCHILD_STATE.ROTATING:
 			if (motherShip)
 				transform.RotateAround (motherShip.transform.position, new Vector3 (0, 1, 0), 1f);
-			transform.LookAt (player.position);
+			if(player)
+				transform.LookAt (player.position);
 
 			if (shootTimer > shootDelay) {
 				shootTimer = 0f;

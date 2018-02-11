@@ -126,7 +126,7 @@ MonoBehaviour:
   motherShip: {fileID: 0}
   player: {fileID: 0}
   rocket: {fileID: 1827297633760994, guid: 638704a59bf83d349af83a4604feef12, type: 2}
-  shootDelay: 0
+  shootDelay: 2
 --- !u!114 &114441136072926566
 MonoBehaviour:
   m_ObjectHideFlags: 1
