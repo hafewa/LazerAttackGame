@@ -35,7 +35,7 @@ public class EnemyDeath : MonoBehaviour {
 		if (v < rareDropRate + (luck * 10) || isBoss) {
 			int realCount = rareDropCount;
 			if (isBoss)
-				realCount += luck;
+				realCount += (luck / 100 * realCount);
 			for (int i = 0; i < realCount; i++) {
 				int x = Random.Range (0, ores.Length);
 				
