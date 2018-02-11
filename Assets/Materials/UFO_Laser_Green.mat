@@ -127,10 +127,10 @@ Material:
       second: {r: 0.29716024, g: 1, b: 0.27205884, a: 1}
     - first:
         name: _ColorTint
-      second: {r: 0.71323526, g: 0, b: 0, a: 1}
+      second: {r: 0.04411763, g: 1, b: 0.24847862, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _RimColor
-      second: {r: 0.9485294, g: 0.50216264, b: 0.50216264, a: 1}
+      second: {r: 0.07807094, g: 0.5588235, b: 0.22063895, a: 1}

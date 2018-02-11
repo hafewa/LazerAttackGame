@@ -99,6 +99,10 @@ public class BasicBoss : MonoBehaviour {
 		Instantiate (m_goMissile, transform.position, new Quaternion(0,180f,0,1));
 	}
 
+	public void ShootSingleFromPos(Vector3 pos){
+		Instantiate (m_goMissile, pos, new Quaternion(0,180f,0,1));
+	}
+
 	public void ShootAtRandomAngle(float min, float max){
 		float ang = Random.Range (min, max);
 		var m = Instantiate (m_goMissile, transform.position, new Quaternion(0,0,0,1));
