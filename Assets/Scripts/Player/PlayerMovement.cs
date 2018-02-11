@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 	public GameObject m_goBullet;
 	public GameObject m_goBulletSpawnPoint;
-
+	private int luckLevel;
+	private float luckTimer;
 	public Camera mainCamera;
 	[System.Serializable]
 	public class Buddy{
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Physics.gravity = new Vector3 (0, 0, -9.8f);
+		luckLevel = 0;
+		luckTimer = 0f;
 //		string lBuddy = PlayerPrefs.GetString ("LeftBuddy", "");
 //		string rBuddy = PlayerPrefs.GetString ("RightBuddy", "");
 //
@@ -56,7 +59,18 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		//}
 
+		//decay luck level if there is any
+		if (luckLevel > 0) {
+			if (luckTimer > 5f) {
+				luckLevel--;
+				luckTimer = 0f;
+			}
+			luckTimer += Time.deltaTime;
+		}
+	}
 
+	public int GetLuckLevel(){
+		return luckLevel;
 	}
 
 	void OnTriggerEnter(Collider other){
@@ -71,7 +85,7 @@ public class PlayerMovement : MonoBehaviour {
 				other.GetComponent<Pickup> ().used = true;
 				switch (other.GetComponent<Pickup> ().GetPickupType ()) {
 				case Pickup.PICKUPTYPE.POWERUP:
-					this.gameObject.GetComponent<PlayerWeaponry> ().WeaponBoostCollected ();
+					ActivatePowerup (other.gameObject);
 					break;
 				case Pickup.PICKUPTYPE.TREASURE:
 					GameObject.Find ("GameManager").GetComponent<GameManager> ().AddGameScore (other.GetComponent<Treasure> ().GetValue ());
@@ -83,6 +97,23 @@ public class PlayerMovement : MonoBehaviour {
 		} else if (other.tag == "Boost") {
 			//boost, could be increase damage
 			//this.gameObject.GetComponent<PlayerCollectStuff>().AddBoost(other.gameObject);
+		}
+	}
+
+	public void ActivatePowerup(GameObject p){
+		switch (p.GetComponent<Powerup> ().m_eType) {
+		case Powerup.POWERUPTYPE.WEAPON:
+			this.gameObject.GetComponent<PlayerWeaponry> ().WeaponBoostCollected ();
+			break;
+		case Powerup.POWERUPTYPE.LUCK:
+			//Chances of good drops from all types of enemies increases
+			break;
+		case Powerup.POWERUPTYPE.MAGNET:
+			//dropped treasure moves slightly towards player
+			break;
+		default:
+			//nah
+			break;
 		}
 	}
 }

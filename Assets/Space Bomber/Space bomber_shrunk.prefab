@@ -425,6 +425,7 @@ MonoBehaviour:
   targetZ: 0
   canBuff: 0
   isBuffed: 1
+  healthBuffAmount: 0
   buffParticles: {fileID: 1116885538943098}
 --- !u!114 &114896661533460174
 MonoBehaviour:
@@ -442,12 +443,14 @@ MonoBehaviour:
   - {fileID: 1290958714291960, guid: 4c19c4e3aea59a242913417219197dd1, type: 2}
   - {fileID: 1987437229821528, guid: 9053f8a60cd1e41418164d9d4a2bfac2, type: 2}
   - {fileID: 1019263206544978, guid: 4935b403526db8140b0995a86d82f548, type: 2}
+  - {fileID: 1074811677819342, guid: 3ef7260f1b81e3548a827d8d4ca2a3a4, type: 2}
   powerUps: []
   rareDropRate: 15
   rareDropCount: 1
   powerUpDropRate: 0
   powerUpDropCount: 0
   isBoss: 0
+  killed: 0
 --- !u!135 &135164258985705102
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -31,10 +31,14 @@ public class EnemyDeath : MonoBehaviour {
 
 		int v = Random.Range (0, 100);
 		//10% chance of dropping a rare-ore
-		if (v < rareDropRate || isBoss) {
-			for (int i = 0; i < rareDropCount; i++) {
+		int luck = GameObject.Find("Player").GetComponent<PlayerMovement>().GetLuckLevel();
+		if (v < rareDropRate + (luck * 10) || isBoss) {
+			int realCount = rareDropCount;
+			if (isBoss)
+				realCount += luck;
+			for (int i = 0; i < realCount; i++) {
 				int x = Random.Range (0, ores.Length);
-
+				
 				float jmp = 0;
 				if (i < rareDropCount / 2)
 					jmp = i * 2000f;
@@ -43,8 +47,8 @@ public class EnemyDeath : MonoBehaviour {
 				float upForce = Random.Range (8000, 12000);
 				float bossUpForce = Random.Range (10000, 14000);
 				var rare = Instantiate (ores [x], transform.position, new Quaternion(0, 0, 0, 1));
-
-				if(!isBoss)
+				
+				if (!isBoss)
 					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (jmp, 0, upForce));
 				else
 					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (jmp, 0, bossUpForce));
