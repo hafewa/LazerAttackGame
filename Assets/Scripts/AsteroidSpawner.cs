@@ -30,10 +30,8 @@ public class AsteroidSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (spwnr.GetComponent<WaveSpawner> ().GetIsBossWave ()) {
-			m_enState = SPAWNERSTATE.WAITING;
+		if (spwnr.GetComponent<WaveSpawner> ().GetIsBossWave ())
 			return;
-		}
 
 		if (timer > stateLength) {
 			//swap the states if the timer says so
@@ -52,6 +50,7 @@ public class AsteroidSpawner : MonoBehaviour {
 				a.transform.localScale = new Vector3 (s, s, s);
 			}
 		}
+
 		timer += Time.deltaTime;
 	}
 }

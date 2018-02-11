@@ -23,17 +23,16 @@ public class PlayerWeaponry : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		m_fBulletTimer = 0f;
-		m_fBulletDelay = 0.4f;
+		m_fBulletDelay = 0.3f;
 		powerUp = 0;
 		fireAmount = 1;
-		playerLevel = PlayerPrefs.GetInt ("Ship1_PlayerLevel", 0);
-		GetCurrentWeapon ();
+		playerLevel = PlayerPrefs.GetInt ("Ship1_PlayerLevel", 2);
+		GetInitialWeapon();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (m_fBulletTimer > m_fBulletDelay) {
-
 			if(fireAmount >= 1)
 				Instantiate(weapon, weaponFirePos.position, Quaternion.identity); 
 			if(fireAmount >= 2)
@@ -51,7 +50,6 @@ public class PlayerWeaponry : MonoBehaviour {
 		//powerup basically tracks how many rockets to fire each time, if the player collects three powerups, the level increase
 		//i.e. they get the next rocket, but it only spawns one
 		//each rockets damage should basically be 3x that of the previous rocket
-		Debug.Log("powerup collected at:" + Time.deltaTime);
 		GetCurrentWeapon();
 	}
 
@@ -72,6 +70,40 @@ public class PlayerWeaponry : MonoBehaviour {
 
 		if (fireAmount < 3)
 			fireAmount++;
+	}
+
+	//only to be used in Start() to find what rocket + how many rockets, the player should start with
+	private void GetInitialWeapon(){
+		//if player level < 0 somehow, give them the first rocket + give them player level 0
+		if (playerLevel < 0) {
+			weapon = weaponry [0].obj;
+			fireAmount = 1;
+			playerLevel = 0;
+			PlayerPrefs.SetInt ("Ship_1PlayerLevel", playerLevel);
+		}
+
+		for (int i = 0; i < weaponry.Length; i++) {
+			if (weaponry [i].levelReq == playerLevel) {
+				weapon = weaponry [i].obj;
+				fireAmount = 1;
+				return;
+			} else if (weaponry [i].levelReq + 1 == playerLevel) {
+				weapon = weaponry [i].obj;
+				fireAmount = 2;
+				return;
+			} else if (weaponry [i].levelReq + 2 == playerLevel) {
+				weapon = weaponry [i].obj;
+				fireAmount = 3;
+				return;
+			}
+
+			//if it's got to this point, it means it can't find a valid rocket (player's level hasn't matched, just give them the best one
+			if (i == weaponry.Length - 1) {
+				weapon = weaponry [i].obj;
+				fireAmount = 3;
+				return;
+			}
+		}
 	}
 
 	public int GetPlayerLevel(){

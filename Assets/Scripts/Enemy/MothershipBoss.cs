@@ -49,7 +49,7 @@ public class MothershipBoss : BasicBoss {
 				
 				if (bulletTimer > bulletDelay) {
 					bulletTimer = 0f;
-					bulletDelay = Random.Range (3.5f, 5.5f);
+					bulletDelay = Random.Range (1.5f, 3.5f);
 					ShootSingleFromPos (GameObject.Find ("LeftLaserSpawn").transform.position);
 					ShootSingleFromPos (GameObject.Find ("RightLaserSpawn").transform.position);
 				}
