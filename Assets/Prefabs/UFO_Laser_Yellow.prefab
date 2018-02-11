@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 7
-  canRotate: 1
+  canRotate: 0
   rotSpeed: 55
 --- !u!136 &136026171522719876
 CapsuleCollider:

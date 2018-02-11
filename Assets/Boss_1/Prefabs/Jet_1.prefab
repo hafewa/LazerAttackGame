@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 114639601747566622}
   - component: {fileID: 65378643130774424}
   - component: {fileID: 114464343684036486}
+  - component: {fileID: 65687125851069970}
   m_Layer: 0
   m_Name: Jet_1
   m_TagString: Enemy
@@ -540,7 +541,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658988190624942}
   m_LocalRotation: {x: 0, y: 0.96499366, z: 0.26227343, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.12134, y: 1.1786885, z: 2.407559}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children:
   - {fileID: 4772536085104400}
@@ -1605,8 +1606,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 44.3, y: 21.9, z: 21.1}
+  m_Size: {x: 9.5, y: 21.9, z: 21}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65687125851069970
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658988190624942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 43.4, y: 15.69, z: 8.1}
+  m_Center: {x: 0, y: 6.4, z: -7.68}
 --- !u!108 &108094921587967804
 Light:
   m_ObjectHideFlags: 1
@@ -1747,6 +1760,7 @@ MonoBehaviour:
   powerUpDropRate: 0
   powerUpDropCount: 0
   isBoss: 1
+  killed: 0
 --- !u!198 &198554714320587226
 ParticleSystem:
   m_ObjectHideFlags: 1
