@@ -27,7 +27,7 @@ public class PlayerWeaponry : MonoBehaviour {
 		m_fBulletDelay = 0.3f;
 		powerUp = 0;
 		fireAmount = 1;
-		shipName = PlayerPrefs.GetString ("ShipName", "SpaceShip2");
+		shipName = PlayerPrefs.GetString ("ShipName", "SpaceShip1");
 		playerLevel = PlayerPrefs.GetInt (shipName + ":PlayerLevel", 0);
 		GetInitialWeapon();
 
