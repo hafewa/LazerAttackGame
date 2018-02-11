@@ -42,7 +42,7 @@ public class MothershipChild : MonoBehaviour {
 
 			if (shootTimer > shootDelay) {
 				shootTimer = 0f;
-				shootDelay = Random.Range (1.2f, 2.5f);
+				shootDelay = Random.Range (0.8f, 2f);
 				Shoot ();
 			}
 

@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motherShip: {fileID: 0}
   player: {fileID: 0}
-  rocket: {fileID: 1827297633760994, guid: 638704a59bf83d349af83a4604feef12, type: 2}
+  rocket: {fileID: 1787225368103108, guid: f9349c0c7c860a343ba5662f7ee68b21, type: 2}
   shootDelay: 2
 --- !u!114 &114441136072926566
 MonoBehaviour:

@@ -73,7 +73,7 @@ public class SprintBoss : BasicBoss
 		case BOSS_STATE.SETUP:
 			if (transform.position.z < setupFinishedZ)
 				SetState(BOSS_STATE.ACTIVE);
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, 2.99f), 10f * Time.deltaTime);
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, 2.99f), 5f * Time.deltaTime);
 			break;
 		case BOSS_STATE.DEAD:
 			break;
