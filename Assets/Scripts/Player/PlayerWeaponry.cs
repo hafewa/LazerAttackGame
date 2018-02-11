@@ -6,6 +6,7 @@ public class PlayerWeaponry : MonoBehaviour {
 	public int playerLevel;
 	public int powerUp;
 	public Transform weaponFirePos;
+	private string shipName;
 
 	//track rate of fire
 	private float m_fBulletTimer;
@@ -26,8 +27,15 @@ public class PlayerWeaponry : MonoBehaviour {
 		m_fBulletDelay = 0.3f;
 		powerUp = 0;
 		fireAmount = 1;
-		playerLevel = PlayerPrefs.GetInt ("Ship1_PlayerLevel", 2);
+		shipName = PlayerPrefs.GetString ("ShipName", "SpaceShip2");
+		playerLevel = PlayerPrefs.GetInt (shipName + ":PlayerLevel", 0);
 		GetInitialWeapon();
+
+		//hide all other ship models attached to gameobject
+		if (shipName != "SpaceShip1")
+			GameObject.Find ("SpaceShip1").SetActive (false);
+		if (shipName != "SpaceShip2")
+			GameObject.Find ("SpaceShip2").SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -79,7 +87,7 @@ public class PlayerWeaponry : MonoBehaviour {
 			weapon = weaponry [0].obj;
 			fireAmount = 1;
 			playerLevel = 0;
-			PlayerPrefs.SetInt ("Ship_1PlayerLevel", playerLevel);
+			PlayerPrefs.SetInt (shipName + ":PlayerLevel", playerLevel);
 		}
 
 		for (int i = 0; i < weaponry.Length; i++) {
