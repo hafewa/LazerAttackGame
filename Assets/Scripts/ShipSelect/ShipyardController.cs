@@ -15,7 +15,7 @@ public class ShipyardController : MonoBehaviour {
 		public string name;
 		public GameObject obj;
 		public float constant; //for xp/levelling (more expensive for better ships)
-		public float unlockPrice;
+		public int unlockPrice;
 		public Vector3 appliedRotation;
 	}
 	public Ship[] allShips;
@@ -53,12 +53,18 @@ public class ShipyardController : MonoBehaviour {
 
 		UpdateShip ();
 	}
+
+	void Update(){
+//		if (Input.GetKeyDown(KeyCode.L)) {
+//			PlayerPrefs.SetInt ("SpaceShip1:PlayerLevel", 0);
+//		}
+	}
 	
 	private void UpdateShip(){
 		if(currentShipObj != null)
 			Destroy (currentShipObj);
 		currentShipObj = Instantiate (allShips [currShipIndex].obj, m_tDisplayPos.position, Quaternion.Euler(allShips[currShipIndex].appliedRotation));
-		currentShipObj.transform.localScale = new Vector3 (0.3f, 0.3f, 0.3f);
+		//currentShipObj.transform.localScale = new Vector3 (0.3f, 0.3f, 0.3f);
 
 		currentLevel = PlayerPrefs.GetInt (allShips [currShipIndex].name + ":PlayerLevel", 0);
 		shipLevelText.text = currentLevel + "";
@@ -116,6 +122,7 @@ public class ShipyardController : MonoBehaviour {
 	public void SetAsActiveShip(){
 		//set current ship to active ship
 		PlayerPrefs.SetString("ShipName", allShips[currShipIndex].name);
+		UpdateShip ();
 	}
 
 	public void LevelUpShip(){
@@ -138,7 +145,10 @@ public class ShipyardController : MonoBehaviour {
 
 	public void UnlockShip(){
 		if (currentPoints > allShips [currShipIndex].unlockPrice) {
+			PlayerPrefs.SetString (allShips [currShipIndex].name + ":Unlocked", "true");
+			PlayerPrefs.SetInt("points", currentPoints - allShips[currShipIndex].unlockPrice);
 
+			UpdateShip ();
 		}
 	}
 
