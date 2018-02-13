@@ -63,7 +63,7 @@ public class PlayerWeaponry : MonoBehaviour {
 
 	private void GetCurrentWeapon(){
 		//if the player has maxed out, and the game doesn't offer any more rockets, just return and don't fiddle
-		if (playerLevel >= weaponry.Length)
+		if (playerLevel >= weaponry[weaponry.Length - 1].levelReq + 2)
 			return;
 		
 		for (int i = 0; i < weaponry.Length; i++) {
