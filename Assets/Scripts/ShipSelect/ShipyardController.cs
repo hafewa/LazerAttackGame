@@ -64,7 +64,7 @@ public class ShipyardController : MonoBehaviour {
 		if(currentShipObj != null)
 			Destroy (currentShipObj);
 		currentShipObj = Instantiate (allShips [currShipIndex].obj, m_tDisplayPos.position, Quaternion.Euler(allShips[currShipIndex].appliedRotation));
-		//currentShipObj.transform.localScale = new Vector3 (0.3f, 0.3f, 0.3f);
+		currentShipObj.transform.localScale = new Vector3 (1f, 1f, 1f);
 
 		currentLevel = PlayerPrefs.GetInt (allShips [currShipIndex].name + ":PlayerLevel", 0);
 		shipLevelText.text = currentLevel + "";
