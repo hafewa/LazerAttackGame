@@ -467,7 +467,7 @@ PlayerSettings:
     Collab: 0
     ErrorHub: 0
     Hub: 0
-    UNet: 0
+    UNet: 1
   cloudProjectId: 94656169-1383-4701-93df-892eae90139f
   projectName: LazerAttack
   organizationId: jake-platford

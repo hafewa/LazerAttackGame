@@ -175,11 +175,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1620697697}
   - {fileID: 1327895797}
   - {fileID: 2003601554}
   - {fileID: 1960182903}
   - {fileID: 2065784217}
-  - {fileID: 1620697697}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -605,6 +605,7 @@ GameObject:
   - component: {fileID: 366947779}
   - component: {fileID: 366947778}
   - component: {fileID: 366947777}
+  - component: {fileID: 366947781}
   m_Layer: 5
   m_Name: UnlockBtn
   m_TagString: Untagged
@@ -728,6 +729,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 366947775}
+--- !u!114 &366947781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 366947775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.8014706, g: 0.1591155, b: 0.57110876, a: 1}
+  m_EffectDistance: {x: 0, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &459535137
 Prefab:
   m_ObjectHideFlags: 0
@@ -958,6 +973,7 @@ GameObject:
   - component: {fileID: 667845454}
   - component: {fileID: 667845453}
   - component: {fileID: 667845452}
+  - component: {fileID: 667845456}
   m_Layer: 5
   m_Name: SetAsActiveShipBtn
   m_TagString: Untagged
@@ -1081,6 +1097,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 667845450}
+--- !u!114 &667845456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 667845450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.25265473, g: 0.24145761, b: 0.5661765, a: 1}
+  m_EffectDistance: {x: 0, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &727652206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,6 +1515,7 @@ GameObject:
   - component: {fileID: 934956899}
   - component: {fileID: 934956898}
   - component: {fileID: 934956897}
+  - component: {fileID: 934956901}
   m_Layer: 5
   m_Name: PrevShip
   m_TagString: Untagged
@@ -1608,6 +1639,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 934956895}
+--- !u!114 &934956901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 934956895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.71323526, g: 0.17830881, b: 0.17830881, a: 1}
+  m_EffectDistance: {x: 0, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &958908157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,6 +1665,7 @@ GameObject:
   - component: {fileID: 958908160}
   - component: {fileID: 958908159}
   - component: {fileID: 958908162}
+  - component: {fileID: 958908163}
   m_Layer: 5
   m_Name: UpgradeBtn
   m_TagString: Untagged
@@ -1743,6 +1789,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipyardControllerObj: {fileID: 789844439}
+--- !u!114 &958908163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958908157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.74982554, g: 0.75735295, b: 0.21161334, a: 1}
+  m_EffectDistance: {x: 0, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &961922712
 Prefab:
   m_ObjectHideFlags: 0
@@ -1948,6 +2008,7 @@ GameObject:
   - component: {fileID: 1222577475}
   - component: {fileID: 1222577474}
   - component: {fileID: 1222577473}
+  - component: {fileID: 1222577477}
   m_Layer: 5
   m_Name: NextShip
   m_TagString: Untagged
@@ -2071,6 +2132,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1222577471}
+--- !u!114 &1222577477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1222577471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.23384437, g: 0.5588235, b: 0.17257786, a: 1}
+  m_EffectDistance: {x: 0, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1261834891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,7 +2254,7 @@ RectTransform:
   - {fileID: 934956896}
   - {fileID: 1222577472}
   m_Father: {fileID: 15647211}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.34315628}
   m_AnchorMax: {x: 1, y: 0.70375}
@@ -2402,12 +2477,12 @@ RectTransform:
   m_Children:
   - {fileID: 1772560158}
   m_Father: {fileID: 15647211}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.64625007, y: 0.026666667}
+  m_AnchorMin: {x: 0, y: 0.026666667}
   m_AnchorMax: {x: 1, y: 0.24783334}
-  m_AnchoredPosition: {x: 9.5, y: 0}
-  m_SizeDelta: {x: 96, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1620697698
 MonoBehaviour:
@@ -2518,8 +2593,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33, y: 0.0000038145}
-  m_SizeDelta: {x: 312, y: 265.4}
+  m_AnchoredPosition: {x: 253, y: 0}
+  m_SizeDelta: {x: 293, y: 265.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1895284464
 GameObject:
@@ -2615,7 +2690,7 @@ RectTransform:
   m_Children:
   - {fileID: 338405874}
   m_Father: {fileID: 15647211}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.060000002, y: 0.9305}
   m_AnchorMax: {x: 0.30874997, y: 0.97575}
@@ -2956,10 +3031,10 @@ RectTransform:
   - {fileID: 958908158}
   - {fileID: 667845451}
   m_Father: {fileID: 15647211}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.026666667}
-  m_AnchorMax: {x: 0.64625007, y: 0.24783334}
+  m_AnchorMin: {x: 0.2574999, y: 0.053333335}
+  m_AnchorMax: {x: 0.7, y: 0.22450002}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3162,7 +3237,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 15647211}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7, y: 0.94}
   m_AnchorMax: {x: 0.97, y: 0.97}
