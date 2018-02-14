@@ -17,6 +17,7 @@ public class ShipyardController : MonoBehaviour {
 		public float constant; //for xp/levelling (more expensive for better ships)
 		public int unlockPrice;
 		public Vector3 appliedRotation;
+		public Vector3 appliedScale;
 	}
 	public Ship[] allShips;
 
@@ -66,7 +67,7 @@ public class ShipyardController : MonoBehaviour {
 		if(currentShipObj != null)
 			Destroy (currentShipObj);
 		currentShipObj = Instantiate (allShips [currShipIndex].obj, m_tDisplayPos.position, Quaternion.Euler(allShips[currShipIndex].appliedRotation));
-		currentShipObj.transform.localScale = new Vector3 (1f, 1f, 1f);
+		currentShipObj.transform.localScale = allShips [currShipIndex].appliedScale;;
 
 		currentLevel = PlayerPrefs.GetInt (allShips [currShipIndex].name + ":PlayerLevel", 0);
 		shipLevelText.text = currentLevel + "";
@@ -89,14 +90,6 @@ public class ShipyardController : MonoBehaviour {
 		} else {
 			//hide 'unlock' button, already bought it
 			unlockBtn.gameObject.SetActive(false);
-			//set to active ship button
-			if (PlayerPrefs.GetString ("ShipName", "") == allShips [currShipIndex].name) {
-				//hide/deactivate 'choose' button
-				setActiveBtn.gameObject.SetActive(false);
-			} else {
-				//show it
-				setActiveBtn.gameObject.SetActive(true);
-			}
 
 			//upgrade this ship button
 			if (CanAffordUpgrade ()) {
@@ -106,6 +99,19 @@ public class ShipyardController : MonoBehaviour {
 				//grey out the button
 				upgradeBtn.gameObject.SetActive(false);
 			}
+
+			//set to active ship button
+			if (PlayerPrefs.GetString ("ShipName", "") == allShips [currShipIndex].name) {
+				//hide/deactivate 'choose' button
+				setActiveBtn.gameObject.SetActive(false);
+			} else {
+				//show it
+				setActiveBtn.gameObject.SetActive(true);
+				//hide upgrade button if not active
+				upgradeBtn.gameObject.SetActive(false);
+			}
+
+
 		}
 	}
 

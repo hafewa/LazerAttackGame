@@ -21,9 +21,8 @@ GameObject:
   - component: {fileID: 4885360883336714}
   - component: {fileID: 33596221679847554}
   - component: {fileID: 23697640165398130}
-  - component: {fileID: 114281911211003418}
   m_Layer: 0
-  m_Name: Cow_Buddy
+  m_Name: Cow_Shipyard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 1835195139557880}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.333333, y: 3.333334, z: 3.333334}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -80,16 +79,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1835195139557880}
   m_Mesh: {fileID: 4300000, guid: 33bee4529afa2d740bfcc71a4c9f1f2c, type: 3}
---- !u!114 &114281911211003418
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1835195139557880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38e1f0f4652884442b93b5468d537e10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_fBulletDelay: 0.4
-  m_goBullet: {fileID: 1644055837312000, guid: f01cf53a7cc3f654cb72ddb6928d5a44, type: 2}
