@@ -36,7 +36,7 @@ public class MothershipChild : MonoBehaviour {
 			break;
 		case MOTHERSHIPCHILD_STATE.ROTATING:
 			if (motherShip)
-				transform.RotateAround (motherShip.transform.position, new Vector3 (0, 1, 0), 1f);
+				transform.RotateAround (motherShip.transform.position, new Vector3 (0, 1, 0), 45 * Time.deltaTime);
 			if(player)
 				transform.LookAt (player.position);
 

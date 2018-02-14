@@ -70,7 +70,7 @@ public class ShipyardController : MonoBehaviour {
 		currentShipObj.transform.localScale = allShips [currShipIndex].appliedScale;;
 
 		currentLevel = PlayerPrefs.GetInt (allShips [currShipIndex].name + ":PlayerLevel", 0);
-		shipLevelText.text = currentLevel + "";
+		shipLevelText.text = currentLevel + 1 + "";
 		scoreText.text = currentPoints + "";
 
 
@@ -79,8 +79,8 @@ public class ShipyardController : MonoBehaviour {
 		int xpRequired = Mathf.FloorToInt((nextLvl * nextLvl) / (allShips[currShipIndex].constant*allShips[currShipIndex].constant) - 
 			(currentLevel * currentLevel) / (allShips[currShipIndex].constant*allShips[currShipIndex].constant));
 
-		UpgradeBtnText.text = "Upgrade for " + xpRequired + " points";
-		UnlockBtnText.text = "Unlock for " + allShips [currShipIndex].unlockPrice + " points";
+		UpgradeBtnText.text = "Upgrade: " + xpRequired;
+		UnlockBtnText.text = "Unlock: " + allShips [currShipIndex].unlockPrice;
 		//buy this ship button
 		if (PlayerPrefs.GetString (allShips [currShipIndex].name + ":Unlocked", "") == "") {
 			//show 'unlock' button, they are yet to buy it
