@@ -56,9 +56,9 @@ public class ShipyardController : MonoBehaviour {
 	}
 
 	void Update(){
-//		if (Input.GetKeyDown(KeyCode.L)) {
-//			PlayerPrefs.SetInt ("SpaceShip1:PlayerLevel", 0);
-//		}
+		if (Input.GetKeyDown(KeyCode.L)) {
+			PlayerPrefs.SetInt ("SpaceShip1:PlayerLevel", 0);
+		}
 
 		currentShipObj.transform.RotateAround (currentShipObj.transform.position, new Vector3 (0, 0, 1), 45f * Time.deltaTime);
 	}

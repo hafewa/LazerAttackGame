@@ -140,9 +140,8 @@ public class WaveSpawner : MonoBehaviour {
 
 	IEnumerator SpawnWave(Wave _wave)
 	{
-		//Debug.Log("Spawning Wave: " + _wave.name);
+		Debug.Log(wavesDefeated);
 		state = SpawnState.SPAWNING;
-		Debug.Log (_wave.name);
 		if (_wave.name.Contains ("Boss")) {
 			m_bBossWave = true;
 		} else {
@@ -195,9 +194,16 @@ public class WaveSpawner : MonoBehaviour {
 				if (Random.Range (0, 100) < 10)
 					return;
 			}
-			Debug.Log ("player level: " + m_goPlayer.GetComponent<PlayerWeaponry> ().GetPlayerLevel ());
+
 			enemy.GetComponent<BasicEnemy> ().canBuff = true;
 			enemy.GetComponent<BasicEnemy> ().DoBuff ((3*0.1f) + (m_goPlayer.GetComponent<PlayerWeaponry>().GetPlayerLevel() * 0.5f));
+
+			//means they've defeated every boss + every basic wave at least once
+			if (wavesDefeated > waves.Length/2)
+			{
+				Debug.Log ("health inc by " + wavesDefeated / 10f);
+				enemy.GetComponent<BasicEnemy> ().IncreaseBaseHealth (wavesDefeated/10f);
+			}
 		}
 	}
 

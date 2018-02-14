@@ -41,15 +41,14 @@ public class EnemyDeath : MonoBehaviour {
 				
 				float jmp = 0;
 				if (i < rareDropCount / 2)
-					jmp = i * 2000f;
+					jmp = i * Random.Range (0, 5000f);
 				else
-					jmp = i * -2000f;
-				float upForce = Random.Range (8000, 12000);
+					jmp = i * Random.Range (0, -5000f);
 				float bossUpForce = Random.Range (10000, 14000);
 				var rare = Instantiate (ores [x], transform.position, new Quaternion(0, 0, 0, 1));
 				
 				if (!isBoss)
-					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (jmp, 0, upForce));
+					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (jmp, 0, 8000f));
 				else
 					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (jmp, 0, bossUpForce));
 			}

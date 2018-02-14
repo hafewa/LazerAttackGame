@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		//decay luck level if there is any
 		if (luckLevel > 0) {
-			if (luckTimer > 5f) {
+			if (luckTimer > 30f) {
 				luckLevel--;
 				luckTimer = 0f;
 			}

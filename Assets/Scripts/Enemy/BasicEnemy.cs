@@ -64,4 +64,8 @@ public class BasicEnemy : MonoBehaviour {
 		//spawn particles on enemy to show buffed state
 		buffParticles.SetActive(true);
 	}
+
+	public void IncreaseBaseHealth(float increase){
+		m_fHealth += increase;
+	}
 }
