@@ -33,7 +33,7 @@ public class MothershipBoss : BasicBoss {
 				SetState (BOSS_STATE.ACTIVE);
 				m_chldState = MOTHERSHIP_STATE.IDLE;
 			}
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, 2.99f), 3f * Time.deltaTime);
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, 2.99f), 4f * Time.deltaTime);
 			break;
 		case BOSS_STATE.ACTIVE:
 			switch (m_chldState) {
