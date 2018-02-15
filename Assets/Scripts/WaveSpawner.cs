@@ -76,7 +76,6 @@ public class WaveSpawner : MonoBehaviour {
 		{
 			if (state != SpawnState.SPAWNING)
 			{
-				//UIControllerScript.Instance.SetWaveTextVisibility (false);
 				StartCoroutine( SpawnWave ( waves[nextWave] ) );
 			}
 		}
@@ -88,11 +87,12 @@ public class WaveSpawner : MonoBehaviour {
 
 	void WaveCompleted()
 	{
-		//Debug.Log("Wave Completed!");
-		//UIControllerScript.Instance.SetWaveTextVisibility (true);
 		wavesDefeated++;
 		state = SpawnState.COUNTING;
 		waveCountdown = timeBetweenWaves;
+		Debug.Log ("stop asteroid spawning");
+		this.gameObject.GetComponent<AsteroidSpawner> ().StopSpawning ();
+
 		//increase count of wave just gone if it's not a boss
 		if (!waves [nextWave].name.Contains ("Boss")) {
 			Debug.Log("Increase enemy count in wave: " + nextWave);
@@ -107,7 +107,6 @@ public class WaveSpawner : MonoBehaviour {
 		{
 			nextWave++;
 		}
-		//UIControllerScript.Instance.AlterWaveNumBy(1);
 	}
 
 	bool EnemyIsAlive()
@@ -130,12 +129,25 @@ public class WaveSpawner : MonoBehaviour {
 
 	IEnumerator SpawnWave(Wave _wave)
 	{
-		Debug.Log(wavesDefeated);
 		state = SpawnState.SPAWNING;
 		if (_wave.name.Contains ("Boss")) {
 			m_bBossWave = true;
 		} else {
 			m_bBossWave = false;
+			Debug.Log ("Start asteroid spawning");
+			//sort asteroids
+			//while wave 6 or below, 40% chance of asteroids spawning during wave
+			if (wavesDefeated <= 6 && Random.Range(0, 10) > 6)
+				this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningIndividuals ();
+			else if(Random.Range(0, 10) > 4){
+				//60% chance of asteroids on waves over 6
+				
+				//30% chance of asteroid clusters
+				if (Random.Range (0, 10) > 7)
+					this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningCluster (4, 8);
+				else if (Random.Range (0, 10) > 5)//if not spawning cluster, 50% chance of spawning individuals
+					this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningIndividuals ();
+			}
 		}
 
 		for (int i = 0; i < _wave.count; i++)
