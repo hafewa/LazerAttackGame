@@ -44,13 +44,13 @@ public class EnemyDeath : MonoBehaviour {
 					jmp = i * Random.Range (0, 5000f);
 				else
 					jmp = i * Random.Range (0, -5000f);
-				float bossUpForce = Random.Range (10000, 14000);
+				
 				var rare = Instantiate (ores [x], transform.position, new Quaternion(0, 0, 0, 1));
 				
 				if (!isBoss)
 					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (jmp, 0, 8000f));
 				else
-					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (jmp, 0, bossUpForce));
+					rare.GetComponent<Rigidbody> ().AddForce (new Vector3 (Random.Range(-6000f, 6000f), 0, Random.Range(15000f, 20000f)));
 			}
 		}
 	}

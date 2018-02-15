@@ -93,25 +93,15 @@ public class WaveSpawner : MonoBehaviour {
 		wavesDefeated++;
 		state = SpawnState.COUNTING;
 		waveCountdown = timeBetweenWaves;
+		//increase count of wave just gone if it's not a boss
+		if (!waves [nextWave].name.Contains ("Boss")) {
+			Debug.Log("Increase enemy count in wave: " + nextWave);
+			waves [nextWave].count = Mathf.CeilToInt (Random.Range (waves [nextWave].count * 1.5f, waves [nextWave].count * 2f));
+		}
 
 		if (nextWave + 1 > waves.Length - 1)
 		{
 			nextWave = 0;
-			//Debug.Log("ALL WAVES COMPLETE! Looping...");
-			for(int i = 0; i < waves.Length; i++){
-				Debug.Log ("WAVE COMPLETE");
-				if (waves[i].canIncreaseCount) {
-					float multiplier = Random.Range (1.5f, 2f);
-
-					waves [i].count = (int)(waves [i].count * multiplier);
-				}
-
-				if (waves [i].name.Contains ("Boss")) {
-					//alter health at some point
-				} else {
-					
-				}
-			}
 		}
 		else
 		{

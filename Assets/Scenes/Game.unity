@@ -358,6 +358,32 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1138692207 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1431137490527644, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
+    type: 2}
+  m_PrefabInternal: {fileID: 1311601888}
+--- !u!114 &1138692211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1138692207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c70516fc66a4f844a8a1a30558145ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroids:
+  - {fileID: 1526077729337060, guid: 9896cda00723a6247b0c961a046eb0da, type: 2}
+  - {fileID: 1603424092342284, guid: 1bc45cdc373344a4fb614072b10af54d, type: 2}
+  - {fileID: 1899183992154506, guid: 96e11e5a67c35cd4a8c249b266fb4e5b, type: 2}
+  - {fileID: 1166615005892324, guid: 2c2fa2878e4800a41aaa7ad09c327b6b, type: 2}
+  - {fileID: 1014225104359014, guid: 83bc18766c1eca248931e67b47941a5c, type: 2}
+  - {fileID: 1699211691201044, guid: da809556d7462f34cb42885876ea6c92, type: 2}
+  - {fileID: 1683687938061532, guid: 11052807284c6d94f9a8c5232d572f82, type: 2}
+  - {fileID: 1754088458874056, guid: 44148f6b7122aef419f5cb6e562102d1, type: 2}
+  m_fSpawnBetweenDelay: 0
 --- !u!1 &1171013461
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +837,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1664454828}
-  - component: {fileID: 1664454829}
   m_Layer: 0
   m_Name: WaveSpawnPoint
   m_TagString: Untagged
@@ -832,26 +857,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1664454829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1664454827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c70516fc66a4f844a8a1a30558145ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  asteroids:
-  - {fileID: 1526077729337060, guid: 9896cda00723a6247b0c961a046eb0da, type: 2}
-  - {fileID: 1899183992154506, guid: 96e11e5a67c35cd4a8c249b266fb4e5b, type: 2}
-  - {fileID: 1166615005892324, guid: 2c2fa2878e4800a41aaa7ad09c327b6b, type: 2}
-  - {fileID: 1350422577168664, guid: da5bb5ae45be62a4b8a373c238825b37, type: 2}
-  - {fileID: 1468516051457676, guid: d54a76238b51bf945968037527f68352, type: 2}
-  - {fileID: 1833833072271274, guid: dd694fe2519aa0b49b5a1696f54eba73, type: 2}
-  - {fileID: 1014225104359014, guid: 83bc18766c1eca248931e67b47941a5c, type: 2}
-  - {fileID: 1782331842542782, guid: f109c34a9760bb44a82a5b8e4011115a, type: 2}
 --- !u!1 &1667717099
 GameObject:
   m_ObjectHideFlags: 0

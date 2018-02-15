@@ -12,45 +12,29 @@ public class AsteroidSpawner : MonoBehaviour {
 	}
 
 	private SPAWNERSTATE m_enState;
-	private float timer;
-	private float stateLength;
-	private GameObject spwnr;
+	private float m_fTimer;
+	public float m_fSpawnBetweenDelay;
 
-	private float spawnDelay;
-	private float lastSpawnTime;
 	// Use this for initialization
 	void Start () {
 		m_enState = SPAWNERSTATE.WAITING;
-		timer = 0f;
-		stateLength = 5f;
-		spwnr = GameObject.Find ("CameraHolder");
-		spawnDelay = 1f;
-		lastSpawnTime = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (spwnr.GetComponent<WaveSpawner> ().GetIsBossWave ())
-			return;
-
-		if (timer > stateLength) {
-			//swap the states if the timer says so
-			if (m_enState == SPAWNERSTATE.WAITING)
-				m_enState = SPAWNERSTATE.SPAWNING;
-			else
-				m_enState = SPAWNERSTATE.WAITING;
-			timer = 0f;
+		switch (m_enState) {
+		case SPAWNERSTATE.WAITING:
+			
+			break;
+		case SPAWNERSTATE.SPAWNING:
+			
+			break;
 		}
 
-		if (m_enState == SPAWNERSTATE.SPAWNING) {
-			if (timer > lastSpawnTime + spawnDelay) {
-				lastSpawnTime = timer;
-				var a = Instantiate (asteroids [Random.Range(0, asteroids.Count)], transform.position + new Vector3(Random.Range (-3f, 3f), 0, 0), transform.rotation);
-				var s = Random.Range (35, 50);
-				a.transform.localScale = new Vector3 (s, s, s);
-			}
-		}
+		m_fTimer += Time.deltaTime;
+	}
 
-		timer += Time.deltaTime;
+	public void ChangeState(SPAWNERSTATE s){
+		m_enState = s;
 	}
 }
