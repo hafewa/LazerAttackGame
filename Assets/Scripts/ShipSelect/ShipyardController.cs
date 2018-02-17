@@ -79,8 +79,8 @@ public class ShipyardController : MonoBehaviour {
 		int xpRequired = Mathf.FloorToInt((nextLvl * nextLvl) / (allShips[currShipIndex].constant*allShips[currShipIndex].constant) - 
 			(currentLevel * currentLevel) / (allShips[currShipIndex].constant*allShips[currShipIndex].constant));
 
-		UpgradeBtnText.text = "Upgrade: " + xpRequired;
-		UnlockBtnText.text = "Unlock: " + allShips [currShipIndex].unlockPrice;
+		UpgradeBtnText.text = "UPGRADE\n" + xpRequired;
+		UnlockBtnText.text = "UNLOCK\n" + allShips [currShipIndex].unlockPrice;
 		//buy this ship button
 		if (PlayerPrefs.GetString (allShips [currShipIndex].name + ":Unlocked", "") == "") {
 			//show 'unlock' button, they are yet to buy it
@@ -95,9 +95,10 @@ public class ShipyardController : MonoBehaviour {
 			if (CanAffordUpgrade ()) {
 				//activate the button and allow click
 				upgradeBtn.gameObject.SetActive(true);
+				upgradeBtn.enabled = true;
 			} else {
 				//grey out the button
-				upgradeBtn.gameObject.SetActive(false);
+				upgradeBtn.enabled = false;
 			}
 
 			//set to active ship button
