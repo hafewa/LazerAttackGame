@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Advertisements;
 
 public class GameManager : MonoBehaviour {
 	public enum GAME_STATE{
@@ -35,6 +36,14 @@ public class GameManager : MonoBehaviour {
 
 		//show menu
 		m_goEndGameContainer.SetActive(false);
+		Advertisement.Initialize ("1706898", true);
+//		if(Advertisement.isSupported){
+//			#if UNITY_ANDROID
+//				Advertisement.Initialize ("1706898", true);
+//			#elif UNITY_IOS
+//				Advertisement.Initialize("1706897", true);
+//			#endif
+//		}
 	}
 	
 	// Update is called once per frame
@@ -63,7 +72,7 @@ public class GameManager : MonoBehaviour {
 		m_imgPoints.enabled = false;
 		//show menu
 		m_goEndGameContainer.SetActive(true);
-
+		Advertisement.Show ("video");
 		//SceneManager.LoadScene (0);
 	}
 

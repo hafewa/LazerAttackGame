@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour {
 		//only bosses can fire projectiles
 		if (other.tag == "Enemy" || other.tag == "EnemyProjectile") {
 			//kill
-			Destroy (this.gameObject);
+			this.gameObject.SetActive(false);
 			GameObject.Find("GameManager").GetComponent<GameManager>().PlayerDead();
 		}else if (other.tag == "Treasure") {
 			//add to current game score
