@@ -129,6 +129,8 @@ public class WaveSpawner : MonoBehaviour {
 
 	IEnumerator SpawnWave(Wave _wave)
 	{
+		if (!m_goPlayer)
+			yield return null;
 		state = SpawnState.SPAWNING;
 		if (_wave.name.Contains ("Boss")) {
 			m_bBossWave = true;
