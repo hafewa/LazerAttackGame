@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.051960275, g: 0.050121576, b: 0.053620316, a: 1}
+  m_IndirectSpecularColor: {r: 0.051426813, g: 0.049250707, b: 0.052047625, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3074,8 +3074,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 88f1fed5f46aa604f935b58c4cbfc61a, type: 3}
-    m_FontSize: 80
+    m_Font: {fileID: 12800000, guid: 8fad6e2fdc23e7d419f8fbba59f02ef4, type: 3}
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6134,8 +6134,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 88f1fed5f46aa604f935b58c4cbfc61a, type: 3}
-    m_FontSize: 80
+    m_Font: {fileID: 12800000, guid: 8fad6e2fdc23e7d419f8fbba59f02ef4, type: 3}
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6208,8 +6208,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 88f1fed5f46aa604f935b58c4cbfc61a, type: 3}
-    m_FontSize: 80
+    m_Font: {fileID: 12800000, guid: 8fad6e2fdc23e7d419f8fbba59f02ef4, type: 3}
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6421,6 +6421,7 @@ GameObject:
   - component: {fileID: 1099018009}
   - component: {fileID: 1099018011}
   - component: {fileID: 1099018010}
+  - component: {fileID: 1099018012}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6458,7 +6459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6911765, g: 1, b: 0.7444219, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6466,19 +6467,19 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bc74174004e776a46933bdc430f9b465, type: 3}
-    m_FontSize: 110
+    m_Font: {fileID: 12800000, guid: 04161bc2d27e92c469d5ee7851a27f6d, type: 3}
+    m_FontSize: 146
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 110
+    m_MaxSize: 146
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Lazer
+  m_Text: 'Alpha
 
     Attack'
 --- !u!222 &1099018011
@@ -6487,6 +6488,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1099018008}
+--- !u!114 &1099018012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1099018008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.25265473, g: 0.24145761, b: 0.5661765, a: 1}
+  m_EffectDistance: {x: 7, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1231809852
 Prefab:
   m_ObjectHideFlags: 0
@@ -6672,8 +6687,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 88f1fed5f46aa604f935b58c4cbfc61a, type: 3}
-    m_FontSize: 60
+    m_Font: {fileID: 12800000, guid: 8fad6e2fdc23e7d419f8fbba59f02ef4, type: 3}
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
