@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 	public enum GAME_STATE{
-		MENU = 0,
-		PLAYING,
+		PLAYING = 0,
 		DEATH,
 	}
 
@@ -18,6 +17,9 @@ public class GameManager : MonoBehaviour {
 	private int m_iOverallPlayerScore;
 
 	public Text m_uitScoreText;
+	public Image m_imgPoints;
+	public GameObject m_goEndGameContainer;
+	public Text m_uiEndScoreText;
 
 	// Use this for initialization
 	void Start () {
@@ -25,24 +27,44 @@ public class GameManager : MonoBehaviour {
 		m_iOverallPlayerScore = PlayerPrefs.GetInt ("points", 0);
 		//Debug.Log ("stored score:" + m_iOverallPlayerScore);
 		m_iCurrentGameScore = 0;
+		m_uitScoreText.text = m_iCurrentGameScore + "";
 		//Physics.gravity = new Vector3 (0, 0, -200f);
+		m_eState = GAME_STATE.PLAYING;
+		m_uitScoreText.enabled = true;
+		m_imgPoints.enabled = true;
+
+		//show menu
+		m_goEndGameContainer.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (SceneManager.GetActiveScene ().name == "Game")
-			m_uitScoreText.text = m_iCurrentGameScore + "";
-		else if (SceneManager.GetActiveScene ().name == "Shop")
-			m_uitScoreText.text = m_iOverallPlayerScore + "";
+		switch (m_eState) {
+		case GAME_STATE.PLAYING:
+			if (SceneManager.GetActiveScene ().name == "Game")
+				m_uitScoreText.text = m_iCurrentGameScore + "";
+//			else if (SceneManager.GetActiveScene ().name == "Shop")
+//				m_uitScoreText.text = m_iOverallPlayerScore + "";
+			break;
+		case GAME_STATE.DEATH:
+			
+			break;
+		}
 	}
 
 	public void PlayerDead(){
 		//end the game
 		m_iOverallPlayerScore += m_iCurrentGameScore;
+		m_uiEndScoreText.text = m_iCurrentGameScore + "";
 		m_iCurrentGameScore = 0;
 		PlayerPrefs.SetInt ("points", m_iOverallPlayerScore);
+		m_eState = GAME_STATE.DEATH;
+		m_uitScoreText.enabled = false;
+		m_imgPoints.enabled = false;
+		//show menu
+		m_goEndGameContainer.SetActive(true);
 
-		SceneManager.LoadScene (0);
+		//SceneManager.LoadScene (0);
 	}
 
 	public void AddGameScore(int s){

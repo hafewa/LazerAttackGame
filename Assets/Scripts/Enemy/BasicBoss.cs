@@ -120,4 +120,9 @@ public class BasicBoss : MonoBehaviour {
 		m.transform.LookAt (player);
 		m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
 	}
+
+	public void HealthBoost(){
+		float inc = Random.Range (m_fHealth/10, m_fHealth/3);
+		m_fHealthBoost = inc;
+	}
 }

@@ -31,8 +31,11 @@ public class EnemyDeath : MonoBehaviour {
 
 		int v = Random.Range (0, 100);
 		//10% chance of dropping a rare-ore
+		if (!GameObject.Find ("Player"))
+			return;
+		
 		int luck = GameObject.Find("Player").GetComponent<PlayerMovement>().GetLuckLevel();
-		if (v < rareDropRate + (luck * 10) || isBoss) {
+		if (v < rareDropRate + (luck * 5) || isBoss) {
 			int realCount = rareDropCount;
 			if (isBoss)
 				realCount += (luck / 100 * realCount);

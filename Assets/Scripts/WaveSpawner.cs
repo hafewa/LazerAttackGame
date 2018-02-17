@@ -183,6 +183,9 @@ public class WaveSpawner : MonoBehaviour {
 
 	void SpawnEnemy(Transform _enemy, float spacing)
 	{
+		if (!m_goPlayer)
+			return;
+		
 		Transform _sp = spawnPoints[ Random.Range (0, spawnPoints.Length) ];
 		var enemy = Instantiate(_enemy, new Vector3(_sp.position.x + spacing, 0f, _sp.position.z), _enemy.rotation);
 
@@ -198,6 +201,7 @@ public class WaveSpawner : MonoBehaviour {
 			}
 
 			enemy.GetComponent<BasicEnemy> ().canBuff = true;
+
 			enemy.GetComponent<BasicEnemy> ().DoBuff ((3*0.1f) + (m_goPlayer.GetComponent<PlayerWeaponry>().GetPlayerLevel() * 0.5f));
 
 			//means they've defeated every boss + every basic wave at least once
