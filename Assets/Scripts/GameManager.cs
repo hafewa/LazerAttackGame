@@ -36,14 +36,14 @@ public class GameManager : MonoBehaviour {
 
 		//show menu
 		m_goEndGameContainer.SetActive(false);
-		Advertisement.Initialize ("1706898", true);
-//		if(Advertisement.isSupported){
-//			#if UNITY_ANDROID
-//				Advertisement.Initialize ("1706898", true);
-//			#elif UNITY_IOS
-//				Advertisement.Initialize("1706897", true);
-//			#endif
-//		}
+
+		if(Advertisement.isSupported){
+			#if UNITY_ANDROID
+				Advertisement.Initialize ("1706898", true);
+			#elif UNITY_IOS
+				Advertisement.Initialize("1706897", true);
+			#endif
+		}
 	}
 	
 	// Update is called once per frame
