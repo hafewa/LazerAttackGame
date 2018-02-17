@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9044118, g: 0.20615266, b: 0.20615266, a: 1}
+  m_Color: {r: 1, g: 0.07352942, b: 0.07352942, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1413,8 +1413,8 @@ MonoBehaviour:
     appliedScale: {x: 1, y: 1, z: 1}
   - name: SpaceShip2
     obj: {fileID: 1773970324478912, guid: 50ba46abd9972a04f8dcecceb9ca96fc, type: 2}
-    constant: 0.05
-    unlockPrice: 50
+    constant: 0.06
+    unlockPrice: 2500
     appliedRotation: {x: 0, y: 180, z: 25}
     appliedScale: {x: 1, y: 1, z: 1}
   - name: MooMoo
