@@ -23,7 +23,7 @@ public class SprintBoss : BasicBoss
 		playerZ = GameObject.FindGameObjectWithTag ("Player").transform.position.z;
 
 		if (sprintDelay <= 0)
-			sprintDelay = Random.Range(2.5f, 3.5f);
+			sprintDelay = Random.Range(1.5f, 4f);
 		reverseToZ = 4f;
 		sprintTimer = 0f;
 
@@ -51,7 +51,7 @@ public class SprintBoss : BasicBoss
 				if (sprintTimer > sprintDelay) {
 					m_chldState = CHILD_STATE.SPRINTING;
 					sprintTimer = 0f;
-					sprintDelay = Random.Range (2.5f, 4f);
+					sprintDelay = Random.Range (1.5f, 4f);
 				}
 
 				sprintTimer += Time.deltaTime;

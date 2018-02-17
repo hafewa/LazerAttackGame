@@ -5,6 +5,7 @@ using UnityEngine;
 public class BasicBoss : MonoBehaviour {
 	public float m_fHealth;
 	private float m_fStartHealth;
+	private float m_fHealthBoost;	//when boss has been defeated multiple times, it gets harder
 	public float targetX;
 	public float inGameChangedHealth;
 	public float setupFinishedZ;
@@ -26,6 +27,7 @@ public class BasicBoss : MonoBehaviour {
 
 	// Use this for initialization
 	protected virtual void Start () {
+		m_fHealthBoost = 0f;
 		m_eState = BOSS_STATE.SETUP;
 
 		//if (inGameChangedHealth > 0)
@@ -70,7 +72,10 @@ public class BasicBoss : MonoBehaviour {
 
 	public void Hurt(float dmg){
 		if (m_eState == BOSS_STATE.ACTIVE) {
-			m_fHealth -= dmg;
+			if (m_fHealthBoost > 0)
+				m_fHealthBoost -= dmg;
+			else
+				m_fHealth -= dmg;
 
 			CheckDead ();
 		}

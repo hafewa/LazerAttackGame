@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: ea4479e691ef37e448218d34e3165608
+timeCreated: 1518856578
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Elite Danger Outline Italic
+  fontNames:
+  - Elite Danger Outline Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -23,7 +23,7 @@ public class AsteroidSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		clusterMax = 8;
+		clusterMax = 10;
 		clusterAmount = 5;
 		spawnStartDelay = 2f;
 		spawnStartTimer = 0f;
@@ -43,7 +43,6 @@ public class AsteroidSpawner : MonoBehaviour {
 				Debug.Log (randomPos);
 				var a = Instantiate (asteroids [Random.Range (0, asteroids.Count - 1)], randomPos, Quaternion.Euler(new Vector3(180f, 0, 0)));
 				a.transform.localScale = new Vector3 (40, 40, 40);
-				Debug.Log ("spawn asteroid");
 				asteroidsSpawnedThisTime++;
 			}else
 				spawnStartTimer += Time.deltaTime;
@@ -55,7 +54,6 @@ public class AsteroidSpawner : MonoBehaviour {
 
 	private bool SpawnCheck(){
 		if (spawnStartTimer > spawnStartDelay) {
-			Debug.Log ("spawn delay finished");
 			if (m_fTimer > m_fSpawnBetweenDelay) {
 				if (asteroidsSpawnedThisTime > clusterAmount || this.gameObject.GetComponent<WaveSpawner> ().GetIsBossWave ()) {
 					StopSpawning ();
@@ -76,7 +74,7 @@ public class AsteroidSpawner : MonoBehaviour {
 		clusterAmount = Random.Range (3, clusterMax);
 		m_enState = SPAWNERSTATE.SPAWN_INDIVIDUALS;
 		m_fSpawnBetweenDelay = Random.Range (1f, 3f);
-		spawnStartDelay = Random.Range (1f, 4f);
+		spawnStartDelay = Random.Range (1f, 3.2f);
 	}
 
 	//cluster doesn't last long
@@ -88,7 +86,7 @@ public class AsteroidSpawner : MonoBehaviour {
 		
 		m_enState = SPAWNERSTATE.SPAWN_CLUSTER;
 		m_fSpawnBetweenDelay = Random.Range (0.5f, 1f);
-		spawnStartDelay = Random.Range (0, 5f);
+		spawnStartDelay = Random.Range (0, 3f);
 	}
 
 	public void StopSpawning(){

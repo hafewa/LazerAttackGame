@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4154816495926560}
   - component: {fileID: 33644392902533550}
   - component: {fileID: 23245842059585824}
-  - component: {fileID: 114870279958291370}
   - component: {fileID: 65085881937209330}
   - component: {fileID: 54611437477545266}
+  - component: {fileID: 114695334590028874}
   m_Layer: 0
   m_Name: Asteroid 01
   m_TagString: EnemyProjectile
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.030034102, y: 0.020326838, z: 0.020147331}
   m_Center: {x: 0, y: 4.656613e-10, z: 0}
---- !u!114 &114870279958291370
+--- !u!114 &114695334590028874
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -117,9 +117,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1260605654571234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea91ec864749aa945a3d2f4d1680777d, type: 3}
+  m_Script: {fileID: 11500000, guid: 40d2298a25a04be41b508e03de1a2df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 6
+  speedMultiplier: 7
   canRotate: 1
-  rotSpeed: 30
+  rotSpeed: 35

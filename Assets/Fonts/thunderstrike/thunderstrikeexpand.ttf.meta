@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0fb578c5e218f6b42a5c6e6be68122ae
+timeCreated: 1518856576
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Thunderstrike Expanded
+  fontNames:
+  - Thunderstrike Expanded
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

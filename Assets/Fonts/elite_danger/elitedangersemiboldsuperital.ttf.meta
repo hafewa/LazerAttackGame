@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 1348bea1a3829b141b633d2466ff2973
+timeCreated: 1518856576
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Elite Danger Semi-Bold Super-Italic
+  fontNames:
+  - Elite Danger Semi-Bold Super-Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

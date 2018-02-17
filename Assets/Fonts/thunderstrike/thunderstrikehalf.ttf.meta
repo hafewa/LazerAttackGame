@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0057bc4515cc6344d8c571b2d397d2c2
+timeCreated: 1518856576
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Thunderstrike Halftone
+  fontNames:
+  - Thunderstrike Halftone
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

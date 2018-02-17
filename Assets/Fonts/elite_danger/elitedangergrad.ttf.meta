@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 747064885f0d5dd49bdf966920ac0ce9
+timeCreated: 1518856578
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Elite Danger Gradient
+  fontNames:
+  - Elite Danger Gradient
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
