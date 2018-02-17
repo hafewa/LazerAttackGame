@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 65373501304260016}
   - component: {fileID: 54293603647869450}
   - component: {fileID: 114123639786441160}
+  - component: {fileID: 82639780503305554}
   m_Layer: 0
   m_Name: SpaceshipFighter_Spear_1
   m_TagString: Enemy
@@ -248,6 +249,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 15.37, y: 2, z: 8.68}
   m_Center: {x: 0, y: 0, z: -1.31}
+--- !u!82 &82639780503305554
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276134283828316}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.25
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!108 &108634741020722836
 Light:
   m_ObjectHideFlags: 1
@@ -336,6 +417,8 @@ MonoBehaviour:
   m_goMissile: {fileID: 1000010329560674, guid: 19bc64b6ea73a2f41b4ec6bb93226f1d,
     type: 2}
   realCamera: {fileID: 0}
+  clips:
+  - {fileID: 8300000, guid: 56c2ee139e8c844ba9a3a17370e3b763, type: 3}
   reverseToZ: 5.1
   sprintDelay: 3.2
 --- !u!114 &114387922348678380

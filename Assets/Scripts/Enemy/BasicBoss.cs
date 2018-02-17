@@ -17,6 +17,10 @@ public class BasicBoss : MonoBehaviour {
 
 	public Camera realCamera;
 	private GameObject m_goHealthSprite;
+	private AudioSource source;
+
+	public AudioClip[] clips;
+
 	public enum BOSS_STATE
 	{
 		SETUP = 0,
@@ -40,6 +44,8 @@ public class BasicBoss : MonoBehaviour {
 			targetX = 3.1f;
 
 		SetStartHealth ();
+
+		source = GetComponent<AudioSource> ();
 	}
 
 	public void SetStartHealth(){
@@ -89,7 +95,7 @@ public class BasicBoss : MonoBehaviour {
 		}
 	}
 
-	public void Shoot()
+	public void Shoot(string soundName)
 	{
 		var ang = 120f;
 		while (ang <= 210f) {
@@ -98,25 +104,30 @@ public class BasicBoss : MonoBehaviour {
 			m.transform.position += m.transform.forward * 0.2f;
 			ang += 30f;
 		}
+		PlaySound (soundName);
 	}
 
-	public void ShootSingle(){
+	public void ShootSingle(string soundName){
 		Instantiate (m_goMissile, transform.position, new Quaternion(0,180f,0,1));
+		PlaySound (soundName);
 	}
 
-	public void ShootSingleFromPos(Vector3 pos){
+	public void ShootSingleFromPos(Vector3 pos, string soundName){
 		Instantiate (m_goMissile, pos, new Quaternion(0,180f,0,1));
+		PlaySound (soundName);
 	}
 
-	public void ShootAtRandomAngle(float min, float max){
+	public void ShootAtRandomAngle(float min, float max, string soundName){
 		float ang = Random.Range (min, max);
 		var m = Instantiate (m_goMissile, transform.position, new Quaternion(0,0,0,1));
+		PlaySound (soundName);
 		m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
 	}
 
-	public void ShootNearPlayer(float min, float max, Transform player){
+	public void ShootNearPlayer(float min, float max, Transform player, string soundName){
 		float ang = Random.Range (min, max);
 		var m = Instantiate (m_goMissile, transform.position, new Quaternion(0,0,0,1));
+		PlaySound (soundName);
 		m.transform.LookAt (player);
 		m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
 	}
@@ -124,5 +135,24 @@ public class BasicBoss : MonoBehaviour {
 	public void HealthBoost(){
 		float inc = Random.Range (m_fHealth/10, m_fHealth/3);
 		m_fHealthBoost = inc;
+	}
+
+	public void PlaySound(string name){
+		source.loop = false;
+		for(int i = 0; i < clips.Length; i++){
+			if (clips [i].name == name) {
+				source.PlayOneShot (clips[i]);
+				return;
+			}
+		}
+	}
+
+	public void PlaySoundLoop(){
+		source.Play ();
+	}
+
+	public void StopSounds(){
+		source.Stop ();
+		source.loop = false;
 	}
 }

@@ -30,6 +30,7 @@ public class UFOBoss : BasicBoss {
 
 		oldBulletDelay = bulletDelay;
 		m_tPlayer = GameObject.FindGameObjectWithTag ("Player").transform;
+		PlaySound ("Alien_Language_00");
 	}
 	
 	// Update is called once per frame
@@ -45,7 +46,7 @@ public class UFOBoss : BasicBoss {
 					bulletDelay = Random.Range (0.2f, 0.5f);
 				}
 				if (bulletTimer > bulletDelay) {
-					ShootNearPlayer (-10f, 10f, m_tPlayer);
+					ShootNearPlayer (-10f, 10f, m_tPlayer, "Laser_09");
 					bulletTimer = 0f;
 				}
 
@@ -60,7 +61,7 @@ public class UFOBoss : BasicBoss {
 				}
 
 				if (bulletTimer > bulletDelay) {
-					ShootNearPlayer (-25f, 25f, m_tPlayer);
+					ShootNearPlayer (-25f, 25f, m_tPlayer, "Laser_09");
 					bulletTimer = 0f;
 				}
 
