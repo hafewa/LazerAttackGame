@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour {
 				RaycastHit hit;
 				if (Physics.Raycast (ray, out hit, 11)){
 					Debug.DrawLine (transform.position, hit.point);
-					transform.position = Vector3.MoveTowards (transform.position, new Vector3 (hit.point.x, transform.position.y, transform.position.z), 0.75f);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (hit.point.x, transform.position.y, transform.position.z), 40f * Time.deltaTime);
 				}
 			}
 		//}

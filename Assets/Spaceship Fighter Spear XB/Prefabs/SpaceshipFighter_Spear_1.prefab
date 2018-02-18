@@ -418,7 +418,7 @@ MonoBehaviour:
     type: 2}
   realCamera: {fileID: 0}
   clips:
-  - {fileID: 8300000, guid: 56c2ee139e8c844ba9a3a17370e3b763, type: 3}
+  - {fileID: 8300000, guid: 1ab0fdc0a98f42243b6934a55ebb3c4f, type: 3}
   reverseToZ: 5.1
   sprintDelay: 3.2
 --- !u!114 &114387922348678380

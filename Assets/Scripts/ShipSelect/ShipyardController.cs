@@ -78,7 +78,7 @@ public class ShipyardController : MonoBehaviour {
 
 		int xpRequired = Mathf.FloorToInt((nextLvl * nextLvl) / (allShips[currShipIndex].constant*allShips[currShipIndex].constant) - 
 			(currentLevel * currentLevel) / (allShips[currShipIndex].constant*allShips[currShipIndex].constant));
-
+		upgradeBtn.gameObject.SetActive(true);
 		UpgradeBtnText.text = "UPGRADE\n" + xpRequired;
 		UnlockBtnText.text = "UNLOCK\n" + allShips [currShipIndex].unlockPrice;
 		//buy this ship button

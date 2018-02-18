@@ -11,10 +11,12 @@ public class BasicEnemy : MonoBehaviour {
 	public bool isBuffed = false;
 	public float healthBuffAmount = 0f;
 	public GameObject buffParticles;
+	private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
 		targetZ = -11f;
+		audioSource = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -46,6 +48,7 @@ public class BasicEnemy : MonoBehaviour {
 	public void CheckDead(){
 		if (m_fHealth <= 0 ) {
 			if (!this.gameObject.GetComponent<EnemyDeath> ().killed) {
+				audioSource.Play ();
 				this.gameObject.GetComponent<EnemyDeath> ().Kill ();
 				Destroy (this.gameObject);
 			}

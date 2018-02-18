@@ -1809,7 +1809,7 @@ MonoBehaviour:
   realCamera: {fileID: 0}
   clips:
   - {fileID: 8300000, guid: 56c2ee139e8c844ba9a3a17370e3b763, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 1ab0fdc0a98f42243b6934a55ebb3c4f, type: 3}
 --- !u!114 &114604474842528810
 MonoBehaviour:
   m_ObjectHideFlags: 1

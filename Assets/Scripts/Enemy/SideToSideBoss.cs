@@ -27,7 +27,7 @@ public class SideToSideBoss : BasicBoss {
 
 			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), 4f * Time.deltaTime);
 			if (bulletTimer > bulletDelay) {
-				Shoot ("Laser_00");
+				Shoot ("msfx_abyss_portal");
 				bulletTimer = 0f;
 			}
 
@@ -38,5 +38,9 @@ public class SideToSideBoss : BasicBoss {
 		}
 
 		base.Update ();
+	}
+
+	protected override void IncreaseDifficulty(int waveNum){
+
 	}
 }

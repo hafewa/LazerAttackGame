@@ -64,6 +64,10 @@ public class BasicBoss : MonoBehaviour {
 		UpdateHealth ();
 	}
 
+	protected virtual void IncreaseDifficulty(int waveNum){
+
+	}
+
 	public BOSS_STATE GetState(){
 		return m_eState;
 	}
