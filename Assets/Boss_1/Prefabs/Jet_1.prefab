@@ -1810,6 +1810,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 523ebf68884d98049942c0866eb29b2c, type: 3}
   entranceSound: {fileID: 8300000, guid: 2b683f4620fb54345a21340ae3153cb4, type: 3}
   missileSound: {fileID: 8300000, guid: 56c2ee139e8c844ba9a3a17370e3b763, type: 3}
+  deathParticles: {fileID: 100006, guid: 2e7e92bc7175b744ea40878dedfa79e4, type: 2}
 --- !u!114 &114604474842528810
 MonoBehaviour:
   m_ObjectHideFlags: 1

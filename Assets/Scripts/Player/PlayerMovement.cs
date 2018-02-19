@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public AudioClip deathSound;
 	public AudioClip treasureSound;
+	public GameObject deathParticles;
 
 	// Use this for initialization
 	void Start () {
@@ -80,13 +81,15 @@ public class PlayerMovement : MonoBehaviour {
 		//only bosses can fire projectiles
 		if (other.tag == "Enemy" || other.tag == "EnemyProjectile") {
 			//kill
+			Instantiate (deathParticles, transform.position, Quaternion.identity);
 			this.gameObject.SetActive(false);
+
 			AudioManager.Get ().PlaySoundEffect (deathSound);
 			GameObject.Find("GameManager").GetComponent<GameManager>().PlayerDead();
 		}else if (other.tag == "Treasure") {
 			//add to current game score
 			if (!other.GetComponent<Pickup> ().used) {
-				AudioManager.Get ().PlaySoundEffect (treasureSound);
+				AudioManager.Get ().PlaySoundEffect (treasureSound, 0.2f);
 				other.GetComponent<Pickup> ().used = true;
 				switch (other.GetComponent<Pickup> ().GetPickupType ()) {
 				case Pickup.PICKUPTYPE.POWERUP:

@@ -22,6 +22,8 @@ public class BasicBoss : MonoBehaviour {
 	public AudioClip entranceSound;
 	public AudioClip missileSound;
 
+	public GameObject deathParticles;
+
 	public enum BOSS_STATE
 	{
 		SETUP = 0,
@@ -96,6 +98,7 @@ public class BasicBoss : MonoBehaviour {
 		if (m_fHealth <= 0) {
 			this.gameObject.GetComponent<EnemyDeath> ().Kill ();
 			m_eState = BOSS_STATE.DEAD;
+			Instantiate (deathParticles, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);
 			AudioManager.Get().PlaySoundEffect (deathSound);
 		}
