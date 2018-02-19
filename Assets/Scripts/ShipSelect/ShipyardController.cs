@@ -32,6 +32,7 @@ public class ShipyardController : MonoBehaviour {
 	public Text shipLevelText;
 	public Text UpgradeBtnText;
 	public Text UnlockBtnText;
+	public AudioClip shipyardMusic;
 
 	// Use this for initialization
 	void Start () {
@@ -51,7 +52,6 @@ public class ShipyardController : MonoBehaviour {
 		if (currShipIndex < 0)
 			currShipIndex = 0;
 		currentPoints = PlayerPrefs.GetInt ("points", 0);
-
 		UpdateShip ();
 	}
 
@@ -60,14 +60,20 @@ public class ShipyardController : MonoBehaviour {
 			PlayerPrefs.SetInt ("SpaceShip1:PlayerLevel", 0);
 		}
 
-		currentShipObj.transform.RotateAround (currentShipObj.transform.position, new Vector3 (0, 0, 1), 45f * Time.deltaTime);
+		if (currentShipObj) {
+			m_tDisplayPos.transform.RotateAround (m_tDisplayPos.transform.position, new Vector3 (0, 0, 1), 45f * Time.deltaTime);
+		}
 	}
 	
 	private void UpdateShip(){
-		if(currentShipObj != null)
+		float z = 0f;
+		if (currentShipObj != null) {
+			z = currentShipObj.transform.rotation.z;
 			Destroy (currentShipObj);
-		currentShipObj = Instantiate (allShips [currShipIndex].obj, m_tDisplayPos.position, Quaternion.Euler(allShips[currShipIndex].appliedRotation));
-		currentShipObj.transform.localScale = allShips [currShipIndex].appliedScale;;
+		}
+		currentShipObj = Instantiate (allShips [currShipIndex].obj, m_tDisplayPos);
+		currentShipObj.transform.rotation = Quaternion.Euler (new Vector3(allShips [currShipIndex].appliedRotation.x, allShips [currShipIndex].appliedRotation.y, z));
+		currentShipObj.transform.localScale = allShips [currShipIndex].appliedScale;
 
 		currentLevel = PlayerPrefs.GetInt (allShips [currShipIndex].name + ":PlayerLevel", 0);
 		shipLevelText.text = currentLevel + 1 + "";
@@ -134,7 +140,7 @@ public class ShipyardController : MonoBehaviour {
 		UpdateShip ();
 	}
 
-	public void LevelUpShip(){
+	public void LevelUpShip(AudioClip success, AudioClip fail){
 		int currShipLevel = PlayerPrefs.GetInt (allShips[currShipIndex].name + ":PlayerLevel", 0);
 		int nextLvl = currShipLevel + 1;
 
@@ -146,18 +152,22 @@ public class ShipyardController : MonoBehaviour {
 			PlayerPrefs.SetInt ("points", PlayerPrefs.GetInt ("points", 0) - xpRequired);
 			currentPoints = PlayerPrefs.GetInt ("points", 0);
 			//do upgrade to ship
-			PlayerPrefs.SetInt(allShips[currShipIndex].name + ":PlayerLevel", nextLvl);
-
+			PlayerPrefs.SetInt (allShips [currShipIndex].name + ":PlayerLevel", nextLvl);
+			AudioManager.Get ().PlaySoundEffect (success);
 			UpdateShip ();
+		} else {
+			AudioManager.Get ().PlaySoundEffect (fail);
 		}
 	}
 
-	public void UnlockShip(){
+	public void UnlockShip(AudioClip success, AudioClip fail){
 		if (currentPoints > allShips [currShipIndex].unlockPrice) {
 			PlayerPrefs.SetString (allShips [currShipIndex].name + ":Unlocked", "true");
-			PlayerPrefs.SetInt("points", currentPoints - allShips[currShipIndex].unlockPrice);
-
+			PlayerPrefs.SetInt ("points", currentPoints - allShips [currShipIndex].unlockPrice);
+			AudioManager.Get ().PlaySoundEffect (success);
 			UpdateShip ();
+		} else {
+			AudioManager.Get ().PlaySoundEffect (fail);
 		}
 	}
 

@@ -44,7 +44,7 @@ public class SprintBoss : BasicBoss
 				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), 4f * Time.deltaTime);
 
 				if (bulletTimer > bulletDelay) {
-					Shoot ("msfx_abyss_portal");
+					Shoot ();
 					bulletTimer = 0f;
 				}
 

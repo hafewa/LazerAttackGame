@@ -85,7 +85,6 @@ GameObject:
   - component: {fileID: 135893265389710148}
   - component: {fileID: 114503916545814576}
   - component: {fileID: 114507257401915104}
-  - component: {fileID: 82114183106133014}
   m_Layer: 0
   m_Name: AstraFighter01
   m_TagString: Enemy
@@ -260,86 +259,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062357301484006}
   m_Mesh: {fileID: 4300002, guid: 78b2209c16819614caba5e3ebaa0df1e, type: 3}
---- !u!82 &82114183106133014
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529714144839674}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.25
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!114 &114503916545814576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -396,8 +315,9 @@ MonoBehaviour:
   m_goMissile: {fileID: 1787225368103108, guid: f9349c0c7c860a343ba5662f7ee68b21,
     type: 2}
   realCamera: {fileID: 0}
-  clips:
-  - {fileID: 8300000, guid: f1364d48e48ea4fdab44868cc9b2a10e, type: 3}
+  deathSound: {fileID: 8300000, guid: 523ebf68884d98049942c0866eb29b2c, type: 3}
+  entranceSound: {fileID: 8300000, guid: 2b683f4620fb54345a21340ae3153cb4, type: 3}
+  missileSound: {fileID: 8300000, guid: f1364d48e48ea4fdab44868cc9b2a10e, type: 3}
   children:
   - {fileID: 1049270408596018, guid: f477f4e4a864e474ea1b0258eaea1a6d, type: 2}
   spawnChildDelay: 0

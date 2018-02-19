@@ -417,8 +417,9 @@ MonoBehaviour:
   m_goMissile: {fileID: 1000010329560674, guid: 19bc64b6ea73a2f41b4ec6bb93226f1d,
     type: 2}
   realCamera: {fileID: 0}
-  clips:
-  - {fileID: 8300000, guid: 1ab0fdc0a98f42243b6934a55ebb3c4f, type: 3}
+  deathSound: {fileID: 8300000, guid: 523ebf68884d98049942c0866eb29b2c, type: 3}
+  entranceSound: {fileID: 8300000, guid: 2b683f4620fb54345a21340ae3153cb4, type: 3}
+  missileSound: {fileID: 8300000, guid: 56c2ee139e8c844ba9a3a17370e3b763, type: 3}
   reverseToZ: 5.1
   sprintDelay: 3.2
 --- !u!114 &114387922348678380

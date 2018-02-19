@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 114982859420375106}
   - component: {fileID: 114367932160405002}
   - component: {fileID: 54334092807012688}
-  - component: {fileID: 82875920565678746}
   m_Layer: 0
   m_Name: Trident-A10
   m_TagString: Enemy
@@ -382,86 +381,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 18.9, y: 10.229698, z: 5.79586}
   m_Center: {x: -1.8603683, y: -0.00000023841858, z: 0}
---- !u!82 &82875920565678746
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1228335008704252}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c7865fd595be8a046a018f3e24771dd6, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!95 &95706130070663718
 Animator:
   serializedVersion: 3
@@ -533,6 +452,7 @@ MonoBehaviour:
   isBuffed: 1
   healthBuffAmount: 0
   buffParticles: {fileID: 1872940545471754}
+  deathSound: {fileID: 8300000, guid: c7865fd595be8a046a018f3e24771dd6, type: 3}
 --- !u!135 &135133843243555098
 SphereCollider:
   m_ObjectHideFlags: 1

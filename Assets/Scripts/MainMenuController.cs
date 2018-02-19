@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour {
-
 	// Use this for initialization
 	void Start () {
 		//make sure the very first ship is unlocked by default
@@ -18,7 +17,13 @@ public class MainMenuController : MonoBehaviour {
 		
 	}
 
-	public void GoToScene(int i){
-		SceneManager.LoadScene (i);
+	public void GoToGame(AudioClip s){
+		AudioManager.Get ().PlaySoundEffect (s);
+		SceneManager.LoadScene (1);
+	}
+
+	public void GoToShips(AudioClip s){
+		AudioManager.Get ().PlaySoundEffect (s);
+		SceneManager.LoadScene (2);
 	}
 }

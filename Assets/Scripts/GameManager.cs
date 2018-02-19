@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
 	public Image m_imgPoints;
 	public GameObject m_goEndGameContainer;
 	public Text m_uiEndScoreText;
+	public AudioClip gameMusic;
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +45,8 @@ public class GameManager : MonoBehaviour {
 				Advertisement.Initialize("1706897", true);
 			#endif
 		}
+
+		AudioManager.Get ().PlayMusicLoop (gameMusic);
 	}
 	
 	// Update is called once per frame

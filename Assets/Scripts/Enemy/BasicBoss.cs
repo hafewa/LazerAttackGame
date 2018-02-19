@@ -17,9 +17,10 @@ public class BasicBoss : MonoBehaviour {
 
 	public Camera realCamera;
 	private GameObject m_goHealthSprite;
-	private AudioSource source;
 
-	public AudioClip[] clips;
+	public AudioClip deathSound;
+	public AudioClip entranceSound;
+	public AudioClip missileSound;
 
 	public enum BOSS_STATE
 	{
@@ -45,7 +46,7 @@ public class BasicBoss : MonoBehaviour {
 
 		SetStartHealth ();
 
-		source = GetComponent<AudioSource> ();
+		AudioManager.Get().PlaySoundEffect (entranceSound);
 	}
 
 	public void SetStartHealth(){
@@ -96,10 +97,11 @@ public class BasicBoss : MonoBehaviour {
 			this.gameObject.GetComponent<EnemyDeath> ().Kill ();
 			m_eState = BOSS_STATE.DEAD;
 			Destroy (this.gameObject);
+			AudioManager.Get().PlaySoundEffect (deathSound);
 		}
 	}
 
-	public void Shoot(string soundName)
+	public void Shoot()
 	{
 		var ang = 120f;
 		while (ang <= 210f) {
@@ -108,30 +110,30 @@ public class BasicBoss : MonoBehaviour {
 			m.transform.position += m.transform.forward * 0.2f;
 			ang += 30f;
 		}
-		PlaySound (soundName);
+		AudioManager.Get().PlaySoundEffect (missileSound);
 	}
 
-	public void ShootSingle(string soundName){
+	public void ShootSingle(){
 		Instantiate (m_goMissile, transform.position, new Quaternion(0,180f,0,1));
-		PlaySound (soundName);
+		AudioManager.Get().PlaySoundEffect (missileSound);
 	}
 
-	public void ShootSingleFromPos(Vector3 pos, string soundName){
+	public void ShootSingleFromPos(Vector3 pos){
 		Instantiate (m_goMissile, pos, new Quaternion(0,180f,0,1));
-		PlaySound (soundName);
+		AudioManager.Get().PlaySoundEffect (missileSound);
 	}
 
-	public void ShootAtRandomAngle(float min, float max, string soundName){
+	public void ShootAtRandomAngle(float min, float max){
 		float ang = Random.Range (min, max);
 		var m = Instantiate (m_goMissile, transform.position, new Quaternion(0,0,0,1));
-		PlaySound (soundName);
+		AudioManager.Get().PlaySoundEffect (missileSound);
 		m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
 	}
 
-	public void ShootNearPlayer(float min, float max, Transform player, string soundName){
+	public void ShootNearPlayer(float min, float max, Transform player){
 		float ang = Random.Range (min, max);
 		var m = Instantiate (m_goMissile, transform.position, new Quaternion(0,0,0,1));
-		PlaySound (soundName);
+		AudioManager.Get().PlaySoundEffect (missileSound);
 		m.transform.LookAt (player);
 		m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
 	}
@@ -141,22 +143,5 @@ public class BasicBoss : MonoBehaviour {
 		m_fHealthBoost = inc;
 	}
 
-	public void PlaySound(string name){
-		source.loop = false;
-		for(int i = 0; i < clips.Length; i++){
-			if (clips [i].name == name) {
-				source.PlayOneShot (clips[i]);
-				return;
-			}
-		}
-	}
 
-	public void PlaySoundLoop(){
-		source.Play ();
-	}
-
-	public void StopSounds(){
-		source.Stop ();
-		source.loop = false;
-	}
 }
