@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 	private static AudioManager instance;
-	private AudioSource audioSource;
+	private AudioSource audioSource;	//the audiomanager itself has an audio source, so the game can play one looping theme/track over and over, across scenes if needed.
 	public GameObject soundEffectObj;	//a temp obj used to play one off sound effects
 
 	void Awake(){
@@ -36,8 +36,8 @@ public class AudioManager : MonoBehaviour {
 		audioSource.Play ();
 	}
 
-	public void PlaySoundEffect(AudioClip ac){
+	public void PlaySoundEffect(AudioClip ac, float vol = 0.75f){
 		var e = Instantiate (soundEffectObj, transform.position, transform.rotation);
-		e.GetComponent<PlaySoundScript> ().SetAudioClip (ac);
+		e.GetComponent<PlaySoundScript> ().SetAudioClip (ac, vol);
 	}
 }

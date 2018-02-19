@@ -15,6 +15,7 @@ public class PlaySoundScript : MonoBehaviour {
 
 	public void SetAudioClip(AudioClip ac, float vol = 1f){
 		source = GetComponent<AudioSource> ();
+		source.volume = vol;
 		DontDestroyOnLoad (this.gameObject);
 		hasClip = true;
 		source.clip = ac;

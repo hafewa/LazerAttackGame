@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour {
 	public Transform m_tRightBuddySpawnPos;
 	public Transform m_tLeftBuddySpawnPos;
 
+	public AudioClip deathSound;
+	public AudioClip treasureSound;
+
 	// Use this for initialization
 	void Start () {
 		Physics.gravity = new Vector3 (0, 0, -9.8f);
@@ -78,10 +81,12 @@ public class PlayerMovement : MonoBehaviour {
 		if (other.tag == "Enemy" || other.tag == "EnemyProjectile") {
 			//kill
 			this.gameObject.SetActive(false);
+			AudioManager.Get ().PlaySoundEffect (deathSound);
 			GameObject.Find("GameManager").GetComponent<GameManager>().PlayerDead();
 		}else if (other.tag == "Treasure") {
 			//add to current game score
 			if (!other.GetComponent<Pickup> ().used) {
+				AudioManager.Get ().PlaySoundEffect (treasureSound);
 				other.GetComponent<Pickup> ().used = true;
 				switch (other.GetComponent<Pickup> ().GetPickupType ()) {
 				case Pickup.PICKUPTYPE.POWERUP:
@@ -92,11 +97,7 @@ public class PlayerMovement : MonoBehaviour {
 					break;
 				}
 			}
-
 			Destroy (other.gameObject);
-		} else if (other.tag == "Boost") {
-			//boost, could be increase damage
-			//this.gameObject.GetComponent<PlayerCollectStuff>().AddBoost(other.gameObject);
 		}
 	}
 

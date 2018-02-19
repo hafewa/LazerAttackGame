@@ -577,6 +577,7 @@ MonoBehaviour:
   m_goEndGameContainer: {fileID: 1591228850}
   m_uiEndScoreText: {fileID: 110978980}
   gameMusic: {fileID: 8300000, guid: 57e847885784cda4494309440f75c8d3, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: d4305f3e6073c2a4f948fb30ee94b41d, type: 3}
 --- !u!20 &718183993 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20556044209906226, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
@@ -720,6 +721,16 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 718183993}
+    - target: {fileID: 114720405533712396, guid: c9816fa979b06ba4e9c222b529370cc2,
+        type: 2}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5543cefa2f8fc9e40bb3b5af6eac40ad, type: 3}
+    - target: {fileID: 114720405533712396, guid: c9816fa979b06ba4e9c222b529370cc2,
+        type: 2}
+      propertyPath: treasureSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bc02d50dd8fba4e47a5e77187e55c1ed, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
   m_IsPrefabParent: 0

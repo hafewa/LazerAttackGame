@@ -21,7 +21,9 @@ public class GameManager : MonoBehaviour {
 	public Image m_imgPoints;
 	public GameObject m_goEndGameContainer;
 	public Text m_uiEndScoreText;
+
 	public AudioClip gameMusic;
+	public AudioClip gameOverMusic;
 
 	// Use this for initialization
 	void Start () {
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour {
 		//show menu
 		m_goEndGameContainer.SetActive(true);
 		Advertisement.Show ("video");
+		AudioManager.Get ().PlayMusicLoop (gameOverMusic);
 		//SceneManager.LoadScene (0);
 	}
 
