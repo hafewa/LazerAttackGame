@@ -9,6 +9,7 @@ public class BasicBoss : MonoBehaviour {
 	public float targetX;
 	public float inGameChangedHealth;
 	public float setupFinishedZ;
+	public float moveSpeed = 4f;
 
 	public float bulletTimer;
 	public float bulletDelay;
@@ -24,6 +25,7 @@ public class BasicBoss : MonoBehaviour {
 	public AudioClip missileSound;
 
 	public GameObject deathParticles;
+	public GameObject m_goPlayer;
 
 	public enum BOSS_STATE
 	{
@@ -33,11 +35,23 @@ public class BasicBoss : MonoBehaviour {
 	}
 	private BOSS_STATE m_eState;
 
+	//each grade of difficulty will change the bosses behaviour
+	public enum DIFFICULTY{
+		BASE = 0,
+		EASY,
+		MEDIUM,
+		DIFFICULT,
+		EXPERT
+	}
+	private DIFFICULTY m_eBossDifficulty = DIFFICULTY.BASE;
+
 	// Use this for initialization
 	protected virtual void Start () {
 		if (GameObject.Find ("Player") == null) {
 			Destroy (this.gameObject);
 		}
+
+		m_goPlayer = GameObject.Find ("Player");
 
 		m_fHealthBoost = 0f;
 		m_eState = BOSS_STATE.SETUP;
@@ -52,8 +66,21 @@ public class BasicBoss : MonoBehaviour {
 			targetX = 3.1f;
 
 		SetStartHealth ();
-		Debug.Log (entranceSound);
 		AudioManager.Get().PlaySoundEffect (entranceSound, 0.75f, entranceSoundTimes);
+
+		SortDifficulty (WaveSpawner.Get().wavesDefeated);
+	}
+
+	protected virtual void SortDifficulty (int wavesDefeated){
+		
+	}
+
+	public void SetDifficulty(DIFFICULTY diff){
+		m_eBossDifficulty = diff;
+	}
+
+	public DIFFICULTY GetDifficulty(){
+		return m_eBossDifficulty;
 	}
 
 	public void SetStartHealth(){
@@ -103,6 +130,7 @@ public class BasicBoss : MonoBehaviour {
 	public void CheckDead(){
 		if (m_fHealth <= 0) {
 			this.gameObject.GetComponent<EnemyDeath> ().Kill ();
+			WaveSpawner.Get ().BossDefeated (this.gameObject.name);
 			m_eState = BOSS_STATE.DEAD;
 			Instantiate (deathParticles, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);

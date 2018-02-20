@@ -35,6 +35,6 @@ public class PlayerCollectStuff : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log (other.tag);
+		//Debug.Log (other.tag);
 	}
 }

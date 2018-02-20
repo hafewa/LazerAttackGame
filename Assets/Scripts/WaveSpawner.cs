@@ -1,7 +1,23 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WaveSpawner : MonoBehaviour {
+	//make this a singleton
+	public static WaveSpawner instance;
+	void Awake(){
+		if (instance != null && instance != this) {
+			Destroy (this.gameObject);
+			return;
+		} else {
+			instance = this;
+		}
+	}
+
+	public static WaveSpawner Get(){
+		return instance;
+	}
+
 	public bool canSpawn;
 	public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
@@ -18,7 +34,7 @@ public class WaveSpawner : MonoBehaviour {
 	public bool m_bBossWave;
 	public Wave[] waves;
 	private int nextWave = 0;
-	private int wavesDefeated = 0;
+	public int wavesDefeated = 0;
 	public int NextWave
 	{
 		get { return nextWave + 1; }
@@ -43,6 +59,12 @@ public class WaveSpawner : MonoBehaviour {
 
 	public GameObject m_goPlayer;
 
+	public class BossNameDefeatedCountPair{
+		public string name;
+		public int defeated;
+	}
+	public List<BossNameDefeatedCountPair> bossesDefeatedTracker;
+
 	void Start()
 	{
 		if (spawnPoints.Length == 0)
@@ -53,6 +75,42 @@ public class WaveSpawner : MonoBehaviour {
 		waveCountdown = timeBetweenWaves;
 		m_bBossWave = false;
 		//GameManager.Instance.SetGameState (GameManager.STATES.PLAYING);
+	}
+
+	public void BossDefeated(string name){
+		//name = gameobject name
+		if (bossesDefeatedTracker == null || bossesDefeatedTracker.Count == 0) {
+			bossesDefeatedTracker = new List<BossNameDefeatedCountPair> ();
+			bossesDefeatedTracker.Add (new BossNameDefeatedCountPair () {
+				name = name,
+				defeated = 1
+			});
+		} else {
+			for (int i = 0; i < bossesDefeatedTracker.Count; i++) {
+				if (bossesDefeatedTracker [i].name == name) {
+					bossesDefeatedTracker [i].defeated++;
+					return;
+				}
+			}
+
+			bossesDefeatedTracker.Add (new BossNameDefeatedCountPair () {
+				name = name,
+				defeated = 1
+			});
+		}
+	}
+
+	public int BossDefeatedCount(string name){
+		if (bossesDefeatedTracker == null)
+			return 0;
+		
+		for(int i = 0; i < bossesDefeatedTracker.Count;i++){
+			if (bossesDefeatedTracker [i].name == name) {
+				return bossesDefeatedTracker [i].defeated;
+			}
+		}
+
+		return 0;
 	}
 
 	void Update()
@@ -207,7 +265,6 @@ public class WaveSpawner : MonoBehaviour {
 			//means they've defeated every boss + every basic wave at least once
 			if (wavesDefeated > waves.Length/2)
 			{
-				Debug.Log ("health inc by " + wavesDefeated / 10f);
 				enemy.GetComponent<BasicEnemy> ().IncreaseBaseHealth (wavesDefeated/10f);
 			}
 		}

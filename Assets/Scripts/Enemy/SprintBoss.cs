@@ -5,7 +5,6 @@ using UnityEngine;
 public class SprintBoss : BasicBoss 
 {
 	private float playerZ;
-
 	private enum CHILD_STATE
 	{
 		SIDE2SIDE = 0,
@@ -41,11 +40,12 @@ public class SprintBoss : BasicBoss
 				else if (transform.position.x < -3f)
 					targetX = 3.1f;
 
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), 4f * Time.deltaTime);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
 
 				if (bulletTimer > bulletDelay) {
 					Shoot ();
 					bulletTimer = 0f;
+					bulletDelay = Random.Range (1f, 1.6f);
 				}
 
 				if (sprintTimer > sprintDelay) {
@@ -60,7 +60,7 @@ public class SprintBoss : BasicBoss
 				if (transform.position.z <= playerZ)//reverse now if sprint finished
 					m_chldState = CHILD_STATE.REVERSING;
 				
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, playerZ), 10f * Time.deltaTime);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, playerZ), (moveSpeed * 3f) * Time.deltaTime);
 			} else if (m_chldState == CHILD_STATE.REVERSING) {
 				if (transform.position.z >= reverseToZ) {//side2side once reverse is finished
 					transform.position = new Vector3(transform.position.x, transform.position.y, reverseToZ);
@@ -80,5 +80,29 @@ public class SprintBoss : BasicBoss
 		}
 
 		base.Update();
+	}
+
+	protected override void SortDifficulty(int wavesDefeated){
+		int timesDefeated = WaveSpawner.Get ().BossDefeatedCount (this.gameObject.name);
+		if (timesDefeated > 4) {
+			SetDifficulty (DIFFICULTY.EXPERT);
+			m_fHealth *= (2.5f + (wavesDefeated/10));
+			moveSpeed = 5f;
+		} else if (timesDefeated > 3) {
+			SetDifficulty (DIFFICULTY.DIFFICULT);
+			moveSpeed = 4.75f;
+			m_fHealth *= 2f;
+		} else if (timesDefeated > 2) {
+			m_fHealth *= 1.5f;
+			SetDifficulty (DIFFICULTY.MEDIUM);
+			moveSpeed = 4.5f;
+		} else if (timesDefeated > 1) {
+			m_fHealth *= 1.1f;
+			SetDifficulty (DIFFICULTY.EASY);
+			moveSpeed = 4.2f;
+		} else {
+			SetDifficulty (DIFFICULTY.BASE);
+			moveSpeed = 4f;
+		}
 	}
 }

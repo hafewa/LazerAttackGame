@@ -38,7 +38,6 @@ public class AudioManager : MonoBehaviour {
 
 	public void PlaySoundEffect(AudioClip ac, float vol = 0.75f, int amount = 1){
 		var e = Instantiate (soundEffectObj, transform.position, transform.rotation);
-		Debug.Log ("amount of play times: " + amount);
 		e.GetComponent<PlaySoundScript> ().SetAudioClip (ac, vol, amount);
 	}
 }
