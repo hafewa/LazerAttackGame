@@ -430,8 +430,8 @@ MonoBehaviour:
     type: 2}
   realCamera: {fileID: 0}
   deathSound: {fileID: 8300000, guid: 523ebf68884d98049942c0866eb29b2c, type: 3}
-  entranceSound: {fileID: 8300000, guid: a950dd5a78f174cf49cc308afcd87744, type: 3}
-  entranceSoundTimes: 2
+  entranceSound: {fileID: 8300000, guid: 02c46f78a993c4ce5bb64e2da4eae5c3, type: 3}
+  entranceSoundTimes: 1
   missileSound: {fileID: 8300000, guid: f1364d48e48ea4fdab44868cc9b2a10e, type: 3}
   deathParticles: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 2}
   ufoBody: {fileID: 1756311115523130}

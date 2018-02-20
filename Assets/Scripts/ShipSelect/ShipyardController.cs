@@ -34,6 +34,11 @@ public class ShipyardController : MonoBehaviour {
 	public Text UnlockBtnText;
 	public AudioClip shipyardMusic;
 
+	//ui
+	public GameObject shipyardPopup;
+	public Text popupText;
+	public Button menuBtn;
+
 	// Use this for initialization
 	void Start () {
 		scoreText.text = PlayerPrefs.GetInt ("points", 0) + "";
@@ -184,5 +189,14 @@ public class ShipyardController : MonoBehaviour {
 			return true;
 
 		return false;
+	}
+
+	public void Popup(string msg, bool show){
+		popupText.text = msg;
+		shipyardPopup.SetActive (show);
+	}
+
+	public void MenuBtn(bool show){
+		menuBtn.enabled = show;
 	}
 }

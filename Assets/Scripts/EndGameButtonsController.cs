@@ -11,7 +11,6 @@ public class EndGameButtonsController : MonoBehaviour {
 		options.resultCallback = RestartGame;
 
 		Advertisement.Show("video", options);
-
 	}
 
 	void RestartGame(ShowResult result){
