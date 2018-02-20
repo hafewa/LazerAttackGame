@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//get details
-		m_iOverallPlayerScore = PlayerPrefs.GetInt ("points", 0);
+		m_iOverallPlayerScore = PlayerPrefsManager.Get().TotalScore;
 		//Debug.Log ("stored score:" + m_iOverallPlayerScore);
 		m_iCurrentGameScore = 0;
 		m_uitScoreText.text = m_iCurrentGameScore + "";
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour {
 		m_iOverallPlayerScore += m_iCurrentGameScore;
 		m_uiEndScoreText.text = m_iCurrentGameScore + "";
 		m_iCurrentGameScore = 0;
-		PlayerPrefs.SetInt ("points", m_iOverallPlayerScore);
+		PlayerPrefsManager.Get ().AddScore (m_iCurrentGameScore);
 		m_eState = GAME_STATE.DEATH;
 		m_uitScoreText.enabled = false;
 		m_imgPoints.enabled = false;

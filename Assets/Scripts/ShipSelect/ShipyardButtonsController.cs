@@ -51,7 +51,7 @@ public class ShipyardButtonsController : MonoBehaviour {
 		if (result == ShowResult.Finished) {
 			//give some score
 			txt = "Congrats! You earned 100 points!";
-			PlayerPrefs.SetInt("points", PlayerPrefs.GetInt("points", 0) + 100);
+			PlayerPrefsManager.Get ().AddScore (100);
 		}else if(result == ShowResult.Skipped){
 			//no score for you
 			txt = "Watch the video without skipping if you want some points!";

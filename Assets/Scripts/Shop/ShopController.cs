@@ -49,7 +49,7 @@ public class ShopController : MonoBehaviour {
 	void Start () {
 		shopIndex = 0;
 		ChangeShopItem (shopIndex);
-		overallScoreText.text = PlayerPrefs.GetInt ("points", 0) + "";
+		overallScoreText.text = PlayerPrefsManager.Get().TotalScore + "";
 		buyEffectTimer = 0f;
 		shopState = SHOPSTATE.SHOPPING;
 		crateTimer = 0f;
@@ -83,7 +83,7 @@ public class ShopController : MonoBehaviour {
 				buyEffectTimer = 0f;
 
 				//simple, add on some score
-				overallScoreText.text = PlayerPrefs.GetInt ("points", 0) + "";
+				overallScoreText.text = PlayerPrefsManager.Get().TotalScore + "";
 				m_cRewardDescription.text += "\n " + effect;
 			}
 			break;
@@ -137,15 +137,13 @@ public class ShopController : MonoBehaviour {
 
 	public void BuyShopItem(){
 		ShopItem si = shopItems [shopIndex];
-		int points = PlayerPrefs.GetInt ("points", 0);
+		int points = PlayerPrefsManager.Get().TotalScore;
 
 		if (points < si.price)
 			return;
-		
-		points -= si.price;
 
-		PlayerPrefs.SetInt ("points", points);
-		overallScoreText.text = points + "";
+		PlayerPrefsManager.Get().AddScore(-si.price);
+		overallScoreText.text = PlayerPrefsManager.Get().TotalScore + "";
 		buyEffectTimer = 0f;
 		shopState = SHOPSTATE.OPENINGCRATE;
 		//disable canvas now

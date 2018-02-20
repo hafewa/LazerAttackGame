@@ -35,7 +35,7 @@ public class ShopButtonsController : MonoBehaviour {
 
 	public void BuyItem(){
 		ShopController.ShopItem si = ShopControllerObject.GetComponent<ShopController> ().GetCurrentShopItem ();
-		int totalScore = PlayerPrefs.GetInt ("points", 0);
+		int totalScore = PlayerPrefsManager.Get().TotalScore;
 
 		if (totalScore < si.price)
 			return;//only return for now, figure out a 'you are too poo' popup

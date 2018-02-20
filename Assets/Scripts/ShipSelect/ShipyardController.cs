@@ -41,12 +41,15 @@ public class ShipyardController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		scoreText.text = PlayerPrefs.GetInt ("points", 0) + "";
-		if (PlayerPrefs.GetString ("ShipName", "") == "")
-			PlayerPrefs.SetString ("ShipName", "SpaceShip1");
-		if (PlayerPrefs.GetString ("SpaceShip1:Unlocked", "") == "")
-			PlayerPrefs.SetString ("SpaceShip1:Unlocked", "true");
-		string shipname = PlayerPrefs.GetString ("ShipName");
+		currentPoints = PlayerPrefsManager.Get().TotalScore;
+		scoreText.text = currentPoints + "";
+
+		if (PlayerPrefsManager.Get().CurrentAssignedShip == "")
+			PlayerPrefsManager.Get().SetCurrentShip ("SpaceShip1");
+		if (PlayerPrefsManager.Get().IsShipLocked("SpaceShip1"))
+			PlayerPrefsManager.Get().UnlockShip("SpaceShip1");
+		
+		string shipname = PlayerPrefsManager.Get ().CurrentAssignedShip;
 		currShipIndex = -1;
 		//get currently selected ship
 		for (int i = 0; i < allShips.Length; i++) {
@@ -56,14 +59,14 @@ public class ShipyardController : MonoBehaviour {
 		}
 		if (currShipIndex < 0)
 			currShipIndex = 0;
-		currentPoints = PlayerPrefs.GetInt ("points", 0);
+		
 		UpdateShip ();
 	}
 
 	void Update(){
-		if (Input.GetKeyDown(KeyCode.L)) {
-			PlayerPrefs.SetInt ("SpaceShip1:PlayerLevel", 0);
-		}
+//		if (Input.GetKeyDown(KeyCode.L)) {
+//			PlayerPrefs.SetInt ("SpaceShip1:PlayerLevel", 0);
+//		}
 
 		if (currentShipObj) {
 			m_tDisplayPos.transform.RotateAround (m_tDisplayPos.transform.position, new Vector3 (0, 0, 1), 45f * Time.deltaTime);
@@ -80,7 +83,7 @@ public class ShipyardController : MonoBehaviour {
 		currentShipObj.transform.rotation = Quaternion.Euler (new Vector3(allShips [currShipIndex].appliedRotation.x, allShips [currShipIndex].appliedRotation.y, z));
 		currentShipObj.transform.localScale = allShips [currShipIndex].appliedScale;
 
-		currentLevel = PlayerPrefs.GetInt (allShips [currShipIndex].name + ":PlayerLevel", 0);
+		currentLevel = PlayerPrefsManager.Get().GetShipLevel(allShips[currShipIndex].name);
 		shipLevelText.text = currentLevel + 1 + "";
 		scoreText.text = currentPoints + "";
 
@@ -93,7 +96,7 @@ public class ShipyardController : MonoBehaviour {
 		UpgradeBtnText.text = "UPGRADE\n" + xpRequired;
 		UnlockBtnText.text = "UNLOCK\n" + allShips [currShipIndex].unlockPrice;
 		//buy this ship button
-		if (PlayerPrefs.GetString (allShips [currShipIndex].name + ":Unlocked", "") == "") {
+		if (PlayerPrefsManager.Get().IsShipLocked(allShips[currShipIndex].name)) {
 			//show 'unlock' button, they are yet to buy it
 			unlockBtn.gameObject.SetActive(true);
 			setActiveBtn.gameObject.SetActive(false);
@@ -113,7 +116,7 @@ public class ShipyardController : MonoBehaviour {
 			}
 
 			//set to active ship button
-			if (PlayerPrefs.GetString ("ShipName", "") == allShips [currShipIndex].name) {
+			if (PlayerPrefsManager.Get().CurrentAssignedShip == allShips [currShipIndex].name) {
 				//hide/deactivate 'choose' button
 				setActiveBtn.gameObject.SetActive(false);
 			} else {
@@ -141,23 +144,23 @@ public class ShipyardController : MonoBehaviour {
 
 	public void SetAsActiveShip(){
 		//set current ship to active ship
-		PlayerPrefs.SetString("ShipName", allShips[currShipIndex].name);
+		PlayerPrefsManager.Get().SetCurrentShip(allShips[currShipIndex].name);
 		UpdateShip ();
 	}
 
 	public void LevelUpShip(AudioClip success, AudioClip fail){
-		int currShipLevel = PlayerPrefs.GetInt (allShips[currShipIndex].name + ":PlayerLevel", 0);
+		int currShipLevel = PlayerPrefsManager.Get().GetShipLevel(allShips[currShipIndex].name);
 		int nextLvl = currShipLevel + 1;
 
 		int xpRequired = Mathf.FloorToInt((nextLvl * nextLvl) / (allShips[currShipIndex].constant*allShips[currShipIndex].constant) - 
 			(currShipLevel * currShipLevel) / (allShips[currShipIndex].constant*allShips[currShipIndex].constant));
 		
-		currentPoints = PlayerPrefs.GetInt ("points", 0);
+		currentPoints = PlayerPrefsManager.Get().TotalScore;
 		if (currentPoints > xpRequired) {
-			PlayerPrefs.SetInt ("points", PlayerPrefs.GetInt ("points", 0) - xpRequired);
-			currentPoints = PlayerPrefs.GetInt ("points", 0);
+			PlayerPrefsManager.Get ().AddScore (-xpRequired);
+			currentPoints = PlayerPrefsManager.Get().TotalScore;
 			//do upgrade to ship
-			PlayerPrefs.SetInt (allShips [currShipIndex].name + ":PlayerLevel", nextLvl);
+			PlayerPrefsManager.Get().IncrementShipLevel(allShips[currShipIndex].name);
 			AudioManager.Get ().PlaySoundEffect (success);
 			UpdateShip ();
 		} else {
@@ -167,8 +170,8 @@ public class ShipyardController : MonoBehaviour {
 
 	public void UnlockShip(AudioClip success, AudioClip fail){
 		if (currentPoints > allShips [currShipIndex].unlockPrice) {
-			PlayerPrefs.SetString (allShips [currShipIndex].name + ":Unlocked", "true");
-			PlayerPrefs.SetInt ("points", currentPoints - allShips [currShipIndex].unlockPrice);
+			PlayerPrefsManager.Get ().UnlockShip (allShips [currShipIndex].name);
+			PlayerPrefsManager.Get ().AddScore (-allShips [currShipIndex].unlockPrice);
 			AudioManager.Get ().PlaySoundEffect (success);
 			UpdateShip ();
 		} else {
@@ -179,13 +182,13 @@ public class ShipyardController : MonoBehaviour {
 	public bool CanAffordUpgrade(){
 		Ship ship = allShips [currShipIndex];
 
-		int currShipLevel = PlayerPrefs.GetInt (ship.name + ":PlayerLevel", 0);
+		int currShipLevel = PlayerPrefsManager.Get().GetShipLevel(ship.name);
 		int nextLvl = currShipLevel + 1;
 
 		int xpDiff = Mathf.FloorToInt((nextLvl * nextLvl) / (constant*constant) - (currShipLevel * currShipLevel) / (constant*constant));
 
 		//get real cost of next level up
-		if (PlayerPrefs.GetInt ("points", 0) > xpDiff)
+		if (PlayerPrefsManager.Get().TotalScore > xpDiff)
 			return true;
 
 		return false;
@@ -194,6 +197,7 @@ public class ShipyardController : MonoBehaviour {
 	public void Popup(string msg, bool show){
 		popupText.text = msg;
 		shipyardPopup.SetActive (show);
+		scoreText.text = PlayerPrefsManager.Get ().TotalScore + "";
 	}
 
 	public void MenuBtn(bool show){

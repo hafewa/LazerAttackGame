@@ -8,8 +8,8 @@ public class MainMenuController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//make sure the very first ship is unlocked by default
-		if(PlayerPrefs.GetString ("SpaceShip1:Unlocked", "") == "")
-			PlayerPrefs.SetString ("SpaceShip1:Unlocked", "true");
+		if(PlayerPrefsManager.Get().IsShipLocked ("SpaceShip1"))
+			PlayerPrefsManager.Get().UnlockShip ("SpaceShip1");
 	}
 	
 	// Update is called once per frame

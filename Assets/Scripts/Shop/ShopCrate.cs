@@ -81,7 +81,7 @@ public class ShopCrate : MonoBehaviour {
 
 	public string ExecuteRewardFunc(Reward reward){
 		if (reward.type == REWARD_TYPE.POINTS) {
-			PlayerPrefs.SetInt ("points", PlayerPrefs.GetInt ("points", 0) + reward.tradeablePointsValue);
+			PlayerPrefs.SetInt ("points", PlayerPrefsManager.Get().TotalScore + reward.tradeablePointsValue);
 			return "\nYou got " + reward.tradeablePointsValue + " points";
 		} else if (reward.type == REWARD_TYPE.BUDDY) {
 			string buddysPrefsValue = PlayerPrefs.GetString ("buddys", "");

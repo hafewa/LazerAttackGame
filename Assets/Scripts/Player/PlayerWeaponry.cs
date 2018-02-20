@@ -27,8 +27,8 @@ public class PlayerWeaponry : MonoBehaviour {
 		m_fBulletDelay = 0.3f;
 		powerUp = 0;
 		fireAmount = 1;
-		shipName = PlayerPrefs.GetString ("ShipName", "SpaceShip1");
-		playerLevel = PlayerPrefs.GetInt (shipName + ":PlayerLevel", 0);
+		shipName = PlayerPrefsManager.Get ().CurrentAssignedShip;
+		playerLevel = PlayerPrefsManager.Get ().GetShipLevel (shipName);
 		GetInitialWeapon();
 
 		//hide all other ship models attached to gameobject
@@ -87,7 +87,7 @@ public class PlayerWeaponry : MonoBehaviour {
 			weapon = weaponry [0].obj;
 			fireAmount = 1;
 			playerLevel = 0;
-			PlayerPrefs.SetInt (shipName + ":PlayerLevel", playerLevel);
+			PlayerPrefsManager.Get ().ResetShipLevel (shipName);
 		}
 
 		for (int i = 0; i < weaponry.Length; i++) {
