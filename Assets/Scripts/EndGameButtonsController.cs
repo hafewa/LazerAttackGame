@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Advertisements;
 
 public class EndGameButtonsController : MonoBehaviour {
+	public AudioClip clip;
+
 	//reload current scene
 	public void Restart(){
 		ShowOptions options = new ShowOptions();
 		options.resultCallback = RestartGame;
 
+		AudioManager.Get ().PlaySoundEffect (clip);
 		Advertisement.Show("video", options);
 	}
 
@@ -19,6 +22,7 @@ public class EndGameButtonsController : MonoBehaviour {
 
 	//go to main menu
 	public void Menu(){
+		AudioManager.Get ().PlaySoundEffect (clip);
 		SceneManager.LoadScene (0);
 	}
 }

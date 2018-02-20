@@ -13,6 +13,8 @@ public class BasicEnemy : MonoBehaviour {
 	public GameObject buffParticles;
 	public AudioClip deathSound;
 
+	public float speed = 5f;
+
 	// Use this for initialization
 	void Start () {
 		targetZ = -11f;
@@ -23,7 +25,9 @@ public class BasicEnemy : MonoBehaviour {
 		if (transform.position.z < -10f) {
 			Destroy (this.gameObject);
 		}
-		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, targetZ), 7f * Time.deltaTime);
+
+		//move towards player
+		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, targetZ), speed * Time.deltaTime);
 	}
 
 	public float GetHealth(){
@@ -69,5 +73,9 @@ public class BasicEnemy : MonoBehaviour {
 
 	public void IncreaseBaseHealth(float increase){
 		m_fHealth += increase;
+	}
+
+	public void IncreaseSpeed(float increase){
+		speed += increase;
 	}
 }
