@@ -20,7 +20,7 @@ public class SprintBoss : BasicBoss
 
 	// Use this for initialization
 	protected override void Start () {
-		playerZ = GameObject.FindGameObjectWithTag ("Player").transform.position.z;
+		playerZ = GameObject.FindGameObjectWithTag ("Player") ? GameObject.FindGameObjectWithTag("Player").transform.position.z : 0f;
 
 		if (sprintDelay <= 0)
 			sprintDelay = Random.Range(1.5f, 4f);

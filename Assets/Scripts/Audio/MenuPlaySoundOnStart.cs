@@ -7,6 +7,6 @@ public class MenuPlaySoundOnStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		AudioManager.Get ().PlayMusicLoop (clip);
+		//AudioManager.Get ().PlayMusicLoop (clip);
 	}
 }

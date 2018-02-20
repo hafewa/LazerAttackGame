@@ -77,7 +77,6 @@ public class GameManager : MonoBehaviour {
 		m_imgPoints.enabled = false;
 		//show menu
 		m_goEndGameContainer.SetActive(true);
-		Advertisement.Show ("video");
 		AudioManager.Get ().PlayMusicLoop (gameOverMusic);
 		//SceneManager.LoadScene (0);
 	}

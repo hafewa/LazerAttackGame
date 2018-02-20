@@ -20,6 +20,7 @@ public class BasicBoss : MonoBehaviour {
 
 	public AudioClip deathSound;
 	public AudioClip entranceSound;
+	public int entranceSoundTimes;
 	public AudioClip missileSound;
 
 	public GameObject deathParticles;
@@ -34,6 +35,10 @@ public class BasicBoss : MonoBehaviour {
 
 	// Use this for initialization
 	protected virtual void Start () {
+		if (GameObject.Find ("Player") == null) {
+			Destroy (this.gameObject);
+		}
+
 		m_fHealthBoost = 0f;
 		m_eState = BOSS_STATE.SETUP;
 
@@ -47,8 +52,8 @@ public class BasicBoss : MonoBehaviour {
 			targetX = 3.1f;
 
 		SetStartHealth ();
-
-		AudioManager.Get().PlaySoundEffect (entranceSound);
+		Debug.Log (entranceSound);
+		AudioManager.Get().PlaySoundEffect (entranceSound, 0.75f, entranceSoundTimes);
 	}
 
 	public void SetStartHealth(){
@@ -58,7 +63,8 @@ public class BasicBoss : MonoBehaviour {
 	}
 
 	public void UpdateHealth(){
-		m_goHealthSprite.transform.localScale = new Vector3 (m_fHealth / m_fStartHealth * 100, m_goHealthSprite.transform.localScale.y, m_goHealthSprite.transform.localScale.z);
+		if(m_goHealthSprite)
+			m_goHealthSprite.transform.localScale = new Vector3 (m_fHealth / m_fStartHealth * 100, m_goHealthSprite.transform.localScale.y, m_goHealthSprite.transform.localScale.z);
 	}
 	
 	// Update is called once per frame

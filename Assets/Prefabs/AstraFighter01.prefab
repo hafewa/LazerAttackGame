@@ -317,6 +317,7 @@ MonoBehaviour:
   realCamera: {fileID: 0}
   deathSound: {fileID: 8300000, guid: 523ebf68884d98049942c0866eb29b2c, type: 3}
   entranceSound: {fileID: 8300000, guid: 2b683f4620fb54345a21340ae3153cb4, type: 3}
+  entranceSoundTimes: 1
   missileSound: {fileID: 8300000, guid: f1364d48e48ea4fdab44868cc9b2a10e, type: 3}
   deathParticles: {fileID: 100006, guid: 2e7e92bc7175b744ea40878dedfa79e4, type: 2}
   children:
