@@ -47,6 +47,7 @@ public class SideToSideBoss : BasicBoss {
 	}
 
 	protected override void SortDifficulty(int wavesDefeated){
+		Debug.Log ("side2side Boss Health starts at: " + m_fHealth);
 		int timesDefeated = WaveSpawner.Get ().BossDefeatedCount (this.gameObject.name);
 		if (timesDefeated > 4) {
 			SetDifficulty (DIFFICULTY.EXPERT);
@@ -68,5 +69,6 @@ public class SideToSideBoss : BasicBoss {
 			SetDifficulty (DIFFICULTY.BASE);
 			moveSpeed = 3f;
 		}
+		Debug.Log ("side2side Boss Health now at: " + m_fHealth);
 	}
 }

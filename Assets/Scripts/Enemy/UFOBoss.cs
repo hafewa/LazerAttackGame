@@ -19,6 +19,7 @@ public class UFOBoss : BasicBoss {
 	private float oldBulletDelay;
 
 	private float min, max;
+	private float specialMin, specialMax;
 
 	// Use this for initialization
 	protected override void Start () {
@@ -35,7 +36,8 @@ public class UFOBoss : BasicBoss {
 		if(GameObject.FindGameObjectWithTag ("Player"))
 			m_tPlayer = GameObject.FindGameObjectWithTag ("Player").transform;
 		
-		GetMinMaxShootRange (out min, out max);
+		GetMinMaxShootRange (out min, out max, false);
+		GetMinMaxShootRange (out specialMin, out specialMax, true);
 	}
 	
 	// Update is called once per frame
@@ -67,7 +69,7 @@ public class UFOBoss : BasicBoss {
 
 				if (bulletTimer > bulletDelay) {
 					
-					ShootNearPlayer (min, max, m_tPlayer);
+					ShootNearPlayer (specialMin, specialMax, m_tPlayer);
 					bulletTimer = 0f;
 				}
 
@@ -90,33 +92,40 @@ public class UFOBoss : BasicBoss {
 		base.Update();
 	}
 
-	private void GetMinMaxShootRange(out float min, out float max){
+	private void GetMinMaxShootRange(out float min, out float max, bool isSpecialMove){
 		switch (GetDifficulty ()) {
 		case DIFFICULTY.EASY:
-			min = -20f;
-			max = 20f;
-			break;
-		case DIFFICULTY.MEDIUM:
 			min = -12f;
 			max = 12f;
 			break;
+		case DIFFICULTY.MEDIUM:
+			min = -7f;
+			max = 7f;
+			break;
 		case DIFFICULTY.DIFFICULT:
-			min = -5f;
-			max = 5f;
+			min = 4f;
+			max = 4f;
 			break;
 		case DIFFICULTY.EXPERT:
-			min = -1f;
-			max = 1f;
+			min = -0f;
+			max = 0f;
 			break;
 		case DIFFICULTY.BASE:
 		default:
-			min = -25f;
-			max = 25f;
+			min = -15f;
+			max = 15f;
 			break;
+		}
+
+		//the special move needs to be slightly less accurate
+		if (isSpecialMove) {
+			max *= 1.25f;
+			min *= 1.25f;
 		}
 	}
 
 	protected override void SortDifficulty(int wavesDefeated){
+		Debug.Log ("UFO Boss Health starts at: " + m_fHealth);
 		int timesDefeated = WaveSpawner.Get ().BossDefeatedCount (this.gameObject.name);
 		if (timesDefeated > 4) {
 			SetDifficulty (DIFFICULTY.EXPERT);
@@ -133,5 +142,6 @@ public class UFOBoss : BasicBoss {
 		} else {
 			SetDifficulty (DIFFICULTY.BASE);
 		}
+		Debug.Log ("UFO Boss Health now at: " + m_fHealth);
 	}
 }
