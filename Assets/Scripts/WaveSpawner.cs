@@ -251,28 +251,5 @@ public class WaveSpawner : MonoBehaviour {
 		
 		Transform _sp = spawnPoints[ Random.Range (0, spawnPoints.Length) ];
 		var enemy = Instantiate(_enemy, new Vector3(_sp.position.x + spacing, 0f, _sp.position.z), _enemy.rotation);
-
-		if (!GetIsBossWave () && (wavesDefeated > 3)) {
-			//calculate chances of enemy getting being buffed
-			if (wavesDefeated < 10) {
-				if (Random.Range (0, 100) > wavesDefeated * 10)
-					return;
-			} else {
-				//if they're past wave 10 then it's always 90%
-				if (Random.Range (0, 100) < 10)
-					return;
-			}
-
-			enemy.GetComponent<BasicEnemy> ().canBuff = true;
-
-			enemy.GetComponent<BasicEnemy> ().DoBuff ((3*0.1f) + (m_goPlayer.GetComponent<PlayerWeaponry>().GetPlayerLevel() * 0.5f));
-
-			//means they've defeated every boss + every basic wave at least once
-			if (wavesDefeated > waves.Length/2)
-			{
-				enemy.GetComponent<BasicEnemy> ().IncreaseBaseHealth (wavesDefeated/10f);
-			}
-		}
 	}
-
 }

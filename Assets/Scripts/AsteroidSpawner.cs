@@ -73,7 +73,7 @@ public class AsteroidSpawner : MonoBehaviour {
 		spawnStartTimer = m_fTimer = 0f;
 		clusterAmount = Random.Range (3, clusterMax);
 		m_enState = SPAWNERSTATE.SPAWN_INDIVIDUALS;
-		m_fSpawnBetweenDelay = Random.Range (1f, 3f);
+		m_fSpawnBetweenDelay = Random.Range (2.5f, 4.5f);
 		spawnStartDelay = Random.Range (1f, 3.2f);
 	}
 
@@ -85,8 +85,8 @@ public class AsteroidSpawner : MonoBehaviour {
 			clusterAmount = clusterMax;
 		
 		m_enState = SPAWNERSTATE.SPAWN_CLUSTER;
-		m_fSpawnBetweenDelay = Random.Range (0.5f, 1f);
-		spawnStartDelay = Random.Range (0, 3f);
+		m_fSpawnBetweenDelay = Random.Range (1f, 1.5f);
+		spawnStartDelay = Random.Range (0, 5f);
 	}
 
 	public void StopSpawning(){

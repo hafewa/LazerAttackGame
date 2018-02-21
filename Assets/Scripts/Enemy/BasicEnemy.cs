@@ -15,9 +15,68 @@ public class BasicEnemy : MonoBehaviour {
 
 	public float speed = 5f;
 
+	public enum DIFFICULTY{
+		BASE = 0,
+		EASY,
+		MEDIUM,
+		DIFFICULT,
+		EXPERT,
+		MENTAL
+	}
+	private DIFFICULTY m_eDifficulty = DIFFICULTY.BASE;
+
 	// Use this for initialization
 	void Start () {
 		targetZ = -11f;
+		m_eDifficulty = DIFFICULTY.BASE;
+
+		SortDifficulty ();
+	}
+
+	private void SortDifficulty(){
+		int wavesDefeated = WaveSpawner.Get ().wavesDefeated;
+
+		//chance of buff being applied
+		int buffChance = 0;
+		if (wavesDefeated > 20) {
+			m_eDifficulty = DIFFICULTY.MENTAL;
+			m_fHealth *= 3f;
+			buffChance = 100;
+			speed = 6f;
+		} else if (wavesDefeated > 14) {
+			m_eDifficulty = DIFFICULTY.EXPERT;
+			m_fHealth *= 2f;
+			buffChance = 90;
+			speed = 5.8f;
+		} else if (wavesDefeated > 8) {
+			m_eDifficulty = DIFFICULTY.DIFFICULT;
+			m_fHealth *= 1.75f;
+			buffChance = 80;
+			speed = 5.6f;
+		} else if (wavesDefeated > 4) {
+			m_eDifficulty = DIFFICULTY.MEDIUM;
+			m_fHealth *= 1.5f;
+			buffChance = 70;
+			speed = 5.4f;
+		} else if (wavesDefeated > 2) {
+			m_eDifficulty = DIFFICULTY.EASY;
+			m_fHealth *= 1.1f;
+			buffChance = 50;
+			speed = 5.2f;
+		} else {
+			m_eDifficulty = DIFFICULTY.BASE;
+			canBuff = false;
+			speed = 5f;
+		}
+
+		//do buff if a random seed is less than buff chance
+		if (m_eDifficulty != DIFFICULTY.BASE) {
+			canBuff = buffChance > 0;
+			if (Random.Range (0, 100) <= buffChance)
+				DoBuff ();
+
+			IncreaseBaseHealth (wavesDefeated/10f);
+		}
 	}
 	
 	// Update is called once per frame
@@ -62,7 +121,7 @@ public class BasicEnemy : MonoBehaviour {
 		//health bar starts at 100 scale
 	}
 
-	public void DoBuff(float increase){
+	public void DoBuff(){
 		if (!canBuff)
 			return;
 

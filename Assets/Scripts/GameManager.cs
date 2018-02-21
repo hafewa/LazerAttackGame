@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour {
 	private int m_iOverallPlayerScore;
 
 	public Text m_uitScoreText;
-	public Image m_imgPoints;
 	public GameObject m_goEndGameContainer;
 	public Text m_uiEndScoreText;
 
@@ -35,7 +34,6 @@ public class GameManager : MonoBehaviour {
 		//Physics.gravity = new Vector3 (0, 0, -200f);
 		m_eState = GAME_STATE.PLAYING;
 		m_uitScoreText.enabled = true;
-		m_imgPoints.enabled = true;
 
 		//show menu
 		m_goEndGameContainer.SetActive(false);
@@ -68,17 +66,15 @@ public class GameManager : MonoBehaviour {
 
 	public void PlayerDead(){
 		//end the game
-		m_iOverallPlayerScore += m_iCurrentGameScore;
 		m_uiEndScoreText.text = m_iCurrentGameScore + "";
-		m_iCurrentGameScore = 0;
 		PlayerPrefsManager.Get ().AddScore (m_iCurrentGameScore);
+		m_iCurrentGameScore = 0;
 		m_eState = GAME_STATE.DEATH;
 		m_uitScoreText.enabled = false;
-		m_imgPoints.enabled = false;
+
 		//show menu
 		m_goEndGameContainer.SetActive(true);
 		AudioManager.Get ().PlayMusicLoop (gameOverMusic);
-		//SceneManager.LoadScene (0);
 	}
 
 	public void AddGameScore(int s){
