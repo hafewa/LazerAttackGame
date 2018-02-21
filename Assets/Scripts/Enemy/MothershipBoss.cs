@@ -118,18 +118,18 @@ public class MothershipBoss : BasicBoss {
 		int timesDefeated = WaveSpawner.Get ().BossDefeatedCount (this.gameObject.name);
 		if (timesDefeated > 4) {
 			SetDifficulty (DIFFICULTY.EXPERT);
-			m_fHealth *= 2.5f;
+			m_fHealth *=(3.5f + (wavesDefeated/10));
 			moveSpeed = 5.5f;
 		} else if (timesDefeated > 3) {
 			SetDifficulty (DIFFICULTY.DIFFICULT);
 			moveSpeed = 5f;
-			m_fHealth *= 2f;
+			m_fHealth *= (3.5f + (wavesDefeated/10));
 		} else if (timesDefeated > 2) {
-			m_fHealth *= 1.5f;
+			m_fHealth *= (1.75f + (wavesDefeated/10));
 			SetDifficulty (DIFFICULTY.MEDIUM);
 			moveSpeed = 4.5f;
 		} else if (timesDefeated >= 1) {
-			m_fHealth *= 1.1f;
+			m_fHealth *= (1.75f + (wavesDefeated/10));
 			SetDifficulty (DIFFICULTY.EASY);
 			moveSpeed = 4f;
 		} else {

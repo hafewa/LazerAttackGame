@@ -129,15 +129,15 @@ public class UFOBoss : BasicBoss {
 		int timesDefeated = WaveSpawner.Get ().BossDefeatedCount (this.gameObject.name);
 		if (timesDefeated > 4) {
 			SetDifficulty (DIFFICULTY.EXPERT);
-			m_fHealth *= 2.5f;
+			m_fHealth *= (3.5f + (wavesDefeated/10));
 		} else if (timesDefeated > 3) {
 			SetDifficulty (DIFFICULTY.DIFFICULT);
-			m_fHealth *= 2f;
+			m_fHealth *= (3.5f + (wavesDefeated/10));
 		} else if (timesDefeated > 2) {
-			m_fHealth *= 1.5f;
+			m_fHealth *= (1.75f + (wavesDefeated/10));
 			SetDifficulty (DIFFICULTY.MEDIUM);
 		} else if (timesDefeated >= 1) {
-			m_fHealth *= 1.1f;
+			m_fHealth *= (1.5f + (wavesDefeated/10));
 			SetDifficulty (DIFFICULTY.EASY);
 		} else {
 			SetDifficulty (DIFFICULTY.BASE);
