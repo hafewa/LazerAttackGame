@@ -18,7 +18,7 @@ public class GravityWithSpeed : MonoBehaviour {
 		if (transform.position.z < -10f)
 			Destroy (this.gameObject);
 
-		transform.position += ((Physics.gravity) * Time.deltaTime);
+		transform.position += ((Physics.gravity*0.8f) * Time.deltaTime);
 
 		if (canRotate)
 			transform.RotateAround (transform.position, new Vector3 (-1, 0, 1), rotSpeed * Time.deltaTime);

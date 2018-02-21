@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour {
 	//make this a singleton
@@ -40,6 +41,7 @@ public class WaveSpawner : MonoBehaviour {
 		get { return nextWave + 1; }
 	}
 
+	public Image asteroidImg;
 	public Transform[] spawnPoints;
 
 	public float timeBetweenWaves = 5f;
@@ -194,17 +196,20 @@ public class WaveSpawner : MonoBehaviour {
 		} else {
 			m_bBossWave = false;
 			//sort asteroids
+			//no asteroids before wave 2
 			//while wave 6 or below, 40% chance of asteroids spawning during wave
-			if (wavesDefeated <= 6 && Random.Range(0, 10) > 6)
-				this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningIndividuals ();
-			else if(Random.Range(0, 10) > 4){
-				//60% chance of asteroids on waves over 6
-				
-				//30% chance of asteroid clusters
-				if (Random.Range (0, 10) > 7)
-					this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningCluster (4, 8);
-				else if (Random.Range (0, 10) > 5)//if not spawning cluster, 50% chance of spawning individuals
+			if (wavesDefeated > 2) {
+				if (wavesDefeated <= 6 && Random.Range (0, 10) > 6)
 					this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningIndividuals ();
+				else if (Random.Range (0, 10) > 4) {
+					//60% chance of asteroids on waves over 6
+				
+					//30% chance of asteroid clusters
+					if (Random.Range (0, 10) > 7)
+						this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningCluster (4, 8);
+					else if (Random.Range (0, 10) > 5)//if not spawning cluster, 50% chance of spawning individuals
+					this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningIndividuals ();
+				}
 			}
 		}
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour {
 	public List<GameObject> asteroids;
+	public Transform asteroidSpawnPoint;
 
 	public enum SPAWNERSTATE
 	{
@@ -39,8 +40,8 @@ public class AsteroidSpawner : MonoBehaviour {
 		case SPAWNERSTATE.SPAWN_INDIVIDUALS:
 		case SPAWNERSTATE.SPAWN_CLUSTER:
 			if (SpawnCheck ()) {
-				Vector3 randomPos = new Vector3(Random.Range (-2f, 2f), 0f, this.gameObject.GetComponent<WaveSpawner>().spawnPoints[0].position.z);
-				var a = Instantiate (asteroids [Random.Range (0, asteroids.Count - 1)], randomPos, Quaternion.Euler(new Vector3(180f, 0, 0)));
+				Vector3 randomPos = new Vector3(Random.Range (-2f, 2f), 0f, asteroidSpawnPoint.position.z);
+				var a = Instantiate (asteroids [Random.Range (0, asteroids.Count - 1)], randomPos, Quaternion.Euler(new Vector3(0, 0, 0)));
 				a.transform.localScale = new Vector3 (40, 40, 40);
 				asteroidsSpawnedThisTime++;
 			}else

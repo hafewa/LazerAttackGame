@@ -60,7 +60,7 @@ public class SideToSideBoss : BasicBoss {
 			m_fHealth *= 1.5f;
 			SetDifficulty (DIFFICULTY.MEDIUM);
 			moveSpeed = 4.5f;
-		} else if (timesDefeated > 1) {
+		} else if (timesDefeated >= 1) {
 			m_fHealth *= 1.1f;
 			SetDifficulty (DIFFICULTY.EASY);
 			moveSpeed = 4f;

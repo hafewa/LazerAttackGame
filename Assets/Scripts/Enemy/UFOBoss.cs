@@ -32,7 +32,9 @@ public class UFOBoss : BasicBoss {
 			spinForTime = 4.2f;
 
 		oldBulletDelay = bulletDelay;
-		m_tPlayer = GameObject.FindGameObjectWithTag ("Player").transform;
+		if(GameObject.FindGameObjectWithTag ("Player"))
+			m_tPlayer = GameObject.FindGameObjectWithTag ("Player").transform;
+		
 		GetMinMaxShootRange (out min, out max);
 	}
 	
@@ -125,7 +127,7 @@ public class UFOBoss : BasicBoss {
 		} else if (timesDefeated > 2) {
 			m_fHealth *= 1.5f;
 			SetDifficulty (DIFFICULTY.MEDIUM);
-		} else if (timesDefeated > 1) {
+		} else if (timesDefeated >= 1) {
 			m_fHealth *= 1.1f;
 			SetDifficulty (DIFFICULTY.EASY);
 		} else {

@@ -60,7 +60,7 @@ public class SprintBoss : BasicBoss
 				if (transform.position.z <= playerZ)//reverse now if sprint finished
 					m_chldState = CHILD_STATE.REVERSING;
 				
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, playerZ), (moveSpeed * 3f) * Time.deltaTime);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, playerZ), (moveSpeed * 2f) * Time.deltaTime);
 			} else if (m_chldState == CHILD_STATE.REVERSING) {
 				if (transform.position.z >= reverseToZ) {//side2side once reverse is finished
 					transform.position = new Vector3(transform.position.x, transform.position.y, reverseToZ);
@@ -96,7 +96,7 @@ public class SprintBoss : BasicBoss
 			m_fHealth *= 1.5f;
 			SetDifficulty (DIFFICULTY.MEDIUM);
 			moveSpeed = 4.5f;
-		} else if (timesDefeated > 1) {
+		} else if (timesDefeated >= 1) {
 			m_fHealth *= 1.1f;
 			SetDifficulty (DIFFICULTY.EASY);
 			moveSpeed = 4.2f;

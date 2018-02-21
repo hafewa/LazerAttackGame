@@ -414,6 +414,9 @@ MonoBehaviour:
   spawnChildDelay: 0
   rightSpawnTarget: {fileID: 4020656206131924}
   leftSpawnTarget: {fileID: 4122709326611498}
+  centreSpawnTarget: {fileID: 4893049978407306}
+  leftSpawnTargetExpert: {fileID: 4361763539869102}
+  rightSpawnTargetExpert: {fileID: 4146322639416218}
 --- !u!135 &135893265389710148
 SphereCollider:
   m_ObjectHideFlags: 1
