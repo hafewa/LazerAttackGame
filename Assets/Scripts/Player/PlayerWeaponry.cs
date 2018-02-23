@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerWeaponry : MonoBehaviour {
 	public int playerLevel;
+	private int playerOrigLevel;
 	public int powerUp;
 	public Transform weaponFirePos;
 	private string shipName;
@@ -21,14 +22,18 @@ public class PlayerWeaponry : MonoBehaviour {
 	public Weapon[] weaponry;
 	private GameObject weapon;
 	public int fireAmount;
+
+	private float reduceWeaponryDelay = 15f;
+	private float reduceWeaponryTimer;
 	// Use this for initialization
 	void Start () {
 		m_fBulletTimer = 0f;
 		m_fBulletDelay = 0.3f;
 		powerUp = 0;
 		fireAmount = 1;
+		reduceWeaponryTimer = 0f;
 		shipName = PlayerPrefsManager.Get ().CurrentAssignedShip;
-		playerLevel = PlayerPrefsManager.Get ().GetShipLevel (shipName);
+		playerOrigLevel = playerLevel = PlayerPrefsManager.Get ().GetShipLevel (shipName);
 		GetInitialWeapon();
 
 		//hide all other ship models attached to gameobject
@@ -36,6 +41,8 @@ public class PlayerWeaponry : MonoBehaviour {
 			GameObject.Find ("SpaceShip1").SetActive (false);
 		if (shipName != "SpaceShip2")
 			GameObject.Find ("SpaceShip2").SetActive (false);
+		if (shipName != "MooMoo")
+			GameObject.Find ("MooMoo").SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -50,15 +57,31 @@ public class PlayerWeaponry : MonoBehaviour {
 			m_fBulletTimer = 0f;
 		}
 
+		if (powerUp > 0) {
+			Debug.Log (reduceWeaponryTimer);
+			if (reduceWeaponryTimer > reduceWeaponryDelay) {
+				ReduceWeaponBoost ();
+			}
+
+			reduceWeaponryTimer += Time.deltaTime;
+		}
+
 		m_fBulletTimer += Time.deltaTime;
 	}
 
 	public void WeaponBoostCollected(){
 		powerUp++;
+		reduceWeaponryTimer = 0f;
 		//powerup basically tracks how many rockets to fire each time, if the player collects three powerups, the level increase
 		//i.e. they get the next rocket, but it only spawns one
 		//each rockets damage should basically be 3x that of the previous rocket
 		GetCurrentWeapon();
+	}
+
+	public void ReduceWeaponBoost(){
+		powerUp--;
+		reduceWeaponryTimer = 0f;
+		GetCurrentWeapon ();
 	}
 
 	private void GetCurrentWeapon(){
@@ -69,15 +92,20 @@ public class PlayerWeaponry : MonoBehaviour {
 		for (int i = 0; i < weaponry.Length; i++) {
 			//player collects powerups ingame that boost player level, 1 powerup = 1 level
 			if (weaponry [i].levelReq == playerLevel + powerUp) {
-				weapon = weaponry[i].obj;
+				weapon = weaponry [i].obj;
 				//when the
 				fireAmount = 1;
 				return;
+			} else if (weaponry [i].levelReq + 1 == playerLevel + powerUp) {
+				weapon = weaponry [i].obj;
+				fireAmount = 2;
+				return;
+			} else if (weaponry [i].levelReq + 2 == playerLevel + powerUp) {
+				weapon = weaponry [i].obj;
+				fireAmount = 3;
+				return;
 			}
 		}
-
-		if (fireAmount < 3)
-			fireAmount++;
 	}
 
 	//only to be used in Start() to find what rocket + how many rockets, the player should start with

@@ -9,11 +9,14 @@ public class EndGameButtonsController : MonoBehaviour {
 
 	//reload current scene
 	public void Restart(){
-		ShowOptions options = new ShowOptions();
-		options.resultCallback = RestartGame;
+		//ShowOptions options = new ShowOptions();
+		//options.resultCallback = RestartGame;
 
 		AudioManager.Get ().PlaySoundEffect (clip);
-		Advertisement.Show("video", options);
+		//Advertisement.Show("video", options);
+
+		//if advert code is uncommented, comment this line out
+		RestartGame (ShowResult.Finished);
 	}
 
 	void RestartGame(ShowResult result){
