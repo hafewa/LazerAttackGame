@@ -32,6 +32,8 @@ public class WaveSpawner : MonoBehaviour {
 		public bool canIncreaseCount;
 	}
 
+	public float startSpawningTimer;
+	public float timeBeforeStart;
 	public bool m_bBossWave;
 	public Wave[] waves;
 	private int nextWave = 0;
@@ -74,6 +76,7 @@ public class WaveSpawner : MonoBehaviour {
 			Debug.LogError("No spawn points referenced.");
 		}
 
+		startSpawningTimer = 0f;
 		waveCountdown = timeBetweenWaves;
 		m_bBossWave = false;
 		//GameManager.Instance.SetGameState (GameManager.STATES.PLAYING);
@@ -119,6 +122,11 @@ public class WaveSpawner : MonoBehaviour {
 	{
 		if (!canSpawn)
 			return;
+
+		if (startSpawningTimer < timeBeforeStart) {
+			startSpawningTimer += Time.deltaTime;
+			return;
+		}
 		
 		if (state == SpawnState.WAITING)
 		{
