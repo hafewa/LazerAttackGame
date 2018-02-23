@@ -6,6 +6,7 @@ public class PlayerPrefsManager : MonoBehaviour {
 	private static PlayerPrefsManager instance;
 	public int TotalScore { get { return PlayerPrefs.GetInt ("points", 0); } }
 	public string CurrentAssignedShip { get { return PlayerPrefs.GetString ("ShipName", "SpaceShip1"); } }
+	private int GamesPlayed { get { return PlayerPrefs.GetInt ("GamesPlayed", 0); } }
 
 	void Awake(){
 		if (instance != null && instance != this) {
@@ -55,5 +56,13 @@ public class PlayerPrefsManager : MonoBehaviour {
 	//is the ship the person buying locked?
 	public bool IsShipLocked(string shipName){
 		return PlayerPrefs.GetString (shipName + ":Unlocked", "") == "";
+	}
+
+	public int GetGamesPlayed(){
+		return GamesPlayed;
+	}
+
+	public void IncGamesPlayed(){
+		PlayerPrefs.SetInt ("GamesPlayed", GamesPlayed + 1);
 	}
 }

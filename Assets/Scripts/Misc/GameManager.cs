@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour {
 			#endif
 		}
 
+		PlayerPrefsManager.Get ().IncGamesPlayed ();
+
 		AudioManager.Get ().PlayMusicLoop (gameMusic);
 	}
 	
