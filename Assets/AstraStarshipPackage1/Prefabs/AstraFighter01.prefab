@@ -8,13 +8,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 400000}
-  - component: {fileID: 114514723962416250}
-  - component: {fileID: 135863616677748568}
-  - component: {fileID: 114323391639265674}
-  - component: {fileID: 114224696406422990}
   m_Layer: 0
   m_Name: AstraFighter01
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.123, y: 0.61254674, z: 1.6764753}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
   m_Father: {fileID: 0}
@@ -113,71 +109,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
---- !u!114 &114224696406422990
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bbdd390b5f76b34ca6f7566f8b7475e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrapMetal: {fileID: 1811575377209660, guid: a6a6a6b83cc5dcc4e9ae570a37356e53, type: 2}
-  ores:
-  - {fileID: 1290958714291960, guid: 4c19c4e3aea59a242913417219197dd1, type: 2}
-  - {fileID: 1987437229821528, guid: 9053f8a60cd1e41418164d9d4a2bfac2, type: 2}
-  - {fileID: 1092562024604810, guid: a591fb7a0e041ca4184f4cdbc2fae141, type: 2}
-  - {fileID: 1019263206544978, guid: 4935b403526db8140b0995a86d82f548, type: 2}
-  powerUps: []
-  rareDropRate: 50
-  rareDropCount: 10
-  powerUpDropRate: 0
-  powerUpDropCount: 0
-  isBoss: 1
-  killed: 0
---- !u!114 &114323391639265674
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72de86f6c272d904182aadebf6e8bb48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114514723962416250
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0be01a26e24d6047a898b51de736261, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_fHealth: 100
-  targetX: 0
-  inGameChangedHealth: 0
-  setupFinishedZ: 3
-  bulletTimer: 0
-  bulletDelay: 5
-  m_goMissile: {fileID: 0}
-  realCamera: {fileID: 0}
-  children: []
-  spawnChildDelay: 0
---- !u!135 &135863616677748568
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0, z: 0}

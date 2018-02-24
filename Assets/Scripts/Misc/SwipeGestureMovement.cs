@@ -8,8 +8,8 @@ public class SwipeGestureMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (PlayerPrefsManager.Get ().GetGamesPlayed() >= 3)
-			Destroy (this.gameObject);
+//		if (PlayerPrefsManager.Get ().GetGamesPlayed() >= 3)
+//			Destroy (this.gameObject);
 	}
 	
 	// Update is called once per frame

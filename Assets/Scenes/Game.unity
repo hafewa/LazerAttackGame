@@ -1137,7 +1137,7 @@ MonoBehaviour:
   asteroidImg: {fileID: 0}
   spawnPoints:
   - {fileID: 1664454828}
-  timeBetweenWaves: 1
+  timeBetweenWaves: 3
   m_goPlayer: {fileID: 1867955262}
 --- !u!114 &1138692211
 MonoBehaviour:
