@@ -51,9 +51,7 @@ public class SprintBoss : BasicBoss
 				}
 
 				if (sprintTimer > sprintDelay) {
-					Debug.Log ("sprint timer complete");
 					if (transform.position.x > m_tPlayer.position.x - 0.5f && transform.position.x < m_tPlayer.position.x + 0.5f) {
-						Debug.Log ("sprint at player");
 						m_chldState = CHILD_STATE.SPRINTING;
 						sprintTimer = 0f;
 						sprintDelay = Random.Range (1.5f, 4f);

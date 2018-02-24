@@ -95,10 +95,8 @@ public class BasicEnemy : MonoBehaviour {
 	}
 
 	public void Hurt(float dmg){
-		if (transform.position.z > immuneZ) {
-			Debug.Log ("immune");
+		if (transform.position.z > immuneZ)
 			return;
-		}
 		
 		if (isBuffed && canBuff) {
 			if (healthBuffAmount > 0) {
