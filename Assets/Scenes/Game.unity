@@ -712,6 +712,25 @@ Camera:
   m_PrefabParentObject: {fileID: 20556044209906226, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
     type: 2}
   m_PrefabInternal: {fileID: 1311601888}
+--- !u!1 &734540589 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1349628988887430, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
+    type: 2}
+  m_PrefabInternal: {fileID: 1311601888}
+--- !u!114 &734540590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734540589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 4.23, y: -7.99}
+  m_UseGraphicAlpha: 1
 --- !u!1 &902241172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1062,83 @@ GameObject:
   m_PrefabParentObject: {fileID: 1431137490527644, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
     type: 2}
   m_PrefabInternal: {fileID: 1311601888}
+--- !u!114 &1138692208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1138692207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0619b2adf24dc2488dbf6b0ea8940db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canSpawn: 1
+  startSpawningTimer: 0
+  timeBeforeStart: 3.5
+  m_bBossWave: 0
+  waves:
+  - name: BasicWave
+    enemy:
+    - {fileID: 4501166616097360, guid: 025a48ebbf08bd549812418b55a4c915, type: 2}
+    - {fileID: 4844751467170352, guid: ce4fcb62868ea064b8a1ab7964d4a42a, type: 2}
+    - {fileID: 4068617453103018, guid: 90f447547db5bb0458cd299c3b147fad, type: 2}
+    count: 6
+    rate: 0.5
+    canIncreaseCount: 0
+  - name: BossWave
+    enemy:
+    - {fileID: 4056999689974612, guid: 2bbfae784745608418bda87ba6b03c17, type: 2}
+    count: 1
+    rate: 1
+    canIncreaseCount: 0
+  - name: BasicWave
+    enemy:
+    - {fileID: 4068617453103018, guid: 90f447547db5bb0458cd299c3b147fad, type: 2}
+    - {fileID: 4501166616097360, guid: 025a48ebbf08bd549812418b55a4c915, type: 2}
+    - {fileID: 4844751467170352, guid: ce4fcb62868ea064b8a1ab7964d4a42a, type: 2}
+    count: 8
+    rate: 0.6
+    canIncreaseCount: 0
+  - name: BossWave
+    enemy:
+    - {fileID: 4311418139572634, guid: 3fd965b60ad827c408bb90c10f194224, type: 2}
+    count: 1
+    rate: 1
+    canIncreaseCount: 0
+  - name: BasicWave
+    enemy:
+    - {fileID: 4068617453103018, guid: 90f447547db5bb0458cd299c3b147fad, type: 2}
+    - {fileID: 4844751467170352, guid: ce4fcb62868ea064b8a1ab7964d4a42a, type: 2}
+    count: 12
+    rate: 0.5
+    canIncreaseCount: 0
+  - name: BossWave
+    enemy:
+    - {fileID: 4260216689173080, guid: bc9131a39839e314aa8600b0b377c0e4, type: 2}
+    count: 1
+    rate: 1
+    canIncreaseCount: 0
+  - name: BasicWave
+    enemy:
+    - {fileID: 4501166616097360, guid: 025a48ebbf08bd549812418b55a4c915, type: 2}
+    - {fileID: 4844751467170352, guid: ce4fcb62868ea064b8a1ab7964d4a42a, type: 2}
+    - {fileID: 4068617453103018, guid: 90f447547db5bb0458cd299c3b147fad, type: 2}
+    count: 7
+    rate: 0.7
+    canIncreaseCount: 0
+  - name: BossWave
+    enemy:
+    - {fileID: 4426612969360846, guid: 9f68e1cbc20df6247a85c0e1f509ec16, type: 2}
+    count: 1
+    rate: 1
+    canIncreaseCount: 0
+  wavesDefeated: 0
+  asteroidImg: {fileID: 0}
+  spawnPoints:
+  - {fileID: 1664454828}
+  timeBetweenWaves: 1
+  m_goPlayer: {fileID: 1867955262}
 --- !u!114 &1138692211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,7 +1454,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1923414886873622, guid: 63439dadcdcca3a4db2a16c0bb8fe350, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 114099908357366328, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
         type: 2}
@@ -1510,6 +1606,15 @@ Prefab:
         type: 2}
       propertyPath: timeBeforeStart
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983794384601780, guid: 63439dadcdcca3a4db2a16c0bb8fe350, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 20556044209906226, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
+        type: 2}
+      propertyPath: m_ClearFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114595523999720114, guid: 63439dadcdcca3a4db2a16c0bb8fe350, type: 2}

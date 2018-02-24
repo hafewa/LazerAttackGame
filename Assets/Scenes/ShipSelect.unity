@@ -3297,6 +3297,19 @@ Prefab:
       propertyPath: rotSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1923414886873622, guid: 63439dadcdcca3a4db2a16c0bb8fe350, type: 2}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983794384601780, guid: 63439dadcdcca3a4db2a16c0bb8fe350, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 20556044209906226, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
+        type: 2}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114099908357366328, guid: 63439dadcdcca3a4db2a16c0bb8fe350, type: 2}
     - {fileID: 114595523999720114, guid: 63439dadcdcca3a4db2a16c0bb8fe350, type: 2}

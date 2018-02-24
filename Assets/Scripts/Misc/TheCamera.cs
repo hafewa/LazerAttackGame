@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class TheCamera : MonoBehaviour {
 	public float rotSpeed;
 	public Camera mainCamera;
-	public Camera skyCamera;
 	public GameObject nextSceneObj;
 	public int sceneNum;
 
@@ -35,8 +34,6 @@ public class TheCamera : MonoBehaviour {
 //		else if(SceneManager.GetActiveScene().name == "Game"){
 //
 //		}
-
-		skyCamera.transform.Rotate (0, rotSpeed * Time.deltaTime, 0, Space.World);
 	}
 
 	public void GoToScene(int x){
