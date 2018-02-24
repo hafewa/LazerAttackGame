@@ -16,10 +16,12 @@ public class SprintBoss : BasicBoss
 	private CHILD_STATE m_chldState;
 	private float sprintTimer;
 	public float sprintDelay;
+	private Transform m_tPlayer;
 
 	// Use this for initialization
 	protected override void Start () {
-		playerZ = GameObject.FindGameObjectWithTag ("Player") ? GameObject.FindGameObjectWithTag("Player").transform.position.z : 0f;
+		m_tPlayer = GameObject.Find("Player").transform;
+		playerZ = m_tPlayer.position.z;
 
 		if (sprintDelay <= 0)
 			sprintDelay = Random.Range(1.5f, 4f);
@@ -49,9 +51,13 @@ public class SprintBoss : BasicBoss
 				}
 
 				if (sprintTimer > sprintDelay) {
-					m_chldState = CHILD_STATE.SPRINTING;
-					sprintTimer = 0f;
-					sprintDelay = Random.Range (1.5f, 4f);
+					Debug.Log ("sprint timer complete");
+					if (transform.position.x > m_tPlayer.position.x - 0.5f && transform.position.x < m_tPlayer.position.x + 0.5f) {
+						Debug.Log ("sprint at player");
+						m_chldState = CHILD_STATE.SPRINTING;
+						sprintTimer = 0f;
+						sprintDelay = Random.Range (1.5f, 4f);
+					}
 				}
 
 				sprintTimer += Time.deltaTime;
@@ -60,7 +66,7 @@ public class SprintBoss : BasicBoss
 				if (transform.position.z <= playerZ)//reverse now if sprint finished
 					m_chldState = CHILD_STATE.REVERSING;
 				
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, playerZ), (moveSpeed * 2f) * Time.deltaTime);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, transform.position.y, playerZ), (moveSpeed * 2.25f) * Time.deltaTime);
 			} else if (m_chldState == CHILD_STATE.REVERSING) {
 				if (transform.position.z >= reverseToZ) {//side2side once reverse is finished
 					transform.position = new Vector3(transform.position.x, transform.position.y, reverseToZ);

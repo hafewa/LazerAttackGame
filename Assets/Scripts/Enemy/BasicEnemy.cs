@@ -14,6 +14,7 @@ public class BasicEnemy : MonoBehaviour {
 	public AudioClip deathSound;
 
 	public float speed = 5f;
+	private float immuneZ = 6f;
 
 	public enum DIFFICULTY{
 		BASE = 0,
@@ -94,6 +95,11 @@ public class BasicEnemy : MonoBehaviour {
 	}
 
 	public void Hurt(float dmg){
+		if (transform.position.z > immuneZ) {
+			Debug.Log ("immune");
+			return;
+		}
+		
 		if (isBuffed && canBuff) {
 			if (healthBuffAmount > 0) {
 				healthBuffAmount -= dmg;

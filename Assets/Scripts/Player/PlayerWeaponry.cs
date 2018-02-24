@@ -61,7 +61,6 @@ public class PlayerWeaponry : MonoBehaviour {
 		}
 
 		if (powerUp > 0) {
-			Debug.Log (reduceWeaponryTimer);
 			if (reduceWeaponryTimer > reduceWeaponryDelay) {
 				ReduceWeaponBoost ();
 			}
