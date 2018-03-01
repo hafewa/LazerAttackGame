@@ -138,11 +138,11 @@ public class BasicBoss : MonoBehaviour {
 		}
 	}
 
-	public void Shoot()
+	public void Shoot(GameObject rocket = null)
 	{
 		var ang = 120f;
 		while (ang <= 210f) {
-			var m = Instantiate (m_goMissile, transform.position, new Quaternion(0,0,0,1));
+			var m = Instantiate (rocket == null ? m_goMissile : rocket, transform.position, new Quaternion(0,0,0,1));
 			m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
 			m.transform.position += m.transform.forward * 0.2f;
 			ang += 30f;

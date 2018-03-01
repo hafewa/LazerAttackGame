@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
 	public Text m_uitScoreText;
 	public GameObject m_goEndGameContainer;
 	public Text m_uiEndScoreText;
+	public GameObject highScoreGo;
 
 	public AudioClip gameMusic;
 	public AudioClip gameOverMusic;
@@ -70,6 +71,8 @@ public class GameManager : MonoBehaviour {
 		//end the game
 		m_uiEndScoreText.text = m_iCurrentGameScore + "";
 		PlayerPrefsManager.Get ().AddScore (m_iCurrentGameScore);
+		highScoreGo.SetActive(PlayerPrefsManager.Get().IsNewHighScore(m_iCurrentGameScore));
+		PlayerPrefsManager.Get ().SetNewHighscoreIfHigher (m_iCurrentGameScore);
 		m_iCurrentGameScore = 0;
 		m_eState = GAME_STATE.DEATH;
 		m_uitScoreText.enabled = false;

@@ -1802,6 +1802,7 @@ MonoBehaviour:
   targetX: 0
   inGameChangedHealth: 75
   setupFinishedZ: 3
+  moveSpeed: 4
   bulletTimer: 0
   bulletDelay: 0
   m_goMissile: {fileID: 1000010329560674, guid: 19bc64b6ea73a2f41b4ec6bb93226f1d,
@@ -1812,6 +1813,15 @@ MonoBehaviour:
   entranceSoundTimes: 3
   missileSound: {fileID: 8300000, guid: 56c2ee139e8c844ba9a3a17370e3b763, type: 3}
   deathParticles: {fileID: 100006, guid: 2e7e92bc7175b744ea40878dedfa79e4, type: 2}
+  m_goPlayer: {fileID: 0}
+  level2Rocket: {fileID: 1000010208848054, guid: efe0d7d407145d247959041b7e234bc5,
+    type: 2}
+  level3Rocket: {fileID: 1000014171035808, guid: a8981e750ee92bc428194b22313bc68c,
+    type: 2}
+  level4Rocket: {fileID: 1000010869345098, guid: 9f6cf4f4d2a156940b568e5c580a86e4,
+    type: 2}
+  level5Rocket: {fileID: 1000012875877060, guid: a464a92878eb1a44295a18e1ca48b18d,
+    type: 2}
 --- !u!114 &114604474842528810
 MonoBehaviour:
   m_ObjectHideFlags: 1

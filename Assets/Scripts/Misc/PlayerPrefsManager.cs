@@ -7,6 +7,7 @@ public class PlayerPrefsManager : MonoBehaviour {
 	public int TotalScore { get { return PlayerPrefs.GetInt ("points", 0); } }
 	public string CurrentAssignedShip { get { return PlayerPrefs.GetString ("ShipName", "SpaceShip1"); } }
 	private int GamesPlayed { get { return PlayerPrefs.GetInt ("GamesPlayed", 0); } }
+	private int HighScore { get { return PlayerPrefs.GetInt ("PlayerHighScore", 0); } }
 
 	void Awake(){
 		if (instance != null && instance != this) {
@@ -64,5 +65,16 @@ public class PlayerPrefsManager : MonoBehaviour {
 
 	public void IncGamesPlayed(){
 		PlayerPrefs.SetInt ("GamesPlayed", GamesPlayed + 1);
+	}
+
+	public bool IsNewHighScore(int s){
+		return s > HighScore;
+	}
+
+	public void SetNewHighscoreIfHigher(int s){
+		if (s > HighScore) 
+		{
+			PlayerPrefs.SetInt ("PlayerHighScore", s);
+		}
 	}
 }
