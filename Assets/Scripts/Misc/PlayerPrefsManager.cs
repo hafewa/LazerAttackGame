@@ -8,6 +8,9 @@ public class PlayerPrefsManager : MonoBehaviour {
 	public string CurrentAssignedShip { get { return PlayerPrefs.GetString ("ShipName", "SpaceShip1"); } }
 	private int GamesPlayed { get { return PlayerPrefs.GetInt ("GamesPlayed", 0); } }
 	private int HighScore { get { return PlayerPrefs.GetInt ("PlayerHighScore", 0); } }
+	private int BossesDefeatedRecord { get { return PlayerPrefs.GetInt ("BossesDefeated", 0); } }
+	private int WavesDefeatedRecord { get { return PlayerPrefs.GetInt ("WavesDefeated", 0); } }
+	private int LongestGameTimeRecord { get { return PlayerPrefs.GetInt ("LongestGameInSeconds", 0); } }
 
 	void Awake(){
 		if (instance != null && instance != this) {
@@ -76,5 +79,36 @@ public class PlayerPrefsManager : MonoBehaviour {
 		{
 			PlayerPrefs.SetInt ("PlayerHighScore", s);
 		}
+	}
+
+	public void SetNewHighBosses(int b){
+		if (b > BossesDefeatedRecord) {
+			PlayerPrefs.SetInt ("BossesDefeated", b);
+		}
+	}
+
+	public int GetMostBossesDeafeted(){
+		return PlayerPrefs.GetInt("BossesDefeated", 0);
+	}
+
+	public void SetNewHighWaves(int w){
+		if (w > WavesDefeatedRecord) {
+			PlayerPrefs.SetInt ("WavesDefeated", w);
+		}
+	}
+
+	public int GetHighestWaves(){
+		return PlayerPrefs.GetInt("WavesDefeated", 0);
+	}
+
+	public void SetNewLongestGame(int s){
+		Debug.Log (s + " and " + LongestGameTimeRecord);
+		if (s > LongestGameTimeRecord) {
+			PlayerPrefs.SetInt ("LongestGameInSeconds", s);
+		}
+	}
+
+	public int GetLongestGame(){
+		return LongestGameTimeRecord;
 	}
 }

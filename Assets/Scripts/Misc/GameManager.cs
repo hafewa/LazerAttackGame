@@ -77,6 +77,9 @@ public class GameManager : MonoBehaviour {
 		m_eState = GAME_STATE.DEATH;
 		m_uitScoreText.enabled = false;
 
+		PlayerPrefsManager.Get ().SetNewLongestGame ((int)Time.timeSinceLevelLoad);
+		PlayerPrefsManager.Get ().SetNewHighWaves (WaveSpawner.Get ().wavesDefeated);
+		PlayerPrefsManager.Get ().SetNewHighBosses (WaveSpawner.Get ().bossesDefeatedTracker.Count);
 		//show menu
 		m_goEndGameContainer.SetActive(true);
 		AudioManager.Get ().PlayMusicLoop (gameOverMusic);

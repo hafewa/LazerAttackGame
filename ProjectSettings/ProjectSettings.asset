@@ -120,15 +120,15 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.UglyJezzaStudios.LazerAttack
-  bundleVersion: 1.0
+  bundleVersion: 1.0.1
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
   protectGraphicsMemory: 0
   useHDRDisplay: 0
-  AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 14
+  AndroidBundleVersionCode: 3
+  AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2
@@ -200,7 +200,7 @@ PlayerSettings:
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: D:/Unity Projects/LazerAttackGame/user.keystore
-  AndroidKeyaliasName: 
+  AndroidKeyaliasName: release
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1

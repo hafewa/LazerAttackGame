@@ -26,4 +26,9 @@ public class MainMenuController : MonoBehaviour {
 		AudioManager.Get ().PlaySoundEffect (s);
 		SceneManager.LoadScene (2);
 	}
+
+	public void GoToStats(AudioClip s){
+		AudioManager.Get ().PlaySoundEffect (s);
+		SceneManager.LoadScene (3);
+	}
 }
