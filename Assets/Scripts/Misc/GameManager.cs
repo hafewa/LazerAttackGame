@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour {
 
 		PlayerPrefsManager.Get ().SetNewLongestGame ((int)Time.timeSinceLevelLoad);
 		PlayerPrefsManager.Get ().SetNewHighWaves (WaveSpawner.Get ().wavesDefeated);
-		PlayerPrefsManager.Get ().SetNewHighBosses (WaveSpawner.Get ().bossesDefeatedTracker.Count);
+		PlayerPrefsManager.Get ().SetNewHighBosses (WaveSpawner.Get ().bossesDefeatedTracker == null ? 0 : WaveSpawner.Get ().bossesDefeatedTracker.Count);
 		//show menu
 		m_goEndGameContainer.SetActive(true);
 		AudioManager.Get ().PlayMusicLoop (gameOverMusic);

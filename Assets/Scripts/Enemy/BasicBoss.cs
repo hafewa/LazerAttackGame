@@ -155,8 +155,8 @@ public class BasicBoss : MonoBehaviour {
 		AudioManager.Get().PlaySoundEffect (missileSound);
 	}
 
-	public void ShootSingleFromPos(Vector3 pos){
-		Instantiate (m_goMissile, pos, new Quaternion(0,180f,0,1));
+	public void ShootSingleFromPos(Vector3 pos, GameObject rocket = null){
+		Instantiate (rocket == null ? m_goMissile : rocket, pos, new Quaternion(0,180f,0,1));
 		AudioManager.Get().PlaySoundEffect (missileSound);
 	}
 

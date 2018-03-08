@@ -402,6 +402,10 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 1.9
       objectReference: {fileID: 0}
+    - target: {fileID: 4721443116208284, guid: a63195261ca5e774b8bbb5f40b948311, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a63195261ca5e774b8bbb5f40b948311, type: 2}
   m_IsPrefabParent: 0
@@ -890,7 +894,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 439242, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 110440, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
       propertyPath: m_Name
@@ -922,7 +926,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4104224816727944, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4752122717293942, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
       propertyPath: m_RootOrder
@@ -930,7 +934,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4171973461679686, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9816fa979b06ba4e9c222b529370cc2, type: 2}
@@ -1110,13 +1114,11 @@ MonoBehaviour:
   timeBeforeStart: 3.5
   m_bBossWave: 0
   waves:
-  - name: BasicWave
+  - name: BossWave
     enemy:
-    - {fileID: 4501166616097360, guid: 025a48ebbf08bd549812418b55a4c915, type: 2}
-    - {fileID: 4844751467170352, guid: ce4fcb62868ea064b8a1ab7964d4a42a, type: 2}
-    - {fileID: 4068617453103018, guid: 90f447547db5bb0458cd299c3b147fad, type: 2}
-    count: 6
-    rate: 0.5
+    - {fileID: 4914443152692922, guid: ac703172e67f1d64582c5d2b5246a570, type: 2}
+    count: 1
+    rate: 1
     canIncreaseCount: 0
   - name: BossWave
     enemy:
@@ -1254,7 +1256,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1267077555
 GameObject:
@@ -1429,7 +1431,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4876570162609766, guid: 63439dadcdcca3a4db2a16c0bb8fe350, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114099908357366328, guid: 63439dadcdcca3a4db2a16c0bb8fe350,
         type: 2}
@@ -2408,7 +2410,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &2118645887
 GameObject:
