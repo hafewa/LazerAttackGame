@@ -12,11 +12,11 @@ public class LightFadeIn : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (WaveSpawner.Get ().startSpawningTimer > WaveSpawner.Get ().timeBeforeStart || 
-			this.GetComponent<Light>().intensity >= 1f) {
-			this.GetComponent<Light> ().intensity = 1f;
+			this.GetComponent<Light>().intensity >= 0.4f) {
+			this.GetComponent<Light> ().intensity = 0.4f;
 			Destroy (this);
 		}
 
-		this.GetComponent<Light> ().intensity += (0.4f * Time.deltaTime);
+		this.GetComponent<Light> ().intensity += (0.2f * Time.deltaTime);
 	}
 }
