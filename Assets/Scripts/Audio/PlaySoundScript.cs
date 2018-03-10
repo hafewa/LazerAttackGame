@@ -13,7 +13,6 @@ public class PlaySoundScript : MonoBehaviour {
 		if (!source.isPlaying) {
 			playTimes--;
 			source.Play ();//basically a manual loop
-			Debug.Log(playTimes);
 			if (playTimes == 0) {
 				Destroy (this.gameObject);
 			}
