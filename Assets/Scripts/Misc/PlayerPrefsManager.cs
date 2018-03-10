@@ -32,6 +32,10 @@ public class PlayerPrefsManager : MonoBehaviour {
 		PlayerPrefs.SetInt ("points", TotalScore + points);
 	}
 
+	public int GetHighScore(){
+		return HighScore;
+	}
+
 	//returns the current ships level
 	public int GetShipLevel(string shipName){
 		return PlayerPrefs.GetInt (shipName + ":PlayerLevel", 0);

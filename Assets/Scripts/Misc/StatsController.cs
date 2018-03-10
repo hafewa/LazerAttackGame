@@ -13,7 +13,7 @@ public class StatsController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		PlayerPrefsManager ppm = PlayerPrefsManager.Get ();
-		HighScoreValue.text = ppm.TotalScore.ToString ();
+		HighScoreValue.text = ppm.GetHighScore().ToString ();
 		GamesPlayedValue.text = ppm.GetGamesPlayed ().ToString ();
 		LongestGameValue.text = ppm.GetLongestGame() + " seconds";
 		MostWavesValue.text = ppm.GetHighestWaves ().ToString ();
