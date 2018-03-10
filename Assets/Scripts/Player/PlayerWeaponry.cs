@@ -32,17 +32,33 @@ public class PlayerWeaponry : MonoBehaviour {
 		powerUp = 0;
 		fireAmount = 1;
 		reduceWeaponryTimer = 0f;
-		shipName = PlayerPrefsManager.Get ().CurrentAssignedShip;
-		playerOrigLevel = playerLevel = PlayerPrefsManager.Get ().GetShipLevel (shipName);
+		PlayerPrefsManager ppm = PlayerPrefsManager.Get ();
+
+		shipName = ppm.CurrentAssignedShip;
+		playerOrigLevel = playerLevel = ppm.GetShipLevel (shipName);
 		GetInitialWeapon();
 
+
 		//hide all other ship models attached to gameobject
-		if (shipName != "SpaceShip1")
-			GameObject.Find ("SpaceShip1").SetActive (false);
-		if (shipName != "SpaceShip2")
+		switch (shipName) {
+		case "SpaceShip1":
 			GameObject.Find ("SpaceShip2").SetActive (false);
-		if (shipName != "MooMoo")
 			GameObject.Find ("MooMoo").SetActive (false);
+			break;
+		case "SpaceShip2":
+			gameObject.AddComponent<DoublePoints> ();
+			GameObject.Find ("SpaceShip1").SetActive (false);
+			GameObject.Find ("MooMoo").SetActive (false);
+			break;
+		case "MooMoo":
+			gameObject.AddComponent<ExtraLife> ();
+			GameObject.Find ("SpaceShip1").SetActive (false);
+			GameObject.Find ("SpaceShip2").SetActive (false);
+			break;
+		default:
+		case "":
+			return;
+		}
 	}
 	
 	// Update is called once per frame

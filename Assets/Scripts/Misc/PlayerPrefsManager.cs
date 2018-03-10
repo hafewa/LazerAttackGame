@@ -106,7 +106,6 @@ public class PlayerPrefsManager : MonoBehaviour {
 	}
 
 	public void SetNewLongestGame(int s){
-		Debug.Log (s + " and " + LongestGameTimeRecord);
 		if (s > LongestGameTimeRecord) {
 			PlayerPrefs.SetInt ("LongestGameInSeconds", s);
 		}

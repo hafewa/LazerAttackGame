@@ -52,6 +52,9 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (WaveSpawner.Get ().startSpawningTimer < WaveSpawner.Get ().timeBeforeStart)
+			return;
+		
 		//if (Application.platform != RuntimePlatform.IPhonePlayer) {
 			if (Input.GetAxis ("Fire1") > 0) {
 				var ray = mainCamera.ScreenPointToRay (Input.mousePosition);
@@ -82,10 +85,14 @@ public class PlayerMovement : MonoBehaviour {
 		if (other.tag == "Enemy" || other.tag == "EnemyProjectile") {
 			//kill
 			Instantiate (deathParticles, transform.position, Quaternion.identity);
-			this.gameObject.SetActive(false);
-
+			if (gameObject.GetComponent<ExtraLife> () != null) {
+				if(gameObject.GetComponent<ExtraLife>().UseExtraLife()){
+					return;
+				}
+			}
+			this.gameObject.SetActive (false);
 			AudioManager.Get ().PlaySoundEffect (deathSound);
-			GameObject.Find("GameManager").GetComponent<GameManager>().PlayerDead();
+			GameObject.Find ("GameManager").GetComponent<GameManager> ().PlayerDead (gameObject.GetComponent<DoublePoints>() == null ? 1f : gameObject.GetComponent<DoublePoints>().boost);
 		}else if (other.tag == "Treasure") {
 			//add to current game score
 			if (!other.GetComponent<Pickup> ().used) {

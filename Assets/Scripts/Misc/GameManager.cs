@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Advertisements;
 
 public class GameManager : MonoBehaviour {
 	public enum GAME_STATE{
@@ -39,13 +38,13 @@ public class GameManager : MonoBehaviour {
 		//show menu
 		m_goEndGameContainer.SetActive(false);
 
-		if(Advertisement.isSupported){
-			#if UNITY_ANDROID
-				Advertisement.Initialize ("1706898", true);
-			#elif UNITY_IOS
-				Advertisement.Initialize("1706897", true);
-			#endif
-		}
+//		if(Advertisement.isSupported){
+//			#if UNITY_ANDROID
+//				Advertisement.Initialize ("1706898", true);
+//			#elif UNITY_IOS
+//				Advertisement.Initialize("1706897", true);
+//			#endif
+//		}
 
 		PlayerPrefsManager.Get ().IncGamesPlayed ();
 
@@ -67,12 +66,16 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void PlayerDead(){
+	public void PlayerDead(float ptsBoost){
 		//end the game
 		m_uiEndScoreText.text = m_iCurrentGameScore + "";
-		PlayerPrefsManager.Get ().AddScore (m_iCurrentGameScore);
+
 		highScoreGo.SetActive(PlayerPrefsManager.Get().IsNewHighScore(m_iCurrentGameScore));
+
 		PlayerPrefsManager.Get ().SetNewHighscoreIfHigher (m_iCurrentGameScore);
+
+		m_iCurrentGameScore = (int)(m_iCurrentGameScore * ptsBoost);//ptsBoost = 1f if the player isn't eligible for double points
+		PlayerPrefsManager.Get ().AddScore (m_iCurrentGameScore);
 		m_iCurrentGameScore = 0;
 		m_eState = GAME_STATE.DEATH;
 		m_uitScoreText.enabled = false;
