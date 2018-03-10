@@ -3543,7 +3543,7 @@ MonoBehaviour:
     canIncreaseCount: 0
   - name: BossWave
     enemy:
-    - {fileID: 4056999689974612, guid: 2bbfae784745608418bda87ba6b03c17, type: 2}
+    - {fileID: 4426612969360846, guid: 9f68e1cbc20df6247a85c0e1f509ec16, type: 2}
     count: 1
     rate: 1
     canIncreaseCount: 0

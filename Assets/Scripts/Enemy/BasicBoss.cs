@@ -160,6 +160,13 @@ public class BasicBoss : MonoBehaviour {
 		AudioManager.Get().PlaySoundEffect (missileSound);
 	}
 
+	public void ShootAtAngleFromPos(Vector3 pos, float angle, GameObject rocket = null){
+		var r = Instantiate (rocket == null ? m_goMissile : rocket, pos, new Quaternion(0,0f,0,1));
+		r.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), angle);
+		r.transform.position += r.transform.forward * 0.4f;
+		AudioManager.Get().PlaySoundEffect (missileSound);
+	}
+
 	public void ShootAtRandomAngle(float min, float max){
 		float ang = Random.Range (min, max);
 		var m = Instantiate (m_goMissile, transform.position, new Quaternion(0,0,0,1));

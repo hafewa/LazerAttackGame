@@ -7,6 +7,7 @@ public class MothershipChild : MonoBehaviour {
 	public Transform player;
 	public GameObject rocket;
 	private Vector3 targetPos;
+	public int lives;
 
 	public enum MOTHERSHIPCHILD_STATE{
 		SETUP = 0,
@@ -22,6 +23,10 @@ public class MothershipChild : MonoBehaviour {
 		//setup means player moves towards target pos, where they will then start attacking
 		m_chldState = MOTHERSHIPCHILD_STATE.SETUP;
 		shootTimer = 0f;
+
+		//lives min 2
+		if (lives <= 0)
+			lives = 2;
 	}
 	
 	// Update is called once per frame
@@ -66,8 +71,15 @@ public class MothershipChild : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.tag == "PlayerBullet") {
-			Kill ();
+			ReduceLives ();
 		}
+	}
+
+	private void ReduceLives(){
+		lives--;
+
+		if (lives <= 0)
+			Kill ();
 	}
 
 	private void Kill(){
@@ -80,5 +92,12 @@ public class MothershipChild : MonoBehaviour {
 		var l = Instantiate (rocket, transform.position, transform.rotation);
 		//l.transform.position += Vector3.forward;
 		l.transform.localScale *= 0.75f;
+	}
+
+	public void SetLives(int l){
+		if (l <= 0)
+			return;
+		
+		lives = l;
 	}
 }

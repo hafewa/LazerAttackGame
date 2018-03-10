@@ -308,7 +308,7 @@ MonoBehaviour:
   missileSound: {fileID: 8300000, guid: f1364d48e48ea4fdab44868cc9b2a10e, type: 3}
   deathParticles: {fileID: 100006, guid: 2e7e92bc7175b744ea40878dedfa79e4, type: 2}
   m_goPlayer: {fileID: 0}
-  laser: {fileID: 0}
+  laser: {fileID: 1827297633760994, guid: 638704a59bf83d349af83a4604feef12, type: 2}
   shootPosOne: {fileID: 4979552857601774}
   shootPosTwo: {fileID: 4654392320087084}
   RotateAroundPos: {fileID: 4467270508323980}

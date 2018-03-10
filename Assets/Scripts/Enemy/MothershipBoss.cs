@@ -5,6 +5,7 @@ using UnityEngine;
 public class MothershipBoss : BasicBoss {
 	public GameObject[] children;
 	private int spawnedChildren;
+	private int childLives;
 
 	private float spawnChildrenTimer = 0f;
 	public float spawnChildDelay;
@@ -14,6 +15,8 @@ public class MothershipBoss : BasicBoss {
 	public Transform centreSpawnTarget;
 	public Transform leftSpawnTargetExpert;
 	public Transform rightSpawnTargetExpert;
+
+	public bool shootAtAngle;
 
 	public enum MOTHERSHIP_STATE{
 		IDLE = 0,
@@ -26,6 +29,8 @@ public class MothershipBoss : BasicBoss {
 		base.Start ();
 		spawnedChildren = 0;
 		m_chldState = MOTHERSHIP_STATE.IDLE;
+		childLives = 2;
+		shootAtAngle = false;
 	}
 	
 	// Update is called once per frame
@@ -53,8 +58,15 @@ public class MothershipBoss : BasicBoss {
 				if (bulletTimer > bulletDelay) {
 					bulletTimer = 0f;
 					bulletDelay = Random.Range (1.5f, 3.5f);
-					ShootSingleFromPos (GameObject.Find ("LeftLaserSpawn").transform.position);
-					ShootSingleFromPos (GameObject.Find ("RightLaserSpawn").transform.position);
+					if (!shootAtAngle) {
+						ShootSingleFromPos (GameObject.Find ("LeftLaserSpawn").transform.position);
+						ShootSingleFromPos (GameObject.Find ("RightLaserSpawn").transform.position);
+					} else {
+						ShootAtAngleFromPos (GameObject.Find ("LeftLaserSpawn").transform.position, 170f);
+						ShootAtAngleFromPos (GameObject.Find ("RightLaserSpawn").transform.position, -170f);
+					}
+					Debug.Log (shootAtAngle);
+					shootAtAngle = !shootAtAngle;
 				}
 				bulletTimer += Time.deltaTime;
 				break;
@@ -67,11 +79,13 @@ public class MothershipBoss : BasicBoss {
 						c.GetComponent<MothershipChild> ().SetMotherShipPos (this.gameObject);
 						c.GetComponent<MothershipChild> ().SetPlayer (playerTransform);
 						c.GetComponent<MothershipChild> ().SetTargetPos (leftSpawnTarget.position.x, leftSpawnTarget.position.y, leftSpawnTarget.position.z);
-
+						c.GetComponent<MothershipChild> ().SetLives (childLives);
 						var c2 = Instantiate (children [Random.Range (0, children.Length - 1)], transform.position, transform.rotation);
 						c2.GetComponent<MothershipChild> ().SetMotherShipPos (this.gameObject);
 						c2.GetComponent<MothershipChild> ().SetPlayer (playerTransform);
 						c2.GetComponent<MothershipChild> ().SetTargetPos (rightSpawnTarget.position.x, rightSpawnTarget.position.y, rightSpawnTarget.position.z);
+						c2.GetComponent<MothershipChild> ().SetLives (childLives);
+
 						spawnedChildren = 2;
 						DIFFICULTY diff = GetDifficulty ();
 						if (diff == DIFFICULTY.EASY || diff == DIFFICULTY.MEDIUM) {
@@ -79,17 +93,20 @@ public class MothershipBoss : BasicBoss {
 							c3.GetComponent<MothershipChild> ().SetMotherShipPos (this.gameObject);
 							c3.GetComponent<MothershipChild> ().SetPlayer (playerTransform);
 							c3.GetComponent<MothershipChild> ().SetTargetPos (centreSpawnTarget.position.x, centreSpawnTarget.position.y, centreSpawnTarget.position.z);
+							c3.GetComponent<MothershipChild> ().SetLives (childLives);
 							spawnedChildren = 3;
 						} else if (diff == DIFFICULTY.EXPERT || diff == DIFFICULTY.DIFFICULT) {
 							var c4 = Instantiate (children [Random.Range (0, children.Length - 1)], transform.position, transform.rotation);
 							c4.GetComponent<MothershipChild> ().SetMotherShipPos (this.gameObject);
 							c4.GetComponent<MothershipChild> ().SetPlayer (playerTransform);
 							c4.GetComponent<MothershipChild> ().SetTargetPos (rightSpawnTargetExpert.position.x, rightSpawnTargetExpert.position.y, rightSpawnTargetExpert.position.z);
+							c4.GetComponent<MothershipChild> ().SetLives (childLives);
 
 							var c5 = Instantiate (children [Random.Range (0, children.Length - 1)], transform.position, transform.rotation);
 							c5.GetComponent<MothershipChild> ().SetMotherShipPos (this.gameObject);
 							c5.GetComponent<MothershipChild> ().SetPlayer (playerTransform);
 							c5.GetComponent<MothershipChild> ().SetTargetPos (leftSpawnTargetExpert.position.x, leftSpawnTargetExpert.position.y, leftSpawnTargetExpert.position.z);
+							c5.GetComponent<MothershipChild> ().SetLives (childLives);
 							spawnedChildren = 4;
 						}
 
@@ -120,18 +137,22 @@ public class MothershipBoss : BasicBoss {
 			SetDifficulty (DIFFICULTY.EXPERT);
 			m_fHealth *=(3.5f + (wavesDefeated/10));
 			moveSpeed = 5.5f;
+			childLives = 5;
 		} else if (timesDefeated > 3) {
 			SetDifficulty (DIFFICULTY.DIFFICULT);
 			moveSpeed = 5f;
 			m_fHealth *= (3.5f + (wavesDefeated/10));
+			childLives = 4;
 		} else if (timesDefeated > 2) {
 			m_fHealth *= (1.75f + (wavesDefeated/10));
 			SetDifficulty (DIFFICULTY.MEDIUM);
 			moveSpeed = 4.5f;
+			childLives = 3;
 		} else if (timesDefeated >= 1) {
 			m_fHealth *= (1.75f + (wavesDefeated/10));
 			SetDifficulty (DIFFICULTY.EASY);
 			moveSpeed = 4f;
+			childLives = 3;
 		} else {
 			SetDifficulty (DIFFICULTY.BASE);
 			moveSpeed = 3f;
