@@ -22,6 +22,7 @@ public class SprintBoss : BasicBoss
 	private float sprintTimer;
 	public float sprintDelay;
 	private Transform m_tPlayer;
+	public Transform firePos;
 
 	// Use this for initialization
 	protected override void Start () {
@@ -53,12 +54,12 @@ public class SprintBoss : BasicBoss
 				if (bulletTimer > bulletDelay) {
 					switch (m_eShootState) {
 					case SHOOTSTATE.ONE:
-						Shoot (GameObject.Find("FirePos").transform, 30f);
+						Shoot (firePos.position, 30f);
 						m_eShootState = SHOOTSTATE.TWO;
 						break;
 					case SHOOTSTATE.TWO:
 					default:
-						Shoot (GameObject.Find("FirePos").transform, 25f);
+						Shoot (firePos.position, 25f);
 						m_eShootState = SHOOTSTATE.ONE;
 						break;
 					}

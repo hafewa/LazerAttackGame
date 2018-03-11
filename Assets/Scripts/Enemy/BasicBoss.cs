@@ -151,13 +151,13 @@ public class BasicBoss : MonoBehaviour {
 		AudioManager.Get().PlaySoundEffect (missileSound);
 	}
 
-	public void Shoot(Transform firePos, float rot = 30f, GameObject rocket = null)
+	public void Shoot(Vector3 firePos, float rot = 30f, GameObject rocket = null)
 	{
 		var ang = 120f;
 		var max = ang + (rot * 4f);
 		while (ang <= max) {
-			var m = Instantiate (rocket == null ? m_goMissile : rocket, firePos.position, new Quaternion(0,0,0,1));
-			m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
+			var m = Instantiate (rocket == null ? m_goMissile : rocket, firePos, new Quaternion(0,0,0,1));
+			m.transform.RotateAround (firePos, new Vector3 (0, 1, 0), ang);
 			m.transform.position += m.transform.forward * 0.2f;
 			ang += rot;
 		}
