@@ -18,6 +18,7 @@ public class ShipyardController : MonoBehaviour {
 		public int unlockPrice;
 		public Vector3 appliedRotation;
 		public Vector3 appliedScale;
+		public string boostDescriptor;
 	}
 	public Ship[] allShips;
 
@@ -38,6 +39,7 @@ public class ShipyardController : MonoBehaviour {
 	public GameObject shipyardPopup;
 	public Text popupText;
 	public Button menuBtn;
+	public Text shipDescriptor;
 
 	// Use this for initialization
 	void Start () {
@@ -67,6 +69,7 @@ public class ShipyardController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.L)) {
 			PlayerPrefs.SetInt ("SpaceShip1:PlayerLevel", 0);
 			PlayerPrefs.SetInt ("SpaceShip2:PlayerLevel", 0);
+			PlayerPrefs.SetInt ("MooMoo:PlayerLevel", 0);
 		}
 
 		if (currentShipObj) {
@@ -87,7 +90,7 @@ public class ShipyardController : MonoBehaviour {
 		currentLevel = PlayerPrefsManager.Get().GetShipLevel(allShips[currShipIndex].name);
 		shipLevelText.text = currentLevel + 1 + "";
 		scoreText.text = currentPoints + "";
-
+		shipDescriptor.text = allShips [currShipIndex].boostDescriptor;
 
 		int nextLvl = currentLevel + 1;
 
