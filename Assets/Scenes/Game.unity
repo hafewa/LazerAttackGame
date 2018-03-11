@@ -1593,6 +1593,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a91ca8b9436e6344903bb5051162542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLight: 0
+  fadeRate: 0
 --- !u!1 &524424605
 GameObject:
   m_ObjectHideFlags: 0
@@ -3543,7 +3545,7 @@ MonoBehaviour:
     canIncreaseCount: 0
   - name: BossWave
     enemy:
-    - {fileID: 4426612969360846, guid: 9f68e1cbc20df6247a85c0e1f509ec16, type: 2}
+    - {fileID: 4056999689974612, guid: 2bbfae784745608418bda87ba6b03c17, type: 2}
     count: 1
     rate: 1
     canIncreaseCount: 0
@@ -5181,6 +5183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a91ca8b9436e6344903bb5051162542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLight: 0
+  fadeRate: 0
 --- !u!108 &1421121517
 Light:
   m_ObjectHideFlags: 0
@@ -5435,6 +5439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a91ca8b9436e6344903bb5051162542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLight: 0
+  fadeRate: 0
 --- !u!108 &1546500677
 Light:
   m_ObjectHideFlags: 0

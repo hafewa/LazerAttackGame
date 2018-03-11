@@ -399,7 +399,7 @@ MonoBehaviour:
   setupFinishedZ: 3
   moveSpeed: 4
   bulletTimer: 0
-  bulletDelay: 4
+  bulletDelay: 1.5
   m_goMissile: {fileID: 1787225368103108, guid: f9349c0c7c860a343ba5662f7ee68b21,
     type: 2}
   realCamera: {fileID: 0}
@@ -417,6 +417,7 @@ MonoBehaviour:
   centreSpawnTarget: {fileID: 4893049978407306}
   leftSpawnTargetExpert: {fileID: 4361763539869102}
   rightSpawnTargetExpert: {fileID: 4146322639416218}
+  m_eShootState: 0
 --- !u!135 &135893265389710148
 SphereCollider:
   m_ObjectHideFlags: 1

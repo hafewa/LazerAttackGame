@@ -138,14 +138,28 @@ public class BasicBoss : MonoBehaviour {
 		}
 	}
 
-	public void Shoot(GameObject rocket = null)
+	public void Shoot(float rot = 30f, GameObject rocket = null)
 	{
 		var ang = 120f;
-		while (ang <= 210f) {
+		var max = ang + (rot * 4f);
+		while (ang <= max) {
 			var m = Instantiate (rocket == null ? m_goMissile : rocket, transform.position, new Quaternion(0,0,0,1));
 			m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
 			m.transform.position += m.transform.forward * 0.2f;
-			ang += 30f;
+			ang += rot;
+		}
+		AudioManager.Get().PlaySoundEffect (missileSound);
+	}
+
+	public void Shoot(Transform firePos, float rot = 30f, GameObject rocket = null)
+	{
+		var ang = 120f;
+		var max = ang + (rot * 4f);
+		while (ang <= max) {
+			var m = Instantiate (rocket == null ? m_goMissile : rocket, firePos.position, new Quaternion(0,0,0,1));
+			m.transform.RotateAround (transform.position, new Vector3 (0, 1, 0), ang);
+			m.transform.position += m.transform.forward * 0.2f;
+			ang += rot;
 		}
 		AudioManager.Get().PlaySoundEffect (missileSound);
 	}

@@ -11,6 +11,11 @@ public class SprintBoss : BasicBoss
 		SPRINTING,
 		REVERSING
 	}
+	private SHOOTSTATE m_eShootState;
+	private enum SHOOTSTATE{
+		ONE = 0,
+		TWO
+	}
 
 	public float reverseToZ;
 	private CHILD_STATE m_chldState;
@@ -27,6 +32,7 @@ public class SprintBoss : BasicBoss
 			sprintDelay = Random.Range(1.5f, 4f);
 		reverseToZ = 4f;
 		sprintTimer = 0f;
+		m_eShootState = SHOOTSTATE.ONE;
 
 		base.Start ();
 	}
@@ -45,7 +51,18 @@ public class SprintBoss : BasicBoss
 				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
 
 				if (bulletTimer > bulletDelay) {
-					Shoot ();
+					switch (m_eShootState) {
+					case SHOOTSTATE.ONE:
+						Shoot (GameObject.Find("FirePos").transform, 30f);
+						m_eShootState = SHOOTSTATE.TWO;
+						break;
+					case SHOOTSTATE.TWO:
+					default:
+						Shoot (GameObject.Find("FirePos").transform, 25f);
+						m_eShootState = SHOOTSTATE.ONE;
+						break;
+					}
+
 					bulletTimer = 0f;
 					bulletDelay = Random.Range (1f, 1.6f);
 				}
@@ -87,7 +104,6 @@ public class SprintBoss : BasicBoss
 	}
 
 	protected override void SortDifficulty(int wavesDefeated){
-		Debug.Log ("sprint Boss Health starts at: " + m_fHealth);
 		int timesDefeated = WaveSpawner.Get ().BossDefeatedCount (this.gameObject.name);
 		if (timesDefeated > 4) {
 			SetDifficulty (DIFFICULTY.EXPERT);
@@ -109,7 +125,5 @@ public class SprintBoss : BasicBoss
 			SetDifficulty (DIFFICULTY.BASE);
 			moveSpeed = 4f;
 		}
-
-		Debug.Log ("sprint Boss Health starts at: " + m_fHealth);
 	}
 }

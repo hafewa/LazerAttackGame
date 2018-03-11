@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : MonoBehaviour {
 	public enum GAME_STATE{
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour {
 
 		PlayerPrefsManager.Get ().SetNewLongestGame ((int)Time.timeSinceLevelLoad);
 		PlayerPrefsManager.Get ().SetNewHighWaves (WaveSpawner.Get ().wavesDefeated);
-		PlayerPrefsManager.Get ().SetNewHighBosses (WaveSpawner.Get ().bossesDefeatedTracker == null ? 0 : WaveSpawner.Get ().bossesDefeatedTracker.Count);
+		PlayerPrefsManager.Get ().SetNewHighBosses (WaveSpawner.Get ().bossesDefeatedTracker == null ? 0 : WaveSpawner.Get ().bossesDefeatedTracker.Sum(b => b.defeated));
 		//show menu
 		m_goEndGameContainer.SetActive(true);
 		AudioManager.Get ().PlayMusicLoop (gameOverMusic);

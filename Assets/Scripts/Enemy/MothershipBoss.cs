@@ -16,7 +16,12 @@ public class MothershipBoss : BasicBoss {
 	public Transform leftSpawnTargetExpert;
 	public Transform rightSpawnTargetExpert;
 
-	public bool shootAtAngle;
+	public SHOOTSTATE m_eShootState;
+	public enum SHOOTSTATE{
+		STRAIGHT = 0,	//straight out of the cannons
+		WIDE,			//pointed towards corners of screen
+		CENTRE			//point both lasers more centrally
+	}
 
 	public enum MOTHERSHIP_STATE{
 		IDLE = 0,
@@ -30,7 +35,7 @@ public class MothershipBoss : BasicBoss {
 		spawnedChildren = 0;
 		m_chldState = MOTHERSHIP_STATE.IDLE;
 		childLives = 2;
-		shootAtAngle = false;
+		m_eShootState = SHOOTSTATE.STRAIGHT;
 	}
 	
 	// Update is called once per frame
@@ -58,15 +63,26 @@ public class MothershipBoss : BasicBoss {
 				if (bulletTimer > bulletDelay) {
 					bulletTimer = 0f;
 					bulletDelay = Random.Range (1.5f, 3.5f);
-					if (!shootAtAngle) {
-						ShootSingleFromPos (GameObject.Find ("LeftLaserSpawn").transform.position);
-						ShootSingleFromPos (GameObject.Find ("RightLaserSpawn").transform.position);
-					} else {
+
+					switch (m_eShootState) {
+					case SHOOTSTATE.WIDE:
 						ShootAtAngleFromPos (GameObject.Find ("LeftLaserSpawn").transform.position, 170f);
 						ShootAtAngleFromPos (GameObject.Find ("RightLaserSpawn").transform.position, -170f);
+						m_eShootState = SHOOTSTATE.CENTRE;
+						break;
+					case SHOOTSTATE.CENTRE:
+						ShootAtAngleFromPos (GameObject.Find ("LeftLaserSpawn").transform.position, 185f);
+						ShootAtAngleFromPos (GameObject.Find ("RightLaserSpawn").transform.position, -185f);
+						m_eShootState = SHOOTSTATE.STRAIGHT;
+						break;
+					default:
+					case SHOOTSTATE.STRAIGHT:
+						ShootSingleFromPos (GameObject.Find ("LeftLaserSpawn").transform.position);
+						ShootSingleFromPos (GameObject.Find ("RightLaserSpawn").transform.position);
+						m_eShootState = SHOOTSTATE.WIDE;
+						break;
 					}
-					Debug.Log (shootAtAngle);
-					shootAtAngle = !shootAtAngle;
+
 				}
 				bulletTimer += Time.deltaTime;
 				break;
@@ -131,7 +147,6 @@ public class MothershipBoss : BasicBoss {
 	}
 
 	protected override void SortDifficulty(int wavesDefeated){
-		Debug.Log ("mothership Boss Health starts at: " + m_fHealth);
 		int timesDefeated = WaveSpawner.Get ().BossDefeatedCount (this.gameObject.name);
 		if (timesDefeated > 4) {
 			SetDifficulty (DIFFICULTY.EXPERT);
@@ -157,6 +172,5 @@ public class MothershipBoss : BasicBoss {
 			SetDifficulty (DIFFICULTY.BASE);
 			moveSpeed = 3f;
 		}
-		Debug.Log ("mothership Boss Health now at: " + m_fHealth);
 	}
 }

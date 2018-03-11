@@ -33,7 +33,7 @@ public class SideToSideBoss : BasicBoss {
 			
 			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (targetX, transform.position.y, transform.position.z), moveSpeed * Time.deltaTime);
 			if (bulletTimer > bulletDelay) {
-				Shoot (currRocket);
+				Shoot (30f, currRocket);
 				bulletTimer = 0f;
 				bulletDelay = Random.Range (1.2f, 1.5f);
 			}
