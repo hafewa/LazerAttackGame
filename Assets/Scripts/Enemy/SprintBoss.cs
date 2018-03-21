@@ -26,6 +26,9 @@ public class SprintBoss : BasicBoss
 
 	// Use this for initialization
 	protected override void Start () {
+		if (GameObject.Find ("Player") == null)
+			Destroy (this.gameObject);
+		
 		m_tPlayer = GameObject.Find("Player").transform;
 		playerZ = m_tPlayer.position.z;
 

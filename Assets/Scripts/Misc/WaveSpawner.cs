@@ -144,6 +144,7 @@ public class WaveSpawner : MonoBehaviour {
 		{
 			if (state != SpawnState.SPAWNING && m_goPlayer)
 			{
+				this.gameObject.GetComponent<AsteroidSpawner> ().ActivateAsteroidSpawner (wavesDefeated);
 				StartCoroutine( SpawnWave ( waves[nextWave] ) );
 			}
 		}
@@ -158,7 +159,7 @@ public class WaveSpawner : MonoBehaviour {
 		wavesDefeated++;
 		state = SpawnState.COUNTING;
 		waveCountdown = timeBetweenWaves;
-		this.gameObject.GetComponent<AsteroidSpawner> ().StopSpawning ();
+		this.gameObject.GetComponent<AsteroidSpawner> ().DeactivateAsteroidSpawner ();
 
 		//increase count of wave just gone if it's not a boss
 		if (!waves [nextWave].name.Contains ("Boss")) {
@@ -203,22 +204,6 @@ public class WaveSpawner : MonoBehaviour {
 			m_bBossWave = true;
 		} else {
 			m_bBossWave = false;
-			//sort asteroids
-			//no asteroids before wave 2
-			//while wave 6 or below, 40% chance of asteroids spawning during wave
-			if (wavesDefeated > 2) {
-				if (wavesDefeated <= 6 && Random.Range (0, 10) > 6)
-					this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningIndividuals ();
-				else if (Random.Range (0, 10) > 4) {
-					//60% chance of asteroids on waves over 6
-				
-					//30% chance of asteroid clusters
-					if (Random.Range (0, 10) > 7)
-						this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningCluster (4, 8);
-					else if (Random.Range (0, 10) > 5)//if not spawning cluster, 50% chance of spawning individuals
-					this.gameObject.GetComponent<AsteroidSpawner> ().StartSpawningIndividuals ();
-				}
-			}
 		}
 
 		for (int i = 0; i < _wave.count; i++)

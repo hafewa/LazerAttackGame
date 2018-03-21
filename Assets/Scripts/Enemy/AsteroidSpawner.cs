@@ -8,11 +8,22 @@ public class AsteroidSpawner : MonoBehaviour {
 
 	public enum SPAWNERSTATE
 	{
-		WAITING = 0,
+		INACTIVE = 0,
+		WAITING,
 		SPAWN_INDIVIDUALS,	//individual asteroids in a queue, spawn between = high
 		SPAWN_CLUSTER	//a bunch in quick succession, spawn between = low
 	}
 
+	public enum ASTEROID_SPAWNER_DIFFICULTY
+	{
+		BASE = 0,
+		EASY,
+		MEDIUM,
+		HARD,
+		EXPERT
+	}
+
+	private ASTEROID_SPAWNER_DIFFICULTY m_eDifficulty;
 	private SPAWNERSTATE m_enState;
 	private float m_fTimer;
 	public float m_fSpawnBetweenDelay;
@@ -28,14 +39,21 @@ public class AsteroidSpawner : MonoBehaviour {
 		clusterAmount = 5;
 		spawnStartDelay = 2f;
 		spawnStartTimer = 0f;
-		m_enState = SPAWNERSTATE.WAITING;
+		m_enState = SPAWNERSTATE.INACTIVE;
+		m_eDifficulty = ASTEROID_SPAWNER_DIFFICULTY.BASE;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		switch (m_enState) {
-		case SPAWNERSTATE.WAITING:
+		case SPAWNERSTATE.INACTIVE:
 			//do nothin'
+			break;
+		case SPAWNERSTATE.WAITING:
+			if (spawnStartTimer > spawnStartDelay)
+				StartSpawning ();
+
+			spawnStartTimer += Time.deltaTime;
 			break;
 		case SPAWNERSTATE.SPAWN_INDIVIDUALS:
 		case SPAWNERSTATE.SPAWN_CLUSTER:
@@ -44,8 +62,7 @@ public class AsteroidSpawner : MonoBehaviour {
 				var a = Instantiate (asteroids [Random.Range (0, asteroids.Count - 1)], randomPos, Quaternion.Euler(new Vector3(0, 0, 0)));
 				a.transform.localScale = new Vector3 (40, 40, 40);
 				asteroidsSpawnedThisTime++;
-			}else
-				spawnStartTimer += Time.deltaTime;
+			}
 			break;
 		}
 
@@ -53,7 +70,7 @@ public class AsteroidSpawner : MonoBehaviour {
 	}
 
 	private bool SpawnCheck(){
-		if (spawnStartTimer > spawnStartDelay) {
+		//if (spawnStartTimer > spawnStartDelay) {
 			if (m_fTimer > m_fSpawnBetweenDelay) {
 				if (asteroidsSpawnedThisTime > clusterAmount || this.gameObject.GetComponent<WaveSpawner> ().GetIsBossWave ()) {
 					StopSpawning ();
@@ -63,9 +80,81 @@ public class AsteroidSpawner : MonoBehaviour {
 
 				return true;
 			}
-		}
+		//}
 
 		return false;
+	}
+
+	public void StartSpawning()
+	{
+		Debug.Log ("start spawning");
+		int w = WaveSpawner.Get ().wavesDefeated;
+		if (Random.Range (0, 10) > 5 || w < 5) {
+			StartSpawningIndividuals ();
+		}else{
+			StartSpawningCluster (w, w * 2);
+		}
+
+		//sort difficulty
+		SortDifficulty(w);
+	}
+
+	//w = waves defeated
+	public void SortDifficulty(int w){
+		if (w < 3)
+			m_eDifficulty = ASTEROID_SPAWNER_DIFFICULTY.BASE;
+		else if (w < 5)
+			m_eDifficulty = ASTEROID_SPAWNER_DIFFICULTY.EASY;
+		else if (w < 7)
+			m_eDifficulty = ASTEROID_SPAWNER_DIFFICULTY.MEDIUM;
+		else if (w < 11)
+			m_eDifficulty = ASTEROID_SPAWNER_DIFFICULTY.HARD;
+		else
+			m_eDifficulty = ASTEROID_SPAWNER_DIFFICULTY.EXPERT;
+
+		Debug.Log ("difficulty: " + m_eDifficulty);
+	}
+
+	public void ActivateAsteroidSpawner(int wavesDefeated){
+		Debug.Log ("Activate asteroid spawner");
+		SortDifficulty (wavesDefeated);
+
+		//use difficulty to sort chance
+		if (m_eDifficulty != ASTEROID_SPAWNER_DIFFICULTY.BASE) {
+			float r = Random.Range (0, 10);
+			switch (m_eDifficulty) {
+			case ASTEROID_SPAWNER_DIFFICULTY.EASY:
+				clusterMax = Random.Range (7, 9);
+				if (r > 4)
+					return;
+				break;
+			case ASTEROID_SPAWNER_DIFFICULTY.MEDIUM:
+				clusterMax = Random.Range (8, 11);
+				if (r > 5)
+					return;
+				break;
+			case ASTEROID_SPAWNER_DIFFICULTY.HARD:
+				clusterMax = Random.Range (9, 13);
+				if (r > 6)
+					return;
+				break;
+			case ASTEROID_SPAWNER_DIFFICULTY.EXPERT:
+				clusterMax = Random.Range (14, 18);
+				if (r > 8)
+					return;
+				break;
+			}
+
+			clusterAmount = Random.Range (1, clusterMax);
+			m_enState = SPAWNERSTATE.WAITING;
+			spawnStartDelay = Random.Range (1.5f, 4f);
+			spawnStartTimer = 0f;			
+		}
+	}
+
+	public void DeactivateAsteroidSpawner(){
+		Debug.Log ("Deactivate asteroid spawner");
+		m_enState = SPAWNERSTATE.INACTIVE;
 	}
 
 	//spawning individuals, time between is higher
@@ -85,18 +174,26 @@ public class AsteroidSpawner : MonoBehaviour {
 			clusterAmount = clusterMax;
 		
 		m_enState = SPAWNERSTATE.SPAWN_CLUSTER;
-		m_fSpawnBetweenDelay = Random.Range (1f, 1.5f);
+		m_fSpawnBetweenDelay = Random.Range (0.2f, 1f);
 		spawnStartDelay = Random.Range (0, 5f);
 	}
 
 	public void StopSpawning(){
+		Debug.Log ("stop spawning");
 		m_enState = SPAWNERSTATE.WAITING;
 
 		//reset counts
 		asteroidsSpawnedThisTime = 0;
+		clusterAmount = 0;
 
 		//reset timer
 		m_fTimer = 0f;
 		spawnStartTimer = 0f;
+
+		if (WaveSpawner.Get().wavesDefeated < 5) {
+			spawnStartDelay = 500f;
+		} else if(Random.Range(0,5) > 5){
+			spawnStartDelay = Random.Range (7.5f, 15f);
+		}
 	}
 }

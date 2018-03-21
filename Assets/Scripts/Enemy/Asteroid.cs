@@ -9,6 +9,10 @@ public class Asteroid : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		asteroidIcon = Instantiate (asteroidSprite, new Vector3 (transform.position.x, 1f, 4.5f), Quaternion.Euler (new Vector3 (90f, 0, 0)));
+
+		//get faster
+		var wavesDefeated = WaveSpawner.Get ().wavesDefeated;
+		this.GetComponent<GravityWithSpeed> ().speedMultiplier += (wavesDefeated * 0.2f);
 	}
 	
 	// Update is called once per frame
