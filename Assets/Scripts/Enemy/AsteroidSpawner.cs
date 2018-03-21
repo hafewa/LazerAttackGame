@@ -89,10 +89,10 @@ public class AsteroidSpawner : MonoBehaviour {
 	{
 		Debug.Log ("start spawning");
 		int w = WaveSpawner.Get ().wavesDefeated;
-		if (Random.Range (0, 10) > 5 || w < 5) {
+		if (Random.Range (0, 10) > 5) {
 			StartSpawningIndividuals ();
 		}else{
-			StartSpawningCluster (w, w * 2);
+			StartSpawningCluster (4,7);
 		}
 
 		//sort difficulty
@@ -174,7 +174,7 @@ public class AsteroidSpawner : MonoBehaviour {
 			clusterAmount = clusterMax;
 		
 		m_enState = SPAWNERSTATE.SPAWN_CLUSTER;
-		m_fSpawnBetweenDelay = Random.Range (0.2f, 1f);
+		m_fSpawnBetweenDelay = Random.Range (0f, 0.2f);
 		spawnStartDelay = Random.Range (0, 5f);
 	}
 
