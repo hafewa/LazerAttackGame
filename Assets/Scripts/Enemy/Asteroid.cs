@@ -12,7 +12,7 @@ public class Asteroid : MonoBehaviour {
 
 		//get faster
 		var wavesDefeated = WaveSpawner.Get ().wavesDefeated;
-		this.GetComponent<GravityWithSpeed> ().speedMultiplier += (wavesDefeated * 0.2f);
+		this.GetComponent<GravityWithSpeed> ().speedMultiplier += (wavesDefeated * 0.3f);
 	}
 	
 	// Update is called once per frame
