@@ -34,7 +34,7 @@ public class PlayerWeaponry : MonoBehaviour {
 		reduceWeaponryTimer = 0f;
 		PlayerPrefsManager ppm = PlayerPrefsManager.Get ();
 
-		shipName = ppm.CurrentAssignedShip;
+		shipName = "MooMoo";//ppm.CurrentAssignedShip;
 		playerOrigLevel = playerLevel = ppm.GetShipLevel (shipName);
 		GetInitialWeapon();
 
@@ -44,16 +44,19 @@ public class PlayerWeaponry : MonoBehaviour {
 		case "SpaceShip1":
 			GameObject.Find ("SpaceShip2").SetActive (false);
 			GameObject.Find ("MooMoo").SetActive (false);
+			this.GetComponent<PlayerMovement> ().currShipObj = GameObject.Find ("SpaceShip1");
 			break;
 		case "SpaceShip2":
 			gameObject.AddComponent<DoublePoints> ();
 			GameObject.Find ("SpaceShip1").SetActive (false);
 			GameObject.Find ("MooMoo").SetActive (false);
+			this.GetComponent<PlayerMovement> ().currShipObj = GameObject.Find ("SpaceShip2");
 			break;
 		case "MooMoo":
 			gameObject.AddComponent<ExtraLife> ();
 			GameObject.Find ("SpaceShip1").SetActive (false);
 			GameObject.Find ("SpaceShip2").SetActive (false);
+			this.GetComponent<PlayerMovement> ().currShipObj = GameObject.Find ("MooMoo");
 			break;
 		default:
 		case "":

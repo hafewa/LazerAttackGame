@@ -13,9 +13,11 @@ public class ExtraLife : MonoBehaviour {
 	}
 	
 	public bool UseExtraLife(){
-		if (UsedExtraLife == false)
+		if (UsedExtraLife == false) {
 			UsedExtraLife = true;
+			return true;
+		}
 		
-		return HasExtraLife;
+		return false;
 	}
 }

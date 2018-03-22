@@ -23,11 +23,22 @@ public class PlayerMovement : MonoBehaviour {
 	public AudioClip treasureSound;
 	public GameObject deathParticles;
 
+	private float extraLifeUsedTimer;
+	private float extraLifeUsedDelay;
+	private float extraLifeUsedFlash;
+	private bool extraLifeJustUsed;
+
+	public GameObject currShipObj;
+
 	// Use this for initialization
 	void Start () {
 		Physics.gravity = new Vector3 (0, 0, -9.8f);
 		luckLevel = 0;
 		luckTimer = 0f;
+		extraLifeUsedTimer = 0f;
+		extraLifeUsedDelay = 2f;
+		extraLifeUsedFlash = extraLifeUsedTimer + 0.2f;
+		extraLifeJustUsed = false;
 //		string lBuddy = PlayerPrefs.GetString ("LeftBuddy", "");
 //		string rBuddy = PlayerPrefs.GetString ("RightBuddy", "");
 //
@@ -74,6 +85,22 @@ public class PlayerMovement : MonoBehaviour {
 			}
 			luckTimer += Time.deltaTime;
 		}
+
+		if (extraLifeJustUsed) {
+			if (extraLifeUsedTimer > extraLifeUsedDelay) {
+				extraLifeJustUsed = false;
+				extraLifeUsedTimer = 0f;
+				this.gameObject.SetActive (true);
+			}
+
+			if (extraLifeUsedTimer > extraLifeUsedFlash) {
+				currShipObj.SetActive(!currShipObj.activeInHierarchy);
+				extraLifeUsedFlash = extraLifeUsedTimer + 0.1f;
+				
+			}
+
+			extraLifeUsedTimer += Time.deltaTime;
+		}
 	}
 
 	public int GetLuckLevel(){
@@ -83,10 +110,16 @@ public class PlayerMovement : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		//only bosses can fire projectiles
 		if (other.tag == "Enemy" || other.tag == "EnemyProjectile") {
+			if (extraLifeJustUsed) {
+				Destroy (other.gameObject);
+				return;
+			}
 			//kill
 			Instantiate (deathParticles, transform.position, Quaternion.identity);
 			if (gameObject.GetComponent<ExtraLife> () != null) {
 				if(gameObject.GetComponent<ExtraLife>().UseExtraLife()){
+					extraLifeJustUsed = true;
+					Destroy (other.gameObject);
 					return;
 				}
 			}
