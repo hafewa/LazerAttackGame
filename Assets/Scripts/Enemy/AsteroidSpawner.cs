@@ -27,16 +27,18 @@ public class AsteroidSpawner : MonoBehaviour {
 	private SPAWNERSTATE m_enState;
 	private float m_fTimer;
 	public float m_fSpawnBetweenDelay;
-	private int clusterAmount;
+	private int asteroidSpawnAmount;
 	private int clusterMax;
+	private int asteroidSequenceMax;
 	private int asteroidsSpawnedThisTime;
 	private float spawnStartDelay;
 	private float spawnStartTimer;
 
 	// Use this for initialization
 	void Start () {
-		clusterMax = 10;
-		clusterAmount = 5;
+		asteroidSequenceMax = 10;
+		clusterMax = 4;
+		asteroidSpawnAmount = 5;
 		spawnStartDelay = 2f;
 		spawnStartTimer = 0f;
 		m_enState = SPAWNERSTATE.INACTIVE;
@@ -72,7 +74,7 @@ public class AsteroidSpawner : MonoBehaviour {
 	private bool SpawnCheck(){
 		//if (spawnStartTimer > spawnStartDelay) {
 			if (m_fTimer > m_fSpawnBetweenDelay) {
-				if (asteroidsSpawnedThisTime > clusterAmount || this.gameObject.GetComponent<WaveSpawner> ().GetIsBossWave ()) {
+			if (asteroidsSpawnedThisTime > asteroidSpawnAmount || this.gameObject.GetComponent<WaveSpawner> ().GetIsBossWave ()) {
 					StopSpawning ();
 					return false;
 				}
@@ -124,28 +126,32 @@ public class AsteroidSpawner : MonoBehaviour {
 			float r = Random.Range (0, 10);
 			switch (m_eDifficulty) {
 			case ASTEROID_SPAWNER_DIFFICULTY.EASY:
-				clusterMax = Random.Range (7, 9);
+				clusterMax = 4;
+				asteroidSequenceMax = Random.Range (2, 5);
 				if (r > 4)
 					return;
 				break;
 			case ASTEROID_SPAWNER_DIFFICULTY.MEDIUM:
-				clusterMax = Random.Range (8, 11);
+				clusterMax = Random.Range (4,6);
+				asteroidSequenceMax = Random.Range (4, 8);
 				if (r > 5)
 					return;
 				break;
 			case ASTEROID_SPAWNER_DIFFICULTY.HARD:
-				clusterMax = Random.Range (9, 13);
+				clusterMax = Random.Range (4,6);
+				asteroidSequenceMax = Random.Range (6, 10);
 				if (r > 6)
 					return;
 				break;
 			case ASTEROID_SPAWNER_DIFFICULTY.EXPERT:
-				clusterMax = Random.Range (14, 18);
+				clusterMax = Random.Range (6,8);
+				asteroidSequenceMax = Random.Range (10, 18);
 				if (r > 8)
 					return;
 				break;
 			}
 
-			clusterAmount = Random.Range (1, clusterMax);
+			asteroidSpawnAmount = Random.Range (1, clusterMax);
 			m_enState = SPAWNERSTATE.WAITING;
 			spawnStartDelay = Random.Range (1.5f, 4f);
 			spawnStartTimer = 0f;			
@@ -160,7 +166,7 @@ public class AsteroidSpawner : MonoBehaviour {
 	//spawning individuals, time between is higher
 	public void StartSpawningIndividuals(){
 		spawnStartTimer = m_fTimer = 0f;
-		clusterAmount = Random.Range (3, clusterMax);
+		asteroidSpawnAmount = Random.Range (3, asteroidSequenceMax);
 		m_enState = SPAWNERSTATE.SPAWN_INDIVIDUALS;
 		m_fSpawnBetweenDelay = Random.Range (2.5f, 4.5f);
 		spawnStartDelay = Random.Range (1f, 3.2f);
@@ -169,13 +175,13 @@ public class AsteroidSpawner : MonoBehaviour {
 	//cluster doesn't last long
 	public void StartSpawningCluster(int clusterCountMin, int clusterCountMax){
 		spawnStartTimer = m_fTimer = 0f;
-		clusterAmount = Random.Range (clusterCountMin, clusterCountMax);
-		if (clusterAmount > clusterMax)
-			clusterAmount = clusterMax;
+		asteroidSpawnAmount = Random.Range (clusterCountMin, clusterCountMax);
+		if (asteroidSpawnAmount > clusterMax)
+			asteroidSpawnAmount = clusterMax;
 		
 		m_enState = SPAWNERSTATE.SPAWN_CLUSTER;
-		m_fSpawnBetweenDelay = Random.Range (0f, 0.2f);
-		spawnStartDelay = Random.Range (0, 5f);
+		m_fSpawnBetweenDelay = Random.Range (0f, 0.3f);
+		spawnStartDelay = Random.Range (0, 7f);
 	}
 
 	public void StopSpawning(){
@@ -184,7 +190,7 @@ public class AsteroidSpawner : MonoBehaviour {
 
 		//reset counts
 		asteroidsSpawnedThisTime = 0;
-		clusterAmount = 0;
+		asteroidSpawnAmount = 0;
 
 		//reset timer
 		m_fTimer = 0f;

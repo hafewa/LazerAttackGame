@@ -43,27 +43,27 @@ public class BasicEnemy : MonoBehaviour {
 			m_eDifficulty = DIFFICULTY.MENTAL;
 			m_fHealth = (m_fHealth * 4f) + (wavesDefeated*0.1f);
 			buffChance = 100;
-			speed = 6f + (wavesDefeated * 0.1f);
+			speed = 6f + (wavesDefeated * 0.3f);
 		} else if (wavesDefeated > 14) {
 			m_eDifficulty = DIFFICULTY.EXPERT;
 			m_fHealth = (m_fHealth * 2f) + (wavesDefeated*0.1f);
 			buffChance = 90;
-			speed = 5.8f + (wavesDefeated * 0.1f);
+			speed = 5.8f + (wavesDefeated * 0.2f);
 		} else if (wavesDefeated > 8) {
 			m_eDifficulty = DIFFICULTY.DIFFICULT;
 			m_fHealth = (m_fHealth * 1.75f) + (wavesDefeated*0.1f);
 			buffChance = 80;
-			speed = 5.6f + (wavesDefeated * 0.1f);
+			speed = 5.6f + (wavesDefeated * 0.2f);
 		} else if (wavesDefeated > 4) {
 			m_eDifficulty = DIFFICULTY.MEDIUM;
 			m_fHealth = (m_fHealth * 1.5f) + (wavesDefeated*0.1f);
 			buffChance = 70;
-			speed = 5.4f + (wavesDefeated * 0.1f);
+			speed = 5.4f + (wavesDefeated * 0.2f);
 		} else if (wavesDefeated > 2) {
 			m_eDifficulty = DIFFICULTY.EASY;
 			m_fHealth *= 1.1f;
 			buffChance = 50;
-			speed = 5.2f + (wavesDefeated * 0.1f);
+			speed = 5.2f + (wavesDefeated * 0.15f);
 		} else {
 			m_eDifficulty = DIFFICULTY.BASE;
 			canBuff = false;
