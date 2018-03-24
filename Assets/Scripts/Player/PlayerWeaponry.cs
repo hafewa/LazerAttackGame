@@ -34,7 +34,7 @@ public class PlayerWeaponry : MonoBehaviour {
 		reduceWeaponryTimer = 0f;
 		PlayerPrefsManager ppm = PlayerPrefsManager.Get ();
 
-		shipName = "MooMoo";//ppm.CurrentAssignedShip;
+		shipName = ppm.CurrentAssignedShip;
 		playerOrigLevel = playerLevel = ppm.GetShipLevel (shipName);
 		GetInitialWeapon();
 

@@ -89,7 +89,6 @@ public class AsteroidSpawner : MonoBehaviour {
 
 	public void StartSpawning()
 	{
-		Debug.Log ("start spawning");
 		int w = WaveSpawner.Get ().wavesDefeated;
 		if (Random.Range (0, 10) > 5) {
 			StartSpawningIndividuals ();
@@ -113,12 +112,9 @@ public class AsteroidSpawner : MonoBehaviour {
 			m_eDifficulty = ASTEROID_SPAWNER_DIFFICULTY.HARD;
 		else
 			m_eDifficulty = ASTEROID_SPAWNER_DIFFICULTY.EXPERT;
-
-		Debug.Log ("difficulty: " + m_eDifficulty);
 	}
 
 	public void ActivateAsteroidSpawner(int wavesDefeated){
-		Debug.Log ("Activate asteroid spawner");
 		SortDifficulty (wavesDefeated);
 
 		//use difficulty to sort chance
@@ -159,7 +155,6 @@ public class AsteroidSpawner : MonoBehaviour {
 	}
 
 	public void DeactivateAsteroidSpawner(){
-		Debug.Log ("Deactivate asteroid spawner");
 		m_enState = SPAWNERSTATE.INACTIVE;
 	}
 
@@ -185,7 +180,6 @@ public class AsteroidSpawner : MonoBehaviour {
 	}
 
 	public void StopSpawning(){
-		Debug.Log ("stop spawning");
 		m_enState = SPAWNERSTATE.WAITING;
 
 		//reset counts
