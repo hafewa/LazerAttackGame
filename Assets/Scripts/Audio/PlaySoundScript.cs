@@ -19,13 +19,14 @@ public class PlaySoundScript : MonoBehaviour {
 		}
 	}
 
-	public void SetAudioClip(AudioClip ac, float vol = 1f, int amount = 1){
+	public void SetAudioClip(AudioClip ac, float vol, int amount = 1){
 		source = GetComponent<AudioSource> ();
 		source.volume = vol;
 		DontDestroyOnLoad (this.gameObject);
 		hasClip = true;
 		playTimes = amount;
 		source.clip = ac;
+		source.volume = vol;
 		source.Play ();
 	}
 }

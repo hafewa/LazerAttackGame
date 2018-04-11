@@ -114,7 +114,7 @@ public class BasicEnemy : MonoBehaviour {
 	public void CheckDead(){
 		if (m_fHealth <= 0 ) {
 			if (!this.gameObject.GetComponent<EnemyDeath> ().killed) {
-				AudioManager.Get ().PlaySoundEffect (deathSound);
+				AudioManager.Get ().PlaySoundEffect (deathSound, 1f);
 				this.gameObject.GetComponent<EnemyDeath> ().Kill ();
 				Destroy (this.gameObject);
 			}

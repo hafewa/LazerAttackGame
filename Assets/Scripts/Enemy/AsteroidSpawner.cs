@@ -62,7 +62,7 @@ public class AsteroidSpawner : MonoBehaviour {
 			if (SpawnCheck ()) {
 				Vector3 randomPos = new Vector3(Random.Range (-2f, 2f), 0f, asteroidSpawnPoint.position.z);
 				var a = Instantiate (asteroids [Random.Range (0, asteroids.Count - 1)], randomPos, Quaternion.Euler(new Vector3(0, 0, 0)));
-				a.transform.localScale = new Vector3 (40, 40, 40);
+				a.transform.localScale = new Vector3 (30,30,30);
 				asteroidsSpawnedThisTime++;
 			}
 			break;
@@ -93,7 +93,7 @@ public class AsteroidSpawner : MonoBehaviour {
 		if (Random.Range (0, 10) > 5) {
 			StartSpawningIndividuals ();
 		}else{
-			StartSpawningCluster (4,7);
+			StartSpawningCluster (2,5);
 		}
 
 		//sort difficulty
