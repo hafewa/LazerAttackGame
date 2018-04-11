@@ -60,6 +60,7 @@ public class PlayerWeaponry : MonoBehaviour {
 			break;
 		default:
 		case "":
+			//woops
 			return;
 		}
 	}
