@@ -125,7 +125,6 @@ public class UFOBoss : BasicBoss {
 	}
 
 	protected override void SortDifficulty(int wavesDefeated){
-		Debug.Log ("UFO Boss Health starts at: " + m_fHealth);
 		int timesDefeated = WaveSpawner.Get ().BossDefeatedCount (this.gameObject.name);
 		if (timesDefeated > 4) {
 			SetDifficulty (DIFFICULTY.EXPERT);
@@ -142,6 +141,5 @@ public class UFOBoss : BasicBoss {
 		} else {
 			SetDifficulty (DIFFICULTY.BASE);
 		}
-		Debug.Log ("UFO Boss Health now at: " + m_fHealth);
 	}
 }
