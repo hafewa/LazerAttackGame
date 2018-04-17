@@ -131,6 +131,7 @@ public class PlayerWeaponry : MonoBehaviour {
 	//only to be used in Start() to find what rocket + how many rockets, the player should start with
 	private void GetInitialWeapon(){
 		//if player level < 0 somehow, give them the first rocket + give them player level 0
+		playerLevel = PlayerPrefsManager.Get().GetShipLevel(shipName);
 		if (playerLevel < 0) {
 			weapon = weaponry [0].obj;
 			fireAmount = 1;
