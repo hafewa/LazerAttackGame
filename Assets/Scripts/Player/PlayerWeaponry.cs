@@ -32,7 +32,7 @@ public class PlayerWeaponry : MonoBehaviour {
 		fireAmount = 1;
 		reduceWeaponryTimer = 0f;
 		PlayerPrefsManager ppm = PlayerPrefsManager.Get ();
-		playerLevel = 38;
+
 		shipName = ppm.CurrentAssignedShip;
 		GetInitialWeapon();
 
