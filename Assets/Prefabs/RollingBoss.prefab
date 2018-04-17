@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5d043fb594c3e4eb1e444c1d52c2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fHealth: 375
+  m_fHealth: 325
   targetX: 3.1
   inGameChangedHealth: 0
   setupFinishedZ: 3.5
