@@ -65,7 +65,7 @@ public class PlayerWeaponry : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (WaveSpawner.Get ().startSpawningTimer < WaveSpawner.Get ().timeBeforeStart * 0.5f)
+		if (WaveSpawner.Get ().startSpawningTimer < WaveSpawner.Get ().timeBeforeStart * 0.9f)
 			return;
 		
 		if (m_fBulletTimer > m_fBulletDelay) {
