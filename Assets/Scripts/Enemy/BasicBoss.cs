@@ -7,7 +7,6 @@ public class BasicBoss : MonoBehaviour {
 	private float m_fStartHealth;
 	private float m_fHealthBoost;	//when boss has been defeated multiple times, it gets harder
 	public float targetX;
-	public float inGameChangedHealth;
 	public float setupFinishedZ;
 	public float moveSpeed = 4f;
 
@@ -55,9 +54,6 @@ public class BasicBoss : MonoBehaviour {
 
 		m_fHealthBoost = 0f;
 		m_eState = BOSS_STATE.SETUP;
-
-		//if (inGameChangedHealth > 0)
-		//	m_fHealth = inGameChangedHealth;
 
 		if(bulletDelay <= 0)
 			bulletDelay = 1.5f;

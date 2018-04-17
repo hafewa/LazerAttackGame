@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42819a5e7d3fc8045b27a498f813224e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fHealth: 90
+  m_fHealth: 75
   targetX: 0
   inGameChangedHealth: 8000
   setupFinishedZ: 5.1

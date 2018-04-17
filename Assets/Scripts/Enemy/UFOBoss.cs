@@ -107,8 +107,8 @@ public class UFOBoss : BasicBoss {
 			max = 4f;
 			break;
 		case DIFFICULTY.EXPERT:
-			min = -0f;
-			max = 0f;
+			min = -0.5f;
+			max = 0.5f;
 			break;
 		case DIFFICULTY.BASE:
 		default:
