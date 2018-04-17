@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 public class AudioManager : MonoBehaviour {
 	private static AudioManager instance;
@@ -17,6 +18,12 @@ public class AudioManager : MonoBehaviour {
 
 		audioSource = GetComponent<AudioSource> ();
 		DontDestroyOnLoad(this.gameObject);
+	}
+
+	void Start(){
+		if(Advertisement.isSupported){
+			Advertisement.Initialize ("1706898", true);
+		}
 	}
 
 	public static AudioManager Get(){

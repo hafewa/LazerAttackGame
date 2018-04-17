@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlaySoundScript : MonoBehaviour {
 	private AudioSource source;
-	private bool hasClip = false;
 	private int playTimes = 0;
-	private int played = 0;
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,7 +21,6 @@ public class PlaySoundScript : MonoBehaviour {
 		source = GetComponent<AudioSource> ();
 		source.volume = vol;
 		DontDestroyOnLoad (this.gameObject);
-		hasClip = true;
 		playTimes = amount;
 		source.clip = ac;
 		source.volume = vol;

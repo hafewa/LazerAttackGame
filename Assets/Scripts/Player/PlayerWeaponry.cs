@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerWeaponry : MonoBehaviour {
 	public int playerLevel;
-	private int playerOrigLevel;
 	public int powerUp;
 	public Transform weaponFirePos;
 	private string shipName;
@@ -35,7 +34,6 @@ public class PlayerWeaponry : MonoBehaviour {
 		PlayerPrefsManager ppm = PlayerPrefsManager.Get ();
 
 		shipName = ppm.CurrentAssignedShip;
-		playerOrigLevel = playerLevel = ppm.GetShipLevel (shipName);
 		GetInitialWeapon();
 
 

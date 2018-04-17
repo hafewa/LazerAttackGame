@@ -8,7 +8,6 @@ public class RollingBoss : BasicBoss {
 	public Transform shootPosTwo;
 	public Transform RotateAroundPos;
 
-	private float targetRot = 180f;
 	public enum CHILDSTATE
 	{
 		SIDE2SIDE = 0,

@@ -42,6 +42,7 @@ public class ShipyardButtonsController : MonoBehaviour {
 		ShowOptions options = new ShowOptions();
 		options.resultCallback = VideoResult;
 		shipyardControllerObj.GetComponent<ShipyardController> ().MenuBtn (false);
+		Debug.Log (Advertisement.isInitialized);
 		Advertisement.Show("video", options);
 	}
 

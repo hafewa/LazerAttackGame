@@ -47,22 +47,22 @@ public class BasicEnemy : MonoBehaviour {
 		} else if (wavesDefeated > 14) {
 			m_eDifficulty = DIFFICULTY.EXPERT;
 			m_fHealth = (m_fHealth * 2f) + (wavesDefeated*0.1f);
-			buffChance = 90;
+			buffChance = 70;
 			speed = 5.8f + (wavesDefeated * 0.2f);
 		} else if (wavesDefeated > 8) {
 			m_eDifficulty = DIFFICULTY.DIFFICULT;
 			m_fHealth = (m_fHealth * 1.75f) + (wavesDefeated*0.1f);
-			buffChance = 80;
+			buffChance = 55;
 			speed = 5.6f + (wavesDefeated * 0.2f);
 		} else if (wavesDefeated > 4) {
 			m_eDifficulty = DIFFICULTY.MEDIUM;
 			m_fHealth = (m_fHealth * 1.5f) + (wavesDefeated*0.1f);
-			buffChance = 70;
+			buffChance = 35;
 			speed = 5.4f + (wavesDefeated * 0.2f);
 		} else if (wavesDefeated > 2) {
 			m_eDifficulty = DIFFICULTY.EASY;
 			m_fHealth *= 1.1f;
-			buffChance = 50;
+			buffChance = 20;
 			speed = 5.2f + (wavesDefeated * 0.15f);
 		} else {
 			m_eDifficulty = DIFFICULTY.BASE;

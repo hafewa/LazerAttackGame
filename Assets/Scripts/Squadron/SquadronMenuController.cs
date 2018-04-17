@@ -8,9 +8,34 @@ public class SquadronMenuController : MonoBehaviour {
 	public GameObject leftBuddy;
 	public GameObject rightBuddy;
 	public Transform currentItemSpawnPoint;
+	[System.Serializable]
+	public class Reward
+	{
+		public string name;			//to show to player
+		public string codename;		//for use in code
+		public string description;
+		public GameObject obj;
+		public RARITY rarity;
+		public int tradeablePointsValue;
+		public REWARD_TYPE type;
+	}
 
-	public ShopCrate.Reward[] possibleBuddies;
-	private List<ShopCrate.Reward> buddiesOwned;
+	[System.Serializable]
+	public enum RARITY
+	{
+		COMMON = 0,
+		RARE,
+		LEGENDARY
+	}
+
+	[System.Serializable]
+	public enum REWARD_TYPE{
+		POINTS = 0,
+		BUDDY
+	}
+
+	public Reward[] possibleBuddies;
+	private List<Reward> buddiesOwned;
 
 	private int currSquadIndex;
 	private GameObject currSquadItem;
@@ -18,9 +43,8 @@ public class SquadronMenuController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		string buddyList = PlayerPrefs.GetString ("buddys");
-		buddiesOwned = new List<ShopCrate.Reward>();
-		foreach (ShopCrate.Reward r in possibleBuddies) {
+		buddiesOwned = new List<Reward>();
+		foreach (Reward r in possibleBuddies) {
 			buddiesOwned.Add (r);
 		}
 
@@ -29,7 +53,7 @@ public class SquadronMenuController : MonoBehaviour {
 
 		int buddyCount = 0;
 		if (left != "" || right != "") {
-			foreach (ShopCrate.Reward r in buddiesOwned) {
+			foreach (Reward r in buddiesOwned) {
 				if (buddyCount >= 2)
 					break;
 				

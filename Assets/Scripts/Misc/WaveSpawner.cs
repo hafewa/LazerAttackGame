@@ -243,6 +243,6 @@ public class WaveSpawner : MonoBehaviour {
 			return;
 		
 		Transform _sp = spawnPoints[ Random.Range (0, spawnPoints.Length) ];
-		var enemy = Instantiate(_enemy, new Vector3(_sp.position.x + spacing, 0f, _sp.position.z), _enemy.rotation);
+		Instantiate(_enemy, new Vector3(_sp.position.x + spacing, 0f, _sp.position.z), _enemy.rotation);
 	}
 }
