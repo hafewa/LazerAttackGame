@@ -3556,7 +3556,7 @@ MonoBehaviour:
     - {fileID: 4501166616097360, guid: 025a48ebbf08bd549812418b55a4c915, type: 2}
     - {fileID: 4844751467170352, guid: ce4fcb62868ea064b8a1ab7964d4a42a, type: 2}
     - {fileID: 4068617453103018, guid: 90f447547db5bb0458cd299c3b147fad, type: 2}
-    count: 4
+    count: 10
     rate: 0.5
     canIncreaseCount: 0
   - name: BossWave
@@ -3570,7 +3570,7 @@ MonoBehaviour:
     - {fileID: 4068617453103018, guid: 90f447547db5bb0458cd299c3b147fad, type: 2}
     - {fileID: 4501166616097360, guid: 025a48ebbf08bd549812418b55a4c915, type: 2}
     - {fileID: 4844751467170352, guid: ce4fcb62868ea064b8a1ab7964d4a42a, type: 2}
-    count: 8
+    count: 12
     rate: 0.6
     canIncreaseCount: 0
   - name: BossWave
@@ -3583,7 +3583,7 @@ MonoBehaviour:
     enemy:
     - {fileID: 4068617453103018, guid: 90f447547db5bb0458cd299c3b147fad, type: 2}
     - {fileID: 4844751467170352, guid: ce4fcb62868ea064b8a1ab7964d4a42a, type: 2}
-    count: 12
+    count: 15
     rate: 0.5
     canIncreaseCount: 0
   - name: BossWave
@@ -3597,7 +3597,7 @@ MonoBehaviour:
     - {fileID: 4501166616097360, guid: 025a48ebbf08bd549812418b55a4c915, type: 2}
     - {fileID: 4844751467170352, guid: ce4fcb62868ea064b8a1ab7964d4a42a, type: 2}
     - {fileID: 4068617453103018, guid: 90f447547db5bb0458cd299c3b147fad, type: 2}
-    count: 7
+    count: 16
     rate: 0.7
     canIncreaseCount: 0
   - name: BossWave
@@ -3611,7 +3611,7 @@ MonoBehaviour:
     - {fileID: 4844751467170352, guid: ce4fcb62868ea064b8a1ab7964d4a42a, type: 2}
     - {fileID: 4501166616097360, guid: 025a48ebbf08bd549812418b55a4c915, type: 2}
     - {fileID: 4068617453103018, guid: 90f447547db5bb0458cd299c3b147fad, type: 2}
-    count: 10
+    count: 18
     rate: 0.6
     canIncreaseCount: 0
   - name: BossWave

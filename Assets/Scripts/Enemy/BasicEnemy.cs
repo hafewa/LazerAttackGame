@@ -87,7 +87,12 @@ public class BasicEnemy : MonoBehaviour {
 		}
 
 		//move towards player
-		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, targetZ), speed * Time.deltaTime);
+		float tmpSpeed = speed;
+		if (WaveSpawner.Get () != null) {
+			if (WaveSpawner.Get ().IsInSpeedMode ())
+				tmpSpeed *= 4f;
+		}
+		transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, targetZ), tmpSpeed * Time.deltaTime);
 	}
 
 	public float GetHealth(){

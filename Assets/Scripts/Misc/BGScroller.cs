@@ -13,7 +13,15 @@ public class BGScroller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float x = Mathf.Repeat (Time.time * scrollSpeed, 1);
+		float tmpSpeed = scrollSpeed;
+
+		if (WaveSpawner.Get () != null) {
+			if (WaveSpawner.Get ().IsInSpeedMode ()) {
+				tmpSpeed *= 5f;
+			}
+		}
+
+		float x = Mathf.Repeat (Time.time * tmpSpeed, 1);
 		Vector2 offset = new Vector2 (-x, savedOffset.y);
 		GetComponent<Renderer> ().material.SetTextureOffset ("_MainTex", offset);
 	}

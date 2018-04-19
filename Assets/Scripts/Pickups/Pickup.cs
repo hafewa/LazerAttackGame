@@ -20,8 +20,12 @@ public class Pickup : MonoBehaviour {
 	// Update is called once per frame
 	protected virtual void Update () {
 		speed += (Physics.gravity * Time.deltaTime);
-
-		gameObject.transform.position += speed * Time.deltaTime;
+		Vector3 tmpSpeed = speed;
+		if (WaveSpawner.Get () != null) {
+			if (WaveSpawner.Get ().IsInSpeedMode ())
+				tmpSpeed.z *= 4f;
+		}
+		gameObject.transform.position += tmpSpeed * Time.deltaTime;
 
 		if (transform.position.z < -10f)
 			Destroy (this.gameObject);

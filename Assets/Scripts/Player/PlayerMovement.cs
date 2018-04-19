@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		//only bosses can fire projectiles
 		if (other.tag == "Enemy" || other.tag == "EnemyProjectile") {
-			if (extraLifeJustUsed) {
+			if (extraLifeJustUsed || WaveSpawner.Get().IsInSpeedMode()) {
 				Destroy (other.gameObject);
 				return;
 			}
@@ -139,9 +139,13 @@ public class PlayerMovement : MonoBehaviour
 			break;
 		case Powerup.POWERUPTYPE.LUCK:
 			//Chances of good drops from all types of enemies increases
+			luckLevel++;
 			break;
 		case Powerup.POWERUPTYPE.MAGNET:
 			//dropped treasure moves slightly towards player
+			break;
+		case Powerup.POWERUPTYPE.SPEED:
+			WaveSpawner.Get ().SetInSpeedMode (true, p.GetComponent<Powerup>().GetValue());
 			break;
 		default:
 			//nah

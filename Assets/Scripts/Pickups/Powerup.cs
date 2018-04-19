@@ -9,7 +9,8 @@ public class Powerup : Pickup {
 	{
 		WEAPON = 0,
 		MAGNET,
-		LUCK
+		LUCK,
+		SPEED
 	}
 
 	// Use this for initialization

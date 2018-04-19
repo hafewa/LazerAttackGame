@@ -17,8 +17,12 @@ public class GravityWithSpeed : MonoBehaviour {
 	void Update () {
 		if (transform.position.z < -10f)
 			Destroy (this.gameObject);
+		if (WaveSpawner.Get ().IsInSpeedMode ()) {
+			transform.position += ((Physics.gravity * (1.6f) * Time.deltaTime));
 
-		transform.position += ((Physics.gravity*0.8f) * Time.deltaTime);
+		} else {
+			transform.position += ((Physics.gravity * 0.8f) * Time.deltaTime);
+		}
 
 		if (canRotate)
 			transform.RotateAround (transform.position, new Vector3 (-1, 0, 1), rotSpeed * Time.deltaTime);

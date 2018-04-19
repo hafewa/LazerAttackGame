@@ -416,6 +416,7 @@ MonoBehaviour:
   - {fileID: 1019263206544978, guid: 4935b403526db8140b0995a86d82f548, type: 2}
   - {fileID: 1074811677819342, guid: 3ef7260f1b81e3548a827d8d4ca2a3a4, type: 2}
   - {fileID: 1019263206544978, guid: 4935b403526db8140b0995a86d82f548, type: 2}
+  - {fileID: 1757093733315488, guid: 0cc8a69467761fa47b6e029184b1c10c, type: 2}
   powerUps: []
   rareDropRate: 10
   rareDropCount: 1
@@ -453,6 +454,7 @@ MonoBehaviour:
   healthBuffAmount: 0
   buffParticles: {fileID: 1872940545471754}
   deathSound: {fileID: 8300000, guid: c7865fd595be8a046a018f3e24771dd6, type: 3}
+  speed: 5
 --- !u!135 &135133843243555098
 SphereCollider:
   m_ObjectHideFlags: 1

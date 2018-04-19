@@ -32,6 +32,11 @@ public class WaveSpawner : MonoBehaviour {
 		public bool canIncreaseCount;
 	}
 
+	private bool inSpeedMode = false;
+	private float speedModeTimer = 0f;
+	private float speedModeLength = 0f;
+	public void SetInSpeedMode(bool s, float seconds){inSpeedMode = s;speedModeLength = seconds; speedModeTimer = 0f;}
+	public bool IsInSpeedMode(){ return inSpeedMode; }
 	public float startSpawningTimer;
 	public float timeBeforeStart;
 	public bool m_bBossWave;
@@ -127,6 +132,13 @@ public class WaveSpawner : MonoBehaviour {
 			startSpawningTimer += Time.deltaTime;
 			return;
 		}
+
+		if (inSpeedMode) {
+			if (speedModeTimer > speedModeLength) {
+				SetInSpeedMode (false, 0f);
+			}
+			speedModeTimer += Time.deltaTime;
+		}
 		
 		if (state == SpawnState.WAITING)
 		{
@@ -196,12 +208,17 @@ public class WaveSpawner : MonoBehaviour {
 
 	IEnumerator SpawnWave(Wave _wave)
 	{
+		//if a wave is about to spawn and the speed boost is nearly done, exit it, so that player doesn't die as soon as they exit it
+		if (speedModeTimer > speedModeLength - 0.6f)
+			SetInSpeedMode (false, 0f);
+		
 		if (!m_goPlayer)
 			yield return null;
 		
 		state = SpawnState.SPAWNING;
 		if (_wave.name.Contains ("Boss")) {
 			m_bBossWave = true;
+			SetInSpeedMode (false, 0f);
 		} else {
 			m_bBossWave = false;
 		}
@@ -229,7 +246,11 @@ public class WaveSpawner : MonoBehaviour {
 				SpawnEnemy (_wave.enemy [0], 0f);
 			}
 
-			yield return new WaitForSeconds( 1f/_wave.rate );
+			if (inSpeedMode) {
+				yield return new WaitForSeconds (1f / (_wave.rate * 4f));
+			} else {
+				yield return new WaitForSeconds (1f / _wave.rate);
+			}
 		}
 
 		state = SpawnState.WAITING;
