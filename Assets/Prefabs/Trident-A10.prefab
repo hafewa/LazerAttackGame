@@ -453,7 +453,7 @@ MonoBehaviour:
   isBuffed: 1
   healthBuffAmount: 0
   buffParticles: {fileID: 1872940545471754}
-  deathSound: {fileID: 8300000, guid: c7865fd595be8a046a018f3e24771dd6, type: 3}
+  deathSound: {fileID: 8300000, guid: 5543cefa2f8fc9e40bb3b5af6eac40ad, type: 3}
   speed: 5
 --- !u!135 &135133843243555098
 SphereCollider:
