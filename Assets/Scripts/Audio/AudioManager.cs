@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour {
 
 	void Start(){
 		if(Advertisement.isSupported){
-			Advertisement.Initialize ("1706898", true);
+			Advertisement.Initialize ("1706898");
 		}
 	}
 
